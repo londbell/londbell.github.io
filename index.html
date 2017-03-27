@@ -180,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/27/diary-2017-0327-0034/">无题</a>
+      <a class="article-title" href="/2017/03/27/diary-2017-0327-0034/">等价交换</a>
     </h1>
   
 
@@ -193,7 +193,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>所有的快乐，哀伤，痛苦，都会随时间逝去。</p>
+        <p>&gt;<br>       人没有牺牲就什么都得不到，为了得到什么东西，就需要付出同等的代价。</p>
 
       
 
@@ -273,19 +273,88 @@
 
 
   
-    <article id="post-Two Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-leetcode-13-Roman-to-Integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/01/Two Sum/">Two Sum</a>
+      <a class="article-title" href="/2014/12/03/leetcode-13-Roman-to-Integer/">Roman to Integer</a>
     </h1>
   
 
         
-        <a href="/2014/07/01/Two Sum/" class="archive-article-date">
+        <a href="/2014/12/03/leetcode-13-Roman-to-Integer/" class="archive-article-date">
+  	<time datetime="2014-12-03T09:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/problems/roman-to-integer/" target="_blank" rel="external">原题</a><br>给出一个罗马数字字符串，将其计算为阿拉伯数字。</p>
+<p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        Map map = <span class="keyword">new</span> HashMap();</div><div class="line">        map.put(<span class="string">'I'</span>, <span class="number">1</span>);<span class="comment">//Key是Char就用单引号，是String就用双引号</span></div><div class="line">        map.put(<span class="string">'V'</span>, <span class="number">5</span>);</div><div class="line">        map.put(<span class="string">'X'</span>, <span class="number">10</span>);</div><div class="line">        map.put(<span class="string">'L'</span>, <span class="number">50</span>);</div><div class="line">        map.put(<span class="string">'C'</span>, <span class="number">100</span>);</div><div class="line">        map.put(<span class="string">'D'</span>, <span class="number">500</span>);</div><div class="line">        map.put(<span class="string">'M'</span>, <span class="number">1000</span>);</div><div class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</div><div class="line">            <span class="keyword">if</span>(i == s.length() - <span class="number">1</span>) &#123;</div><div class="line">                result = (Integer)map.get(s.charAt(i));</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(((Integer)map.get(s.charAt(i))) &gt;= ((Integer)map.get(s.charAt(i + <span class="number">1</span>)))) &#123;</div><div class="line">                result += (Integer) map.get(s.charAt(i));</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                result -= (Integer) map.get(s.charAt(i));</div><div class="line">            &#125;</div><div class="line">           </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/12/03/leetcode-13-Roman-to-Integer/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
+    </h1>
+  
+
+        
+        <a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
   	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
 </a>
         
@@ -328,7 +397,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/01/Two Sum/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/">展开全文 >></a>
         </p>
       
 
@@ -435,15 +504,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
