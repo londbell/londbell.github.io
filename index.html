@@ -173,6 +173,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode-72-Edit-Distance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/27/leetcode-72-Edit-Distance/">Edit Distance</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/27/leetcode-72-Edit-Distance/" class="archive-article-date">
+  	<time datetime="2017-03-27T13:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出两个字符串，看S1最少需要几步可以变成S2？<br>1.可以插入一个字符。<br>2.可以删除一个字符。<br>3.可以替换一个字符。</p>
+<p>Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)</p>
+<p>You have the following 3 operations permitted on a word:</p>
+<p>a) Insert a character<br>b) Delete a character<br>c) Replace a character</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>图中表示的是，将Park变成Spake的最小距离，假设Park为String1，Spake为String2</p>
+<p>dp[i][j] 表示从String1的前i位，变到String2的前j位，最小需要多少改变</p>
+<p>比如我们看矩阵的第一行，分别代表从” “(空字符)变到”s”, 变到”sp”，变到”spa”,变到”spak”，变到”spake” 需要多少次改变，因为每次只能选择往上添加一个字符，所以累加操作数分别为1,2,3,4,5</p>
+<p>同理，矩阵的第一列分别代表从”p” 变到” “(空字符)，从”pa“变空，从”par“变空,从”park”变空需要多少次改变，因为每次只能选择删去一个字符，所以累加操作数分别为1,2,3,4</p>
+<p>那好，我们再举个例子，看图中绿色字体的那个例子</p>
+<p>下箭头： 我们现在已经知道了从” “ 到”s“的距离，那么从”p” 到’’s” 我们只要删去这个p就行了 （Delete）</p>
+<p>右箭头： 我们现在已经知道了从”p“到” “的距离，那么从”p” 到”s” 我们只要插入这个s就行了 （Insert）</p>
+<p>右下箭头： 我们现在已经知道了从” “到” “的距离，那么从”p” 到”s” 我们只需要把p替换成s就行了(Replace)</p>
+<p>注意替换的时候，如果i所代表的的字符 == j所代表的字符，那么我们便不需要做任何多余的操作（No Operation）</p>
+<p><img src="/imgs/leetcode-72-Edit-Distance/1.jpg" alt=""><br><a href="https://leetcode.com/problems/edit-distance/" target="_blank" rel="external">原题地址</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDistance</span><span class="params">(String word1, String word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[word1.length() + <span class="number">1</span>][word2.length() + <span class="number">1</span>];</div><div class="line">        dp[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= word1.length(); i++) &#123;</div><div class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= word2.length(); i++) &#123;</div><div class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= word1.length(); i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= word2.length(); j++) &#123;</div><div class="line">                <span class="keyword">if</span>(word1.charAt(i - <span class="number">1</span>) == word2.charAt(j - <span class="number">1</span>)) &#123;</div><div class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];  <span class="comment">//状态转移，说明此时不需要任何操作</span></div><div class="line">                &#125;<span class="keyword">else</span> &#123;</div><div class="line">                    dp[i][j] = <span class="number">1</span> + Math.min(dp[i][j-<span class="number">1</span>], Math.min(dp[i-<span class="number">1</span>][j], dp[i-<span class="number">1</span>][j-<span class="number">1</span>]));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> dp[word1.length()][word2.length()];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/27/leetcode-72-Edit-Distance/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-leetcode-97-Interleaving-String" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
