@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>RA·CAILUM</title>
+  <title>Factorial Trailing Zeroes | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell,github.io/page/2/index.html">
+  <meta name="description" content="题目描述大意就是实现求给出比num小的所有数的二进制位中1的位数，隐藏提示是使用动态规划。
+Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and retur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Factorial Trailing Zeroes">
+<meta property="og:url" content="http://londbell,github.io/2017/03/28/leetcode-338-Counting Bits /index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="题目描述大意就是实现求给出比num小的所有数的二进制位中1的位数，隐藏提示是使用动态规划。
+Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and retur">
+<meta property="og:updated_time" content="2017-03-28T07:21:16.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="Factorial Trailing Zeroes">
+<meta name="twitter:description" content="题目描述大意就是实现求给出比num小的所有数的二进制位中1的位数，隐藏提示是使用动态规划。
+Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and retur">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -171,34 +178,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-leetcode-02-Add-Two-Numbers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-leetcode-338-Counting Bits " class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">Add Two Numbers</a>
+    <h1 class="article-title" itemprop="name">
+      Factorial Trailing Zeroes
     </h1>
   
 
         
-        <a href="/2014/07/03/leetcode-02-Add-Two-Numbers/" class="archive-article-date">
-  	<time datetime="2014-07-03T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-03</time>
+        <a href="/2017/03/28/leetcode-338-Counting Bits /" class="archive-article-date">
+  	<time datetime="2017-03-28T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个由个位数组成的非空链表，按位置相加，进位累加到下一个元素上，每个元素只留个位，两个链表长度可能不等。</p>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-<p><a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" rel="external">原题地址</a></p>
-<h2 id="我的做法："><a href="#我的做法：" class="headerlink" title="我的做法："></a>我的做法：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">        ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode temp = head;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        head.val = l1.val + l2.val;</div><div class="line">        <span class="keyword">if</span>(head.val &gt;= <span class="number">10</span>) &#123;</div><div class="line">            count = <span class="number">1</span>;</div><div class="line">            head.val %= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">while</span>(l1.next != <span class="keyword">null</span> || l2.next !=<span class="keyword">null</span> || count == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(l1.next == <span class="keyword">null</span> &amp;&amp; l2.next == <span class="keyword">null</span>) &#123;</div><div class="line">               temp.next = <span class="keyword">new</span> ListNode(count);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(l1.next == <span class="keyword">null</span>) &#123;</div><div class="line">                temp.next = <span class="keyword">new</span> ListNode(l2.next.val + count);</div><div class="line">                l2 = l2.next;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(l2.next == <span class="keyword">null</span>) &#123;</div><div class="line">                temp.next = <span class="keyword">new</span> ListNode(l1.next.val + count);</div><div class="line">                l1 = l1.next;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(l1.next != <span class="keyword">null</span> &amp;&amp; l2.next != <span class="keyword">null</span>) &#123;</div><div class="line">                temp.next = <span class="keyword">new</span> ListNode(l1.next.val + l2.next.val + count);</div><div class="line">                l1 = l1.next;</div><div class="line">                l2 = l2.next;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(temp.next.val &gt;= <span class="number">10</span>) &#123;</div><div class="line">                count = <span class="number">1</span>;</div><div class="line">                temp.next.val %= <span class="number">10</span>;</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                count = <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            temp = temp.next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>大意就是实现求给出比num小的所有数的二进制位中1的位数，隐藏提示是使用动态规划。</p>
+<p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.<br>Example:</p>
+<p>For num = 5 you should return [0,1,1,2,1,2].<br>Follow up:</p>
+<p>It is very easy to come up with a solution with run time O(n*sizeof(integer)). But can you do it in linear time O(n) /possibly in a single pass?<br>Space complexity should be O(n).<br>Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.</p>
+<p><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">原题地址</a></p>
+<h2 id="逗逼解法"><a href="#逗逼解法" class="headerlink" title="逗逼解法"></a>逗逼解法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>) &#123;</div><div class="line">            n /= <span class="number">5</span>;</div><div class="line">            count += n;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>需要注意到的是，每隔2^n的大小，就会刚好多出一位，也就是说构造出动态规划的叠加数组，在以前计算过的基础上加1，即可得到后面数的“1”位数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</div><div class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>&#125;;</div><div class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num + <span class="number">1</span>];</div><div class="line">        <span class="keyword">int</span> len, count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">            len = count + <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</div><div class="line">                ++count;</div><div class="line">                result[count] = result[i] + <span class="number">1</span>;             </div><div class="line">                <span class="keyword">if</span>(count &gt;= num)</div><div class="line">                    <span class="keyword">return</span> result;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -224,91 +231,83 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/03/28/leetcode-338-Counting Bits /" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
-
-
-
   
-    <article id="post-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2017/03/28/leetcode-54-spiral-matrix/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
-    </h1>
-  
-
+          Spiral Matrix
         
-        <a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
-  	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整形元素组成的数组，给出一个数，求数组中是否存在两个数之和与给定数相等。<br>不能使用同一个元素两次，同时一定只会有一个解。</p>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<p>Given nums = [2, 7, 11, 15], target = 9,</p>
-<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-<p><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">原题地址</a></p>
-<h2 id="逗逼解法："><a href="#逗逼解法：" class="headerlink" title="逗逼解法："></a>逗逼解法：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.company;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// write your code here</span></div><div class="line">        <span class="keyword">int</span> nums3[] = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target3 = <span class="number">6</span>;</div><div class="line">        <span class="keyword">int</span> nums4[] = &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">15</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target4 = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> twoSum[] = Solution.twoSum(nums3, target3);</div><div class="line">        System.out.print(twoSum[<span class="number">0</span>] + <span class="string">" "</span> + twoSum[<span class="number">1</span>]);</div><div class="line">        System.out.println(<span class="string">" finish"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> array[] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</div><div class="line">                <span class="keyword">if</span>((nums[i] + nums[j] == target)) &#123;</div><div class="line">                    array[<span class="number">0</span>] = i;</div><div class="line">                    array[<span class="number">1</span>] = j;</div><div class="line">                    flag = <span class="number">1</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.company;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// write your code here</span></div><div class="line">        <span class="keyword">int</span> nums3[] = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target3 = <span class="number">6</span>;</div><div class="line">        <span class="keyword">int</span> nums4[] = &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">15</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target4 = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> twoSum[] = Solution.twoSum(nums3, target3);</div><div class="line">        System.out.print(twoSum[<span class="number">0</span>] + <span class="string">" "</span> + twoSum[<span class="number">1</span>]);</div><div class="line">        System.out.println(<span class="string">" finish"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">        <span class="keyword">int</span> result[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</div><div class="line">            <span class="keyword">int</span> num = target - nums[i];</div><div class="line">            <span class="keyword">if</span>(map.containsKey(num))&#123;</div><div class="line">                result[<span class="number">0</span>] = map.get(num);</div><div class="line">                result[<span class="number">1</span>] = i;</div><div class="line">                <span class="keyword">return</span> result;</div><div class="line">            &#125;</div><div class="line">            map.put(nums[i], i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/28/leetcode-172-factorial-trailing-zeroes - 副本/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Factorial Trailing Zeroes</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -316,11 +315,10 @@
 
 
   
+    <div class="duoshuo"></div>
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
+
 
 
           </div>
@@ -342,8 +340,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
