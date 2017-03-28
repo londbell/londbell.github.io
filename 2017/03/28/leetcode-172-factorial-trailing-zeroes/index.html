@@ -14,13 +14,13 @@ Given an integer n, return the number of trailing zeroes in n!.
 Note: Your solution should be in logarithmic time complexity.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Factorial Trailing Zeroes">
-<meta property="og:url" content="http://londbell,github.io/2017/03/28/leetcode-172-factorial-trailing-zeroes - 副本/index.html">
+<meta property="og:url" content="http://londbell,github.io/2017/03/28/leetcode-172-factorial-trailing-zeroes/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="题目描述给出一个整数N，求N阶乘中有几个0。
 乘法得到0就是2*5，2的数量不知比5多到哪里去了，只要计算5的数量就行，那就一直除于5，计算即可。
 Given an integer n, return the number of trailing zeroes in n!.
 Note: Your solution should be in logarithmic time complexity.">
-<meta property="og:updated_time" content="2017-03-28T02:07:34.768Z">
+<meta property="og:updated_time" content="2017-03-28T07:30:24.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Factorial Trailing Zeroes">
 <meta name="twitter:description" content="题目描述给出一个整数N，求N阶乘中有几个0。
@@ -184,7 +184,7 @@ Note: Your solution should be in logarithmic time complexity.">
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-leetcode-172-factorial-trailing-zeroes - 副本" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-leetcode-172-factorial-trailing-zeroes" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -196,7 +196,7 @@ Note: Your solution should be in logarithmic time complexity.">
   
 
         
-        <a href="/2017/03/28/leetcode-172-factorial-trailing-zeroes - 副本/" class="archive-article-date">
+        <a href="/2017/03/28/leetcode-172-factorial-trailing-zeroes/" class="archive-article-date">
   	<time datetime="2017-03-28T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
 </a>
         
@@ -208,6 +208,7 @@ Note: Your solution should be in logarithmic time complexity.">
 <p>乘法得到0就是2*5，2的数量不知比5多到哪里去了，只要计算5的数量就行，那就一直除于5，计算即可。</p>
 <p>Given an integer n, return the number of trailing zeroes in n!.</p>
 <p>Note: Your solution should be in logarithmic time complexity.</p>
+<a id="more"></a>
 <p><a href="https://leetcode.com/problems/factorial-trailing-zeroes/" target="_blank" rel="external">原题地址</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>) &#123;</div><div class="line">            n /= <span class="number">5</span>;</div><div class="line">            count += n;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> count;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
@@ -282,7 +283,7 @@ Note: Your solution should be in logarithmic time complexity.">
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/03/28/leetcode-172-factorial-trailing-zeroes - 副本/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/03/28/leetcode-172-factorial-trailing-zeroes/" alt="微信分享二维码">
     </div>
 </div>
 
