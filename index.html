@@ -173,6 +173,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode-54-spiral-matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/28/leetcode-54-spiral-matrix/">Spiral Matrix</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/28/leetcode-54-spiral-matrix/" class="archive-article-date">
+  	<time datetime="2017-03-28T05:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个M X N的矩阵，以螺旋方式给出其序列。<br>Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.</p>
+<p>For example,<br>Given the following matrix:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"> [ 1, 2, 3 ],</div><div class="line"> [ 4, 5, 6 ],</div><div class="line"> [ 7, 8, 9 ]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>You should return [1,2,3,6,9,8,7,4,5]. </p>
+<p><a href="https://leetcode.com/problems/spiral-matrix/" target="_blank" rel="external">原题地址</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">        <span class="keyword">boolean</span> flagSub = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> list;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">do</span> &#123;</div><div class="line">            <span class="keyword">boolean</span> [][]flag = <span class="keyword">new</span> <span class="keyword">boolean</span>[matrix.length][matrix[<span class="number">0</span>].length];</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix[<span class="number">0</span>].length; i++) &#123;</div><div class="line">                list.add(matrix[<span class="number">0</span>][i]);</div><div class="line">                flag[<span class="number">0</span>][i] = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">boolean</span>[] e: flag) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">boolean</span> q : e) &#123;</div><div class="line">                    q = <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; matrix.length; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (!flag[i][matrix[<span class="number">0</span>].length - <span class="number">1</span>]) &#123;</div><div class="line">                    list.add(matrix[i][matrix[<span class="number">0</span>].length - <span class="number">1</span>]);</div><div class="line">                    flag[i][matrix[<span class="number">0</span>].length - <span class="number">1</span>] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = matrix[<span class="number">0</span>].length - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;<span class="comment">// i = 0的边界条件</span></div><div class="line">                <span class="keyword">if</span>(!flag[matrix.length-<span class="number">1</span>][i]) &#123;</div><div class="line">                    list.add(matrix[matrix.length - <span class="number">1</span>][i]);</div><div class="line">                    flag[matrix.length - <span class="number">1</span>][i] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = matrix.length - <span class="number">2</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">                <span class="keyword">if</span>(!flag[i][<span class="number">0</span>]) &#123;</div><div class="line">                    list.add(matrix[i][<span class="number">0</span>]);</div><div class="line">                    flag[i][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            flagSub = matrix.length &gt;<span class="number">2</span> &amp;&amp; matrix[<span class="number">0</span>].length &gt;<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(flagSub) &#123;</div><div class="line">                matrix = getSubMatrix(matrix);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">while</span>(flagSub);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] getSubMatrix(<span class="keyword">int</span>[][] matrix) &#123;</div><div class="line">        <span class="keyword">int</span>[][] subMatrix = <span class="keyword">new</span> <span class="keyword">int</span>[matrix.length - <span class="number">2</span>][matrix[<span class="number">0</span>].length -<span class="number">2</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; matrix.length - <span class="number">1</span>; i ++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; matrix[<span class="number">0</span>].length - <span class="number">1</span>; j++) &#123;</div><div class="line">                subMatrix[i - <span class="number">1</span>][j - <span class="number">1</span>] = matrix[i][j];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> subMatrix;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/28/leetcode-54-spiral-matrix/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-leetcode-172-factorial-trailing-zeroes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
