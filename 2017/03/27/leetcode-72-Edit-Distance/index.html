@@ -17,7 +17,7 @@ Given two words word1 and word2, find the minimum number of steps required to co
 <meta property="og:description" content="题目描述给出两个字符串，看S1最少需要几步可以变成S2？1.可以插入一个字符。2.可以删除一个字符。3.可以替换一个字符。
 Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step">
 <meta property="og:image" content="http://londbell,github.io/imgs/leetcode-72-Edit-Distance/1.jpg">
-<meta property="og:updated_time" content="2017-03-27T14:26:26.707Z">
+<meta property="og:updated_time" content="2017-03-28T01:40:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Edit Distance">
 <meta name="twitter:description" content="题目描述给出两个字符串，看S1最少需要几步可以变成S2？1.可以插入一个字符。2.可以删除一个字符。3.可以替换一个字符。
@@ -204,11 +204,10 @@ Given two words word1 and word2, find the minimum number of steps required to co
 <p>Given two words word1 and word2, find the minimum number of steps required to convert word1 to word2. (each operation is counted as 1 step.)</p>
 <p>You have the following 3 operations permitted on a word:</p>
 <p>a) Insert a character<br>b) Delete a character<br>c) Replace a character</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>图中表示的是，将Park变成Spake的最小距离，假设Park为String1，Spake为String2</p>
-<p>dp[i][j] 表示从String1的前i位，变到String2的前j位，最小需要多少改变</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>图中表示的是，将s1:Park变成s:Spake的最小操作步数,dp[i][j] 表示从s1的前i位，变到s2的前j位，最小需要多少改变</p>
 <p>比如我们看矩阵的第一行，分别代表从” “(空字符)变到”s”, 变到”sp”，变到”spa”,变到”spak”，变到”spake” 需要多少次改变，因为每次只能选择往上添加一个字符，所以累加操作数分别为1,2,3,4,5</p>
 <p>同理，矩阵的第一列分别代表从”p” 变到” “(空字符)，从”pa“变空，从”par“变空,从”park”变空需要多少次改变，因为每次只能选择删去一个字符，所以累加操作数分别为1,2,3,4</p>
-<p>那好，我们再举个例子，看图中绿色字体的那个例子</p>
+<p>可以参考图中绿色字体的那个例子</p>
 <p>下箭头： 我们现在已经知道了从” “ 到”s“的距离，那么从”p” 到’’s” 我们只要删去这个p就行了 （Delete）</p>
 <p>右箭头： 我们现在已经知道了从”p“到” “的距离，那么从”p” 到”s” 我们只要插入这个s就行了 （Insert）</p>
 <p>右下箭头： 我们现在已经知道了从” “到” “的距离，那么从”p” 到”s” 我们只需要把p替换成s就行了(Replace)</p>
