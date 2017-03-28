@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>Valid Number | RA·CAILUM</title>
+  <title>search a 2dmatrix | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述检查给定字符串是否为合法的数字。
-Validate if a given string is numeric.
-123456Some examples:&amp;quot;0&amp;quot; =&amp;gt; true&amp;quot; 0.1 &amp;quot; =&amp;gt; true&amp;quot;abc&amp;quot; =&amp;gt; false&amp;quot;1 a&amp;quot; =&amp;gt; false&amp;quot;2e10&amp;quo">
+  <meta name="description" content="题目描述给定一个矩阵，求特定的数是否在矩阵中。矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+Integers in each row are sort">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Valid Number">
-<meta property="og:url" content="http://londbell,github.io/2016/03/23/leetcode-65-valid-number/index.html">
+<meta property="og:title" content="search a 2dmatrix">
+<meta property="og:url" content="http://londbell,github.io/2015/09/01/leetcode-74-search-a-2d-matrix/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
-<meta property="og:description" content="题目描述检查给定字符串是否为合法的数字。
-Validate if a given string is numeric.
-123456Some examples:&amp;quot;0&amp;quot; =&amp;gt; true&amp;quot; 0.1 &amp;quot; =&amp;gt; true&amp;quot;abc&amp;quot; =&amp;gt; false&amp;quot;1 a&amp;quot; =&amp;gt; false&amp;quot;2e10&amp;quo">
-<meta property="og:updated_time" content="2017-03-28T02:50:22.875Z">
+<meta property="og:description" content="题目描述给定一个矩阵，求特定的数是否在矩阵中。矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+Integers in each row are sort">
+<meta property="og:updated_time" content="2017-03-28T06:16:12.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Valid Number">
-<meta name="twitter:description" content="题目描述检查给定字符串是否为合法的数字。
-Validate if a given string is numeric.
-123456Some examples:&amp;quot;0&amp;quot; =&amp;gt; true&amp;quot; 0.1 &amp;quot; =&amp;gt; true&amp;quot;abc&amp;quot; =&amp;gt; false&amp;quot;1 a&amp;quot; =&amp;gt; false&amp;quot;2e10&amp;quo">
+<meta name="twitter:title" content="search a 2dmatrix">
+<meta name="twitter:description" content="题目描述给定一个矩阵，求特定的数是否在矩阵中。矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+Integers in each row are sort">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -181,32 +181,33 @@ Validate if a given string is numeric.
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-leetcode-65-valid-number" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-leetcode-74-search-a-2d-matrix" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Valid Number
+      search a 2dmatrix
     </h1>
   
 
         
-        <a href="/2016/03/23/leetcode-65-valid-number/" class="archive-article-date">
-  	<time datetime="2016-03-23T01:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
+        <a href="/2015/09/01/leetcode-74-search-a-2d-matrix/" class="archive-article-date">
+  	<time datetime="2015-09-01T07:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>检查给定字符串是否为合法的数字。</p>
-<p>Validate if a given string is numeric.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Some examples:</div><div class="line">&quot;0&quot; =&gt; true</div><div class="line">&quot; 0.1 &quot; =&gt; true</div><div class="line">&quot;abc&quot; =&gt; false</div><div class="line">&quot;1 a&quot; =&gt; false</div><div class="line">&quot;2e10&quot; =&gt; true</div></pre></td></tr></table></figure>
-<p>Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one. </p>
-<h2 id="解题步骤："><a href="#解题步骤：" class="headerlink" title="解题步骤："></a>解题步骤：</h2><p>先Trim去空格（原题用例前后有空格，是合法的。）<br>然后检查第一位的“+”， “-”。<br>接着分割。<br>可以出现科学计算法的e，然后可以出现小数点，但是都只能出现一次。<br>先以e分割，注意e前后都必须是整数，由于小数点可以出现在e前，所以应该对e后端进行数字校验。<br>同理对小数点操作。<br>小数点允许前后两段至多有一段不为0。<br><a href="https://leetcode.com/problems/valid-number/" target="_blank" rel="external">原题地址</a></p>
-<h2 id="我的做法："><a href="#我的做法：" class="headerlink" title="我的做法："></a>我的做法：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        s = s.trim();</div><div class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">'+'</span> || s.charAt(<span class="number">0</span>) == <span class="string">'-'</span>)&#123;</div><div class="line">            s = s.substring(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> loc = s.indexOf(<span class="string">'e'</span>) &gt;= <span class="number">0</span> ? s.indexOf(<span class="string">'e'</span>) : s.indexOf(<span class="string">'E'</span>);</div><div class="line">        <span class="keyword">if</span>(loc &gt; <span class="number">0</span>) &#123;</div><div class="line">            String sTemp = s.substring(loc + <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span>(sTemp.length() == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(sTemp.charAt(<span class="number">0</span>) == <span class="string">'+'</span> || sTemp.charAt(<span class="number">0</span>) == <span class="string">'-'</span>) &#123;</div><div class="line">                sTemp = sTemp.substring(<span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(!isPureDigit(sTemp)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            s = s.substring(<span class="number">0</span>, loc);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(loc == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> locDot = s.indexOf(<span class="string">'.'</span>);</div><div class="line">        <span class="keyword">if</span>(locDot &gt;= <span class="number">0</span>) &#123;</div><div class="line">            String preDot = s.substring(<span class="number">0</span>, locDot);</div><div class="line">            String postDot = s.substring(locDot + <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span>(preDot.isEmpty()) &#123;</div><div class="line">                <span class="keyword">return</span> isPureDigit(postDot);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(postDot.isEmpty()) &#123;</div><div class="line">                <span class="keyword">return</span> isPureDigit(preDot);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> isPureDigit(preDot) &amp;&amp; isPureDigit(postDot);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> isPureDigit(s);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPureDigit</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (s.isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (!Character.isDigit(s.charAt(i))) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个矩阵，求特定的数是否在矩阵中。<br>矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。</p>
+<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<pre><code>Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+</code></pre><p>For example,</p>
+<p>Consider the following matrix: </p>
+<h2 id="我的做法：写起来简单，性能很辣鸡。"><a href="#我的做法：写起来简单，性能很辣鸡。" class="headerlink" title="我的做法：写起来简单，性能很辣鸡。"></a>我的做法：写起来简单，性能很辣鸡。</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">searchMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span> || matrix == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] e : matrix) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> q : e) &#123;</div><div class="line">                list.add(q);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(list.contains(target)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -279,7 +280,7 @@ Validate if a given string is numeric.
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2016/03/23/leetcode-65-valid-number/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2015/09/01/leetcode-74-search-a-2d-matrix/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +294,18 @@ Validate if a given string is numeric.
   
 <nav id="article-nav">
   
-    <a href="/2017/03/27/diary-2017-0327-0034/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/23/leetcode-65-valid-number/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          等价交换
+          Valid Number
         
       </div>
     </a>
   
   
-    <a href="/2015/09/01/leetcode-74-search-a-2d-matrix/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">search a 2dmatrix</div>
+    <a href="/2014/12/03/leetcode-13-Roman-to-Integer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Roman to Integer</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -668,6 +668,77 @@
 
 
   
+    <article id="post-leetcode-74-search-a-2d-matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">search a 2dmatrix</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/01/leetcode-74-search-a-2d-matrix/" class="archive-article-date">
+  	<time datetime="2015-09-01T07:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个矩阵，求特定的数是否在矩阵中。<br>矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。</p>
+<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<pre><code>Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+</code></pre><p>For example,</p>
+<p>Consider the following matrix: </p>
+<h2 id="我的做法：写起来简单，性能很辣鸡。"><a href="#我的做法：写起来简单，性能很辣鸡。" class="headerlink" title="我的做法：写起来简单，性能很辣鸡。"></a>我的做法：写起来简单，性能很辣鸡。</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">searchMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span> || matrix == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] e : matrix) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> q : e) &#123;</div><div class="line">                list.add(q);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(list.contains(target)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-leetcode-13-Roman-to-Integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -808,79 +879,10 @@
 
 
   
-    <article id="post-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
-    </h1>
-  
-
-        
-        <a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
-  	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整形元素组成的数组，给出一个数，求数组中是否存在两个数之和与给定数相等。<br>不能使用同一个元素两次，同时一定只会有一个解。</p>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<p>Given nums = [2, 7, 11, 15], target = 9,</p>
-<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-<p><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="external">原题地址</a></p>
-<h2 id="逗逼解法："><a href="#逗逼解法：" class="headerlink" title="逗逼解法："></a>逗逼解法：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.company;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// write your code here</span></div><div class="line">        <span class="keyword">int</span> nums3[] = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target3 = <span class="number">6</span>;</div><div class="line">        <span class="keyword">int</span> nums4[] = &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">15</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target4 = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> twoSum[] = Solution.twoSum(nums3, target3);</div><div class="line">        System.out.print(twoSum[<span class="number">0</span>] + <span class="string">" "</span> + twoSum[<span class="number">1</span>]);</div><div class="line">        System.out.println(<span class="string">" finish"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> array[] = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</div><div class="line">                <span class="keyword">if</span>((nums[i] + nums[j] == target)) &#123;</div><div class="line">                    array[<span class="number">0</span>] = i;</div><div class="line">                    array[<span class="number">1</span>] = j;</div><div class="line">                    flag = <span class="number">1</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.company;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="comment">// write your code here</span></div><div class="line">        <span class="keyword">int</span> nums3[] = &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target3 = <span class="number">6</span>;</div><div class="line">        <span class="keyword">int</span> nums4[] = &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">15</span>&#125;;</div><div class="line">        <span class="keyword">int</span> target4 = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> twoSum[] = Solution.twoSum(nums3, target3);</div><div class="line">        System.out.print(twoSum[<span class="number">0</span>] + <span class="string">" "</span> + twoSum[<span class="number">1</span>]);</div><div class="line">        System.out.println(<span class="string">" finish"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</div><div class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line">        <span class="keyword">int</span> result[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</div><div class="line">            <span class="keyword">int</span> num = target - nums[i];</div><div class="line">            <span class="keyword">if</span>(map.containsKey(num))&#123;</div><div class="line">                result[<span class="number">0</span>] = map.get(num);</div><div class="line">                result[<span class="number">1</span>] = i;</div><div class="line">                <span class="keyword">return</span> result;</div><div class="line">            &#125;</div><div class="line">            map.put(nums[i], i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
