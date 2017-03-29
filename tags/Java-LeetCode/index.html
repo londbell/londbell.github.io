@@ -6,29 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>Interleaving String | RA·CAILUM</title>
+  <title>Tag: Java - LeetCode | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述给出三个字符串，看S1和S2能否交叉取char字符组成S3
- Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
-For example,Given:s1 = “aabcc”,s2 = “dbbca”,
-When s3 = “aadbbcbcac”, return true.When s">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Interleaving String">
-<meta property="og:url" content="http://londbell,github.io/2017/03/27/leetcode-97-Interleaving-String/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="RA·CAILUM">
+<meta property="og:url" content="http://londbell,github.io/tags/Java-LeetCode/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
-<meta property="og:description" content="题目描述给出三个字符串，看S1和S2能否交叉取char字符组成S3
- Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
-For example,Given:s1 = “aabcc”,s2 = “dbbca”,
-When s3 = “aadbbcbcac”, return true.When s">
-<meta property="og:image" content="http://londbell,github.io/imgs/leetcode-97-Interleaving-String/1.jpg">
-<meta property="og:updated_time" content="2017-03-28T07:30:00.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Interleaving String">
-<meta name="twitter:description" content="题目描述给出三个字符串，看S1和S2能否交叉取char字符组成S3
- Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
-For example,Given:s1 = “aabcc”,s2 = “dbbca”,
-When s3 = “aadbbcbcac”, return true.When s">
-<meta name="twitter:image" content="http://londbell,github.io/imgs/leetcode-97-Interleaving-String/1.jpg">
+<meta name="twitter:title" content="RA·CAILUM">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -186,147 +171,60 @@ When s3 = “aadbbcbcac”, return true.When s">
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-leetcode-97-Interleaving-String" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Interleaving String
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/29/love/" class="archive-article-date">
+  	<time datetime="2017-03-29T12:31:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/29/love/">love</a>
     </h1>
   
 
-        
-        <a href="/2017/03/27/leetcode-97-Interleaving-String/" class="archive-article-date">
-  	<time datetime="2017-03-27T12:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出三个字符串，看S1和S2能否交叉取char字符组成S3</p>
-<p> Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.</p>
-<p>For example,<br>Given:<br>s1 = “aabcc”,<br>s2 = “dbbca”,</p>
-<p>When s3 = “aadbbcbcac”, return true.<br>When s3 = “aadbbbaccc”, return false. </p>
-<a id="more"></a>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>DP[i][j]存的是取S1的i个字符，取S2的j个字符情况下，能否构成S3;<br>由于存的是“个数”，所以对应到String操作上是i+1,要注意<br>另外需要注意第二次运算交集时要并上本身（第一次运算说明本路径是有效的）。</p>
-<p><img src="/imgs/leetcode-97-Interleaving-String/1.jpg" alt=""><br><a href="https://leetcode.com/problems/interleaving-string/" target="_blank" rel="external">原题地址</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isInterleave</span><span class="params">(String s1, String s2, String s3)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(s1 == <span class="string">""</span> || s2 == <span class="string">""</span> || s3 == <span class="string">""</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>((s1.length() + s2.length()) != s3.length()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[s1.length() + <span class="number">1</span>][s2.length() + <span class="number">1</span>];</div><div class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">1</span>; m &lt; s1.length() + <span class="number">1</span>; m++) &#123;</div><div class="line">            <span class="keyword">if</span> (s1.charAt(m - <span class="number">1</span>) == s3.charAt(m - <span class="number">1</span>)) &#123;</div><div class="line">                dp[m][<span class="number">0</span>] = <span class="keyword">true</span> &amp;&amp; dp[m - <span class="number">1</span>][<span class="number">0</span>];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                dp[m][<span class="number">0</span>] = <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">1</span>; m &lt; s2.length() + <span class="number">1</span>; m++) &#123;</div><div class="line">            <span class="keyword">if</span>(s2.charAt(m - <span class="number">1</span>) == s3.charAt(m - <span class="number">1</span>)) &#123;</div><div class="line">                dp[<span class="number">0</span>][m] = <span class="keyword">true</span> &amp;&amp; dp[<span class="number">0</span>][m - <span class="number">1</span>];</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                dp[<span class="number">0</span>][m] = <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">1</span>; m &lt; s1.length() + <span class="number">1</span>; m++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> n = <span class="number">1</span>; n &lt; s2.length() + <span class="number">1</span>; n++) &#123;</div><div class="line">                <span class="keyword">if</span>(s1.charAt(m - <span class="number">1</span>) == s3.charAt(m + n - <span class="number">1</span>)) &#123;</div><div class="line">                    dp[m][n] = <span class="keyword">true</span> &amp;&amp; dp[m-<span class="number">1</span>][n];</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span>(s2.charAt(n - <span class="number">1</span>) == s3.charAt(m + n - <span class="number">1</span>)) &#123;</div><div class="line">                    dp[m][n] = (<span class="keyword">true</span> &amp;&amp; dp[m][n-<span class="number">1</span>]) || dp[m][n];<span class="comment">//防止前面的true被交集运算后得到false</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; s1.length() + <span class="number">1</span>; m++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; s2.length() + <span class="number">1</span>; n++) &#123;</div><div class="line">                <span class="comment">//System.out.println(dp[m][n]);</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dp[s1.length()][s2.length()];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LeetCode - 动态规划 - 字符串</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java - LeetCode</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/03/27/leetcode-97-Interleaving-String/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/27/leetcode-72-Edit-Distance/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Edit Distance
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/27/leetcode-78-Subsets/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Subsets</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -349,9 +247,9 @@ When s3 = “aadbbcbcac”, return true.When s">
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
