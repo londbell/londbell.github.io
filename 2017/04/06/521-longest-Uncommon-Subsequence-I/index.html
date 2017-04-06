@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>Archives: 2014 | RA·CAILUM</title>
+  <title>521-longest-Uncommon-Subsequence-I | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell,github.io/archives/2014/index.html">
+  <meta name="description" content="题目描述Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these">
+<meta property="og:type" content="article">
+<meta property="og:title" content="521-longest-Uncommon-Subsequence-I">
+<meta property="og:url" content="http://londbell,github.io/2017/04/06/521-longest-Uncommon-Subsequence-I/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="题目描述Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these">
+<meta property="og:updated_time" content="2017-04-06T12:16:56.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="521-longest-Uncommon-Subsequence-I">
+<meta name="twitter:description" content="题目描述Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -177,36 +181,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-521-longest-Uncommon-Subsequence-I" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      521-longest-Uncommon-Subsequence-I
+    </h1>
+  
+
+        
+        <a href="/2017/04/06/521-longest-Uncommon-Subsequence-I/" class="archive-article-date">
+  	<time datetime="2017-04-06T12:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.</p>
+<a id="more"></a>
+<p>A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.</p>
+<p>The input will be two strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn’t exist, return -1. </p>
+<p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: &quot;aba&quot;, &quot;cdc&quot;</div><div class="line">Output: 3</div><div class="line">Explanation: The longest uncommon subsequence is &quot;aba&quot; (or &quot;cdc&quot;), </div><div class="line">because &quot;aba&quot; is a subsequence of &quot;aba&quot;, </div><div class="line">but not a subsequence of any other strings in the group of two strings.</div></pre></td></tr></table></figure></p>
+<p>Note:</p>
+<pre><code>Both strings&apos; lengths will not exceed 100.
+Only letters from a ~ z will appear in input strings.
+</code></pre><p>给定两个字符串，计算其“最长不公共子序列”。最长不公共子序列是指：两字符串中某一个的子序列，该子序列不是另一个字符串的子序列，并且长度最长。</p>
+<p>子序列是指从一个序列中删除一些字符，剩余字符顺序保持不变得到的新序列。任何字符串都是其本身的子序列，空串不属于任意字符串的子序列。</p>
+<p>返回最长不公共子序列，若不存在，返回-1。</p>
+<p><a href="https://leetcode.com/contest/leetcode-weekly-contest-26/problems/longest-uncommon-subsequence-i/" target="_blank" rel="external">原题地址</a><br>若两字符串不相等，选择较长的字符串返回长度即可。</p>
+<p>否则返回-1。（若两字符串相等，则任意字符串的子串均为另一个的子串）</p>
+<h2 id="我的解法："><a href="#我的解法：" class="headerlink" title="我的解法："></a>我的解法：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLUSlength</span><span class="params">(String a, String b)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(a.equals(b)) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> Math.max(a.length(), b.length());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/12/03/leetcode-13-Roman-to-Integer/" class="archive-article-date">
-  	<time datetime="2014-12-03T09:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/12/03/leetcode-13-Roman-to-Integer/">Roman to Integer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,107 +237,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/04/06/521-longest-Uncommon-Subsequence-I/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/07/03/leetcode-02-Add-Two-Numbers/" class="archive-article-date">
-  	<time datetime="2014-07-03T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-03</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">Add Two Numbers</a>
-    </h1>
+  
+    <a href="/2017/03/31/JavaScript-学习笔记-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript-学习笔记-01</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
-  	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -345,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
