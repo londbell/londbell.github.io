@@ -24,7 +24,7 @@
 
 
 列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
-<meta property="og:updated_time" content="2017-04-10T07:52:34.201Z">
+<meta property="og:updated_time" content="2017-04-10T10:12:42.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能ListViews">
 <meta name="twitter:description" content="原文链接 : Performance ListViews
@@ -230,6 +230,7 @@
 </ul>
 </blockquote>
 <p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
+<a id="more"></a>
 <p>关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getView(int position, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line">    LayoutInflater inflater = (LayoutInflater) context</div><div class="line">            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    View rowView = inflater.inflate(R.layout.view_test_row, parent, false);</div><div class="line"></div><div class="line">    TextView testName = (TextView)rowView.findViewById(R.id.text_view_test_name);</div><div class="line">    TextView testDesc = (TextView)rowView.findViewById(R.id.text_view_test_desc);</div><div class="line"></div><div class="line">    //modify TextViews, in some arbitrary way</div><div class="line"></div><div class="line">    return rowView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当所有列表项都能够一次性在一屏中显示的时候，这种写法并没有什么问题，但这样你就创建了一个基本视图，并完全避免了ArrayAdapter的麻烦了吗？当ListView需要显示一个很大的列表集，而且列表子项是一个非常复杂的视图的时候，上面的方式会消耗大量的性能。当用户滑动屏幕的时候，每个视图都会被inflate并且调用findViewById()方法。当findViewById()方法被调用的时候，会遍历整个视图层级，直到找到正确的Id。每个子视图都要执行上述过程！并且用户滑动的越快，卡顿现象愈加明显。为了解决这个问题，我们可以使用一个静态类来绑定还没被使用的convertView。</p>
