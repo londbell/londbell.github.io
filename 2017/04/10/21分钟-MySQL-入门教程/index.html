@@ -27,7 +27,7 @@
 行(col): 每一行用来描述某个人/物的具体信息;
 值(valu">
 <meta property="og:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
-<meta property="og:updated_time" content="2017-04-10T11:34:57.968Z">
+<meta property="og:updated_time" content="2017-04-10T11:35:50.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="21分钟 MySQL 入门教程">
 <meta name="twitter:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
@@ -322,6 +322,7 @@
 </code></pre><p>下面的 char(8) 表示存储的字符长度为8, tinyint的取值范围为 -127到128, default 属性指定当该列值为空时的默认值。</p>
 <p>更多的数据类型请参阅 《MySQL数据类型》 : <a href="http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html" target="_blank" rel="external">http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html</a></p>
 <p>提示: 1. 使用 show tables; 命令可查看已创建了表的名称; 2. 使用 describe 表名; 命令可查看已创建的表的详细信息。</p>
+<h3 id="操作MySQL数据库"><a href="#操作MySQL数据库" class="headerlink" title="操作MySQL数据库"></a>操作MySQL数据库</h3><h2 id="向表中插入数据"><a href="#向表中插入数据" class="headerlink" title="向表中插入数据"></a>向表中插入数据</h2><p>insert 语句可以用来将一行或多行数据插到数据库表中, 使用的一般形式如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert [into] 表名 [(列名1, 列名2, 列名3, ...)] values (值1, 值2, 值3, ...);</div></pre></td></tr></table></figure></p>
 
       
 
