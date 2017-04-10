@@ -10,30 +10,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
 
-*表头(header): 每一列的名称;
-*列(row): 具有相同数据类型的数据的集合;
-*行(col): 每一行用来描述某个人/物的具体信息;
-*值(v">
+
+表头(header): 每一列的名称;
+列(row): 具有相同数据类型的数据的集合;
+行(col): 每一行用来描述某个人/物的具体信息;
+值(valu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="21分钟 MySQL 入门教程">
 <meta property="og:url" content="http://londbell,github.io/2017/04/10/21分钟-MySQL-入门教程/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
 
-*表头(header): 每一列的名称;
-*列(row): 具有相同数据类型的数据的集合;
-*行(col): 每一行用来描述某个人/物的具体信息;
-*值(v">
+
+表头(header): 每一列的名称;
+列(row): 具有相同数据类型的数据的集合;
+行(col): 每一行用来描述某个人/物的具体信息;
+值(valu">
 <meta property="og:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
-<meta property="og:updated_time" content="2017-04-10T11:24:11.539Z">
+<meta property="og:updated_time" content="2017-04-10T11:29:30.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="21分钟 MySQL 入门教程">
 <meta name="twitter:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
 
-*表头(header): 每一列的名称;
-*列(row): 具有相同数据类型的数据的集合;
-*行(col): 每一行用来描述某个人/物的具体信息;
-*值(v">
+
+表头(header): 每一列的名称;
+列(row): 具有相同数据类型的数据的集合;
+行(col): 每一行用来描述某个人/物的具体信息;
+值(valu">
 <meta name="twitter:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
@@ -226,12 +229,14 @@
       
         <h3 id="MySQL的相关概念介绍"><a href="#MySQL的相关概念介绍" class="headerlink" title="MySQL的相关概念介绍"></a>MySQL的相关概念介绍</h3><p>MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:</p>
 <p><img src="/imgs/mysql-learn/1.png" alt=""></p>
-<pre><code>*表头(header): 每一列的名称;
-*列(row): 具有相同数据类型的数据的集合;
-*行(col): 每一行用来描述某个人/物的具体信息;
-*值(value): 行的具体信息, 每个值必须与该列的数据类型相同;
-*键(key): 表中用来识别某个特定的人\物的方法, 键的值在当前列中具有唯一性。
-</code></pre><a id="more"></a>
+<ul>
+<li>表头(header): 每一列的名称;</li>
+<li>列(row): 具有相同数据类型的数据的集合;</li>
+<li>行(col): 每一行用来描述某个人/物的具体信息;</li>
+<li>值(value): 行的具体信息, 每个值必须与该列的数据类型相同;</li>
+<li>键(key): 表中用来识别某个特定的人\物的方法, 键的值在当前列中具有唯一性。</li>
+</ul>
+<a id="more"></a>
 <h3 id="Windows下MySQL的配置"><a href="#Windows下MySQL的配置" class="headerlink" title="Windows下MySQL的配置"></a>Windows下MySQL的配置</h3><p>以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip<br>(官方下载页: <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/5.1.html#downloads</a>)</p>
 <h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤:"></a>配置步骤:</h2><ol>
 <li><p>将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如: C:\Program Files;</p>
@@ -247,9 +252,34 @@
 </ol>
 <p>MySQL服务的启动、停止与卸载</p>
 <p>在 Windows 命令提示符下运行:</p>
-<p>*启动: net start MySQL</p>
-<p>*停止: net stop MySQL</p>
-<p>*卸载: sc delete MySQL</p>
+<ul>
+<li><p>启动: net start MySQL</p>
+</li>
+<li><p>停止: net stop MySQL</p>
+</li>
+<li><p>卸载: sc delete MySQL</p>
+</li>
+</ul>
+<h3 id="MySQL脚本的基本组成"><a href="#MySQL脚本的基本组成" class="headerlink" title="MySQL脚本的基本组成"></a>MySQL脚本的基本组成</h3><p>与常规的脚本语言类似, MySQL 也具有一套对字符、单词以及特殊符号的使用规定, MySQL 通过执行 SQL 脚本来完成对数据库的操作, 该脚本由一条或多条MySQL语句(SQL语句 + 扩展语句)组成, 保存时脚本文件后缀名一般为 .sql。在控制台下, MySQL 客户端也可以对语句进行单句的执行而不用保存为.sql文件。</p>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符用来命名一些对象, 如数据库、表、列、变量等, 以便在脚本中的其他地方引用。MySQL标识符命名规则稍微有点繁琐, 这里我们使用万能命名规则: 标识符由字母、数字或下划线(_)组成, 且第一个字符必须是字母或下划线。</p>
+<p>对于标识符是否区分大小写取决于当前的操作系统, Windows下是不敏感的, 但对于大多数 linux\unix 系统来说, 这些标识符大小写是敏感的。</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>MySQL的关键字众多, 这里不一一列出, 在学习中学习。 这些关键字有自己特定的含义, 尽量避免作为标识符。</p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>MySQL语句是组成MySQL脚本的基本单位, 每条语句能完成特定的操作, 他是由 SQL 标准语句 + MySQL 扩展语句组成。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>MySQL函数用来实现数据库操作的一些高级功能, 这些函数大致分为以下几类: 字符串函数、数学函数、日期时间函数、搜索函数、加密函数、信息函数。</p>
+<h3 id="MySQL中的数据类型"><a href="#MySQL中的数据类型" class="headerlink" title="MySQL中的数据类型"></a>MySQL中的数据类型</h3><p>MySQL有三大类数据类型, 分别为数字、日期\时间、字符串, 这三大类中又更细致的划分了许多子类型:</p>
+<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><ul>
+<li>整数: tinyint、smallint、mediumint、int、bigint</li>
+<li>浮点数: float、double、real、decimal</li>
+</ul>
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间:"></a>日期和时间:</h2><ul>
+<li>date、time、datetime、timestamp、year</li>
+</ul>
+<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><ul>
+<li>字符串: char、varchar</li>
+<li>文本: tinytext、text、mediumtext、longtext</li>
+<li>二进制(可用来存储图片、音乐等): tinyblob、blob、mediumblob、longblob</li>
+</ul>
+<p>这里不能详细对这些类型进行介绍了, 篇幅可能会很长, 详细介绍参见: 《MySQL数据类型》 : <a href="http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html" target="_blank" rel="external">http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html</a></p>
 
       
 
