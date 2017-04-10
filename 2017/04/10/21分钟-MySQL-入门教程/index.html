@@ -24,9 +24,8 @@
 *列(row): 具有相同数据类型的数据的集合;
 *行(col): 每一行用来描述某个人/物的具体信息;
 *值(v">
-<meta property="og:image" content="http://londbell,github.io/imgs/mysql-index/1.png">
 <meta property="og:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
-<meta property="og:updated_time" content="2017-04-10T11:21:04.756Z">
+<meta property="og:updated_time" content="2017-04-10T11:24:11.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="21分钟 MySQL 入门教程">
 <meta name="twitter:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
@@ -35,7 +34,7 @@
 *列(row): 具有相同数据类型的数据的集合;
 *行(col): 每一行用来描述某个人/物的具体信息;
 *值(v">
-<meta name="twitter:image" content="http://londbell,github.io/imgs/mysql-index/1.png">
+<meta name="twitter:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -226,13 +225,31 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="MySQL的相关概念介绍"><a href="#MySQL的相关概念介绍" class="headerlink" title="MySQL的相关概念介绍"></a>MySQL的相关概念介绍</h3><p>MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:</p>
-<p><img src="/imgs/mysql-index/1.png" alt=""><br><img src="/imgs/mysql-learn/1.png" alt=""></p>
+<p><img src="/imgs/mysql-learn/1.png" alt=""></p>
 <pre><code>*表头(header): 每一列的名称;
 *列(row): 具有相同数据类型的数据的集合;
 *行(col): 每一行用来描述某个人/物的具体信息;
 *值(value): 行的具体信息, 每个值必须与该列的数据类型相同;
 *键(key): 表中用来识别某个特定的人\物的方法, 键的值在当前列中具有唯一性。
 </code></pre><a id="more"></a>
+<h3 id="Windows下MySQL的配置"><a href="#Windows下MySQL的配置" class="headerlink" title="Windows下MySQL的配置"></a>Windows下MySQL的配置</h3><p>以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip<br>(官方下载页: <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/5.1.html#downloads</a>)</p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤:"></a>配置步骤:</h2><ol>
+<li><p>将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如: C:\Program Files;</p>
+</li>
+<li><p>在安装文件夹下找到 my-small.ini 配置文件, 将其重命名为 my.ini , 打开进行编辑, 在 [client] 与 [mysqld] 下均添加一行: default-character-set = gbk</p>
+</li>
+<li><p>打开 Windows 环境变量设置, 新建变量名 MYSQL_HOME , 变量值为 MySQL 安装目录路径, 这里为 C:\Program Files\mysql-5.1.69-win32</p>
+</li>
+<li><p>在 环境变量 的 Path 变量中添加 ;%MYSQL_HOME%\bin;</p>
+</li>
+<li><p>安装 MySQL 服务, 打开Windows命令提示符, 执行命令: mysqld –install MySQL –defaults-file=”my.ini” 提示”Service successfully installed.”表示成功;</p>
+</li>
+</ol>
+<p>MySQL服务的启动、停止与卸载</p>
+<p>在 Windows 命令提示符下运行:</p>
+<p>*启动: net start MySQL</p>
+<p>*停止: net stop MySQL</p>
+<p>*卸载: sc delete MySQL</p>
 
       
 
