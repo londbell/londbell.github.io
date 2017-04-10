@@ -6,33 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>高性能ListViews | RA·CAILUM</title>
+  <title>Tag: 收藏 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文链接 : Performance ListViews
-原文作者 : Brandon
-译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!
-
-
-列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
-<meta property="og:type" content="article">
-<meta property="og:title" content="高性能ListViews">
-<meta property="og:url" content="http://londbell,github.io/2017/04/10/高性能ListViews/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="RA·CAILUM">
+<meta property="og:url" content="http://londbell,github.io/tags/收藏/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
-<meta property="og:description" content="原文链接 : Performance ListViews
-原文作者 : Brandon
-译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!
-
-
-列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
-<meta property="og:updated_time" content="2017-04-10T10:16:25.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高性能ListViews">
-<meta name="twitter:description" content="原文链接 : Performance ListViews
-原文作者 : Brandon
-译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!
-
-
-列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
+<meta name="twitter:title" content="RA·CAILUM">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -202,49 +183,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-高性能ListViews" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      高性能ListViews
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/04/10/高性能ListViews/" class="archive-article-date">
+  	<time datetime="2017-04-10T02:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/10/高性能ListViews/">高性能ListViews</a>
     </h1>
   
 
-        
-        <a href="/2017/04/10/高性能ListViews/" class="archive-article-date">
-  	<time datetime="2017-04-10T02:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>原文链接 : <a href="http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&amp;utm_campaign=038d344835-Android_Weekly_178&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-038d344835-337955857" target="_blank" rel="external">Performance ListViews</a></li>
-<li>原文作者 : <a href="http://willowtreeapps.com/blog/" target="_blank" rel="external">Brandon</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="external">开发技术前线 www.devtf.cn。未经允许，不得转载!</a></li>
-</ul>
-</blockquote>
-<p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
-<a id="more"></a>
-<p>关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getView(int position, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line">    LayoutInflater inflater = (LayoutInflater) context</div><div class="line">            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    View rowView = inflater.inflate(R.layout.view_test_row, parent, false);</div><div class="line"></div><div class="line">    TextView testName = (TextView)rowView.findViewById(R.id.text_view_test_name);</div><div class="line">    TextView testDesc = (TextView)rowView.findViewById(R.id.text_view_test_desc);</div><div class="line"></div><div class="line">    //modify TextViews, in some arbitrary way</div><div class="line"></div><div class="line">    return rowView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当所有列表项都能够一次性在一屏中显示的时候，这种写法并没有什么问题，但这样你就创建了一个基本视图，并完全避免了ArrayAdapter的麻烦了吗？当ListView需要显示一个很大的列表集，而且列表子项是一个非常复杂的视图的时候，上面的方式会消耗大量的性能。当用户滑动屏幕的时候，每个视图都会被inflate并且调用findViewById()方法。当findViewById()方法被调用的时候，会遍历整个视图层级，直到找到正确的Id。每个子视图都要执行上述过程！并且用户滑动的越快，卡顿现象愈加明显。为了解决这个问题，我们可以使用一个静态类来绑定还没被使用的convertView。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">static class ViewHolder()&#123;</div><div class="line"></div><div class="line">        TextView testName;</div><div class="line">        TextView testDesc;</div><div class="line">        </div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line"> public View getView(int position, View convertView, ViewGroup parent) &#123;</div><div class="line"></div><div class="line">    View rowView = convertView;  //reference to one of the previous Views in the list that we can reuse.</div><div class="line"></div><div class="line">    if(convertView == null) &#123;</div><div class="line"></div><div class="line">        LayoutInflater inflater = (LayoutInflater) context</div><div class="line">                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">        rowView = inflater.inflate(R.layout.view_test_row, parent, false);</div><div class="line"></div><div class="line">        ViewHolder viewHolder = new ViewHolder();</div><div class="line">        viewHolder.testName = (TextView) rowView.findViewById(R.id.text_view_test_name);</div><div class="line">        viewHolder.testDesc = (TextView) rowView.findViewById(R.id.text_view_test_desc);</div><div class="line"></div><div class="line">        rowView.setTag(viewHolder);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ViewHolder holder = (ViewHolder) rowView.getTag();</div><div class="line">    </div><div class="line">    //in real code these strings should be in res</div><div class="line">    holder.testName.setText(&quot;Test&quot;+position); </div><div class="line">    holder.testDesc.setText(&quot;This is number &quot;+position);</div><div class="line"></div><div class="line">    return rowView;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那convertView又是什么呢？它可以让ListView跳过一些显示一行内容所需要的设置。如果某一行的视图不在屏幕中显示，我们可以重复使用这个视图来显示一个新行。当ListView刚开始显示的时候，一切都是正常的。既然没有视图可以被用来复用，convertView为空。视图也像前面版本一样被inflate，但是TextViews会被找到且它的引用被保存在一个ViewHolder中。然后我们可以调用setTag()方法将ViewHolder存储在视图中。正如修订过后的getView()方法中后半段代码所示，我们可以在视图中存储后面我们需要用到的数据。</p>
-<p>我们所做的更改可能看起来并没有太大的效果，但是随着布局越来越复杂并且数量也越来越多，效果将变得越来越明显。作为开发者，我最不想做的事就是开发一个用户体验很差的app。所以请记住，仅仅一个低水平的ListView都有可能让一个app死掉，我们一定得避免这种情况发生。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -264,97 +232,75 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2017/04/10/高性能ListViews/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2006" class="archive-year">2006</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/" class="archive-article-date">
+  	<time datetime="2006-06-18T16:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2006-06-19</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2017/04/10/在滚动列表中播放视频/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          在滚动列表中播放视频
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/04/06/55-Jump-Game/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">55-Jump-Game</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/">傻瓜函数式编程</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -377,9 +323,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
