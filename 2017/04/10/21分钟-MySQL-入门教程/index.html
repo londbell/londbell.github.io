@@ -27,7 +27,7 @@
 行(col): 每一行用来描述某个人/物的具体信息;
 值(valu">
 <meta property="og:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
-<meta property="og:updated_time" content="2017-04-10T11:41:16.156Z">
+<meta property="og:updated_time" content="2017-04-10T11:48:39.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="21分钟 MySQL 入门教程">
 <meta name="twitter:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
@@ -335,8 +335,7 @@
 <p>按回车键确认后若提示 Query Ok, 1 row affected (0.05 sec) 表示数据插入成功。 若插入失败请检查是否已选择需要操作的数据库。</p>
 <p>有时我们只需要插入部分数据, 或者不按照列的顺序进行插入, 可以使用这样的形式进行插入:</p>
 <p>insert into students (name, sex, age) values(“孙丽华”, “女”, 21);</p>
-<h2 id="查询表中的数据-1"><a href="#查询表中的数据-1" class="headerlink" title="查询表中的数据"></a>查询表中的数据</h2><p>select 语句常用来根据一定的查询规则到数据库中获取数据, 其基本的用法为:</p>
-<p>select 列名称 from 表名称 [查询条件];</p>
+<h2 id="查询表中的数据-1"><a href="#查询表中的数据-1" class="headerlink" title="查询表中的数据"></a>查询表中的数据</h2><p>select 语句常用来根据一定的查询规则到数据库中获取数据, 其基本的用法为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 列名称 from 表名称 [查询条件];</div></pre></td></tr></table></figure></p>
 <p>例如要查询 students 表中所有学生的名字和年龄, 输入语句 select name, age from students; 执行结果如下:</p>
 <pre><code>mysql&gt; select name, age from students;
 +--------+-----+
@@ -353,7 +352,8 @@
 
 mysql&gt;
 </code></pre><p>也可以使用通配符 <em> 查询表中所有的内容, 语句: select </em> from students;<br>按特定条件查询:</p>
-<p>where 关键词用于指定查询条件, 用法形式为: select 列名称 from 表名称 where 条件;</p>
+<p>where 关键词用于指定查询条件, 用法形式为: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 列名称 from 表名称 where 条件;</div></pre></td></tr></table></figure>
 <p>以查询所有性别为女的信息为例, 输入查询语句: select * from students where sex=”女”;</p>
 <p>where 子句不仅仅支持 “where 列名 = 值” 这种名等于值的查询形式, 对一般的比较运算的运算符都是支持的, 例如 =、&gt;、&lt;、&gt;=、&lt;、!= 以及一些扩展运算符 is [not] null、in、like 等等。 还可以对查询条件使用 or 和 and 进行组合查询, 以后还会学到更加高级的条件查询方式, 这里不再多做介绍。</p>
 <p>示例:</p>
@@ -361,41 +361,35 @@ mysql&gt;
 <p>查询名字中带有 “王” 字的所有人信息: select * from students where name like “%王%”;</p>
 <p>查询id小于5且年龄大于20的所有人信息: select * from students where id<5 and="" age="">20;</5></p>
 <h2 id="更新表中的数据"><a href="#更新表中的数据" class="headerlink" title="更新表中的数据"></a>更新表中的数据</h2><p>update 语句可用来修改表中的数据, 基本的使用形式为:</p>
-<p>update 表名称 set 列名称=新值 where 更新条件;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update 表名称 set 列名称=新值 where 更新条件;</div></pre></td></tr></table></figure>
 <h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h1><p>将id为5的手机号改为默认的”-“: update students set tel=default where id=5;</p>
 <p>将所有人的年龄增加1: update students set age=age+1;</p>
 <p>将手机号为 13288097888 的姓名改为 “张伟鹏”, 年龄改为 19: update students set name=”张伟鹏”, age=19 where tel=”13288097888”;</p>
 <h3 id="删除表中的数据"><a href="#删除表中的数据" class="headerlink" title="删除表中的数据"></a>删除表中的数据</h3><p>delete 语句用于删除表中的数据, 基本用法为:</p>
-<p>delete from 表名称 where 删除条件;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete from 表名称 where 删除条件;</div></pre></td></tr></table></figure>
 <p>使用示例:</p>
 <p>删除id为2的行: delete from students where id=2;</p>
 <p>删除所有年龄小于21岁的数据: delete from students where age&lt;20;</p>
 <p>删除表中的所有数据: delete from students;</p>
-<h2 id="创建后表的修改"><a href="#创建后表的修改" class="headerlink" title="创建后表的修改"></a>创建后表的修改</h2><p>alter table 语句用于创建后对表的修改, 基础用法如下:<br>添加列</p>
-<p>基本形式: alter table 表名 add 列名 列数据类型 [after 插入位置];</p>
-<p>示例:</p>
-<p>在表的最后追加列 address: alter table students add address char(60);</p>
-<p>在名为 age 的列后插入列 birthday: alter table students add birthday date after age;<br>修改列</p>
-<p>基本形式: alter table 表名 change 列名称 列新名称 新数据类型;</p>
-<p>示例:</p>
-<p>将表 tel 列改名为 telphone: alter table students change tel telphone char(13) default “-“;</p>
+<h3 id="创建后表的修改"><a href="#创建后表的修改" class="headerlink" title="创建后表的修改"></a>创建后表的修改</h3><p>alter table 语句用于创建后对表的修改, 基础用法如下:</p>
+<h2 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h2><p>基本形式: alter table 表名 add 列名 列数据类型 [after 插入位置];</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h1><p>在表的最后追加列 address: alter table students add address char(60);</p>
+<p>在名为 age 的列后插入列 birthday: alter table students add birthday date after age;</p>
+<h2 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h2><p>基本形式: alter table 表名 change 列名称 列新名称 新数据类型;</p>
+<h1 id="示例-1"><a href="#示例-1" class="headerlink" title="示例:"></a>示例:</h1><p>将表 tel 列改名为 telphone: alter table students change tel telphone char(13) default “-“;</p>
 <p>将 name 列的数据类型改为 char(16): alter table students change name name char(16) not null;<br>删除列</p>
-<p>基本形式: alter table 表名 drop 列名称;</p>
-<p>示例:</p>
-<p>删除 birthday 列: alter table students drop birthday;<br>重命名表</p>
-<p>基本形式: alter table 表名 rename 新表名;</p>
-<p>示例:</p>
-<p>重命名 students 表为 workmates: alter table students rename workmates;<br>删除整张表</p>
-<p>基本形式: drop table 表名;</p>
-<p>示例: 删除 workmates 表: drop table workmates;<br>删除整个数据库</p>
-<p>基本形式: drop database 数据库名;</p>
-<p>示例: 删除 samp_db 数据库: drop database samp_db;</p>
-<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><p>修改 root 用户密码</p>
-<p>按照本文的安装方式, root 用户默认是没有密码的, 重设 root 密码的方式也较多, 这里仅介绍一种较常用的方式。</p>
-<p>使用 mysqladmin 方式:</p>
-<p>打开命令提示符界面, 执行命令: mysqladmin -u root -p password 新密码</p>
-<p>执行后提示输入旧密码完成密码修改, 当旧密码为空时直接按回车键确认即可。<br>可视化管理工具 MySQL Workbench</p>
-<p>尽管我们可以在命令提示符下通过一行行的输入或者通过重定向文件来执行mysql语句, 但该方式效率较低, 由于没有执行前的语法自动检查, 输入失误造成的一些错误的可能性会大大增加, 这时不妨试试一些可视化的MySQL数据库管理工具, MySQL Workbench 就是 MySQL 官方 为 MySQL 提供的一款可视化管理工具, 你可以在里面通过可视化的方式直接管理数据库中的内容, 并且 MySQL Workbench 的 SQL 脚本编辑器支持语法高亮以及输入时的语法检查, 当然, 它的功能强大, 绝不仅限于这两点。</p>
+<h2 id="基本形式-alter-table-表名-drop-列名称"><a href="#基本形式-alter-table-表名-drop-列名称" class="headerlink" title="基本形式: alter table 表名 drop 列名称;"></a>基本形式: alter table 表名 drop 列名称;</h2><h1 id="示例-2"><a href="#示例-2" class="headerlink" title="示例:"></a>示例:</h1><p>删除 birthday 列: alter table students drop birthday;</p>
+<h2 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h2><p>基本形式: alter table 表名 rename 新表名;</p>
+<p>#示例:</p>
+<p>重命名 students 表为 workmates: alter table students rename workmates;</p>
+<h2 id="删除整张表"><a href="#删除整张表" class="headerlink" title="删除整张表"></a>删除整张表</h2><p>基本形式: drop table 表名;</p>
+<h1 id="示例-3"><a href="#示例-3" class="headerlink" title="示例:"></a>示例:</h1><p>删除 workmates 表: drop table workmates;</p>
+<h2 id="删除整个数据库"><a href="#删除整个数据库" class="headerlink" title="删除整个数据库"></a>删除整个数据库</h2><p>基本形式: drop database 数据库名;</p>
+<h1 id="示例-4"><a href="#示例-4" class="headerlink" title="示例:"></a>示例:</h1><p>删除 samp_db 数据库: drop database samp_db;</p>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h2 id="修改-root-用户密码"><a href="#修改-root-用户密码" class="headerlink" title="修改 root 用户密码"></a>修改 root 用户密码</h2><p>按照本文的安装方式, root 用户默认是没有密码的, 重设 root 密码的方式也较多, 这里仅介绍一种较常用的方式。</p>
+<h1 id="使用-mysqladmin-方式"><a href="#使用-mysqladmin-方式" class="headerlink" title="使用 mysqladmin 方式:"></a>使用 mysqladmin 方式:</h1><p>打开命令提示符界面, 执行命令: mysqladmin -u root -p password 新密码</p>
+<p>执行后提示输入旧密码完成密码修改, 当旧密码为空时直接按回车键确认即可。</p>
+<h2 id="可视化管理工具-MySQL-Workbench"><a href="#可视化管理工具-MySQL-Workbench" class="headerlink" title="可视化管理工具 MySQL Workbench"></a>可视化管理工具 MySQL Workbench</h2><p>尽管我们可以在命令提示符下通过一行行的输入或者通过重定向文件来执行mysql语句, 但该方式效率较低, 由于没有执行前的语法自动检查, 输入失误造成的一些错误的可能性会大大增加, 这时不妨试试一些可视化的MySQL数据库管理工具, MySQL Workbench 就是 MySQL 官方 为 MySQL 提供的一款可视化管理工具, 你可以在里面通过可视化的方式直接管理数据库中的内容, 并且 MySQL Workbench 的 SQL 脚本编辑器支持语法高亮以及输入时的语法检查, 当然, 它的功能强大, 绝不仅限于这两点。</p>
 <p>MySQL Workbench官方介绍: <a href="http://www.mysql.com/products/workbench/" target="_blank" rel="external">http://www.mysql.com/products/workbench/</a></p>
 <p>MySQL Workbench 下载页: <a href="http://dev.mysql.com/downloads/tools/workbench/" target="_blank" rel="external">http://dev.mysql.com/downloads/tools/workbench/</a></p>
 
