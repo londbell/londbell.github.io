@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>RA·CAILUM</title>
+  <title>傻瓜函数式编程 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell,github.io/page/2/index.html">
+  <meta name="description" content="傻瓜函数式编程
+转自:(github)2006年6月19日，星期一
+###开篇我们这些码农做事都是很拖拉的。每天例行报到后，先来点咖啡，看看邮件还有RSS订阅的文章。然后翻翻新闻还有那些技术网站上的更新，再过一遍编程论坛口水区里那些无聊的论战。最后从头把这些再看一次以免错过什么精彩的内容。然后就可以吃午饭了。饭饱过后，回来盯着IDE发一会呆，再看看邮箱，再去搞杯咖啡。光阴似箭，可以回家了……（在被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="傻瓜函数式编程">
+<meta property="og:url" content="http://londbell,github.io/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="傻瓜函数式编程
+转自:(github)2006年6月19日，星期一
+###开篇我们这些码农做事都是很拖拉的。每天例行报到后，先来点咖啡，看看邮件还有RSS订阅的文章。然后翻翻新闻还有那些技术网站上的更新，再过一遍编程论坛口水区里那些无聊的论战。最后从头把这些再看一次以免错过什么精彩的内容。然后就可以吃午饭了。饭饱过后，回来盯着IDE发一会呆，再看看邮箱，再去搞杯咖啡。光阴似箭，可以回家了……（在被">
+<meta property="og:updated_time" content="2017-04-10T07:30:00.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="傻瓜函数式编程">
+<meta name="twitter:description" content="傻瓜函数式编程
+转自:(github)2006年6月19日，星期一
+###开篇我们这些码农做事都是很拖拉的。每天例行报到后，先来点咖啡，看看邮件还有RSS订阅的文章。然后翻翻新闻还有那些技术网站上的更新，再过一遍编程论坛口水区里那些无聊的论战。最后从头把这些再看一次以免错过什么精彩的内容。然后就可以吃午饭了。饭饱过后，回来盯着IDE发一会呆，再看看邮箱，再去搞杯咖啡。光阴似箭，可以回家了……（在被">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -177,537 +187,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-leetcode-338-Counting-Bits" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-FunctionalProgrammingForTheRestOfUs-cn" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/27/leetcode-338-Counting-Bits/">Factorial Trailing Zeroes</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/27/leetcode-338-Counting-Bits/" class="archive-article-date">
-  	<time datetime="2016-03-27T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>大意就是实现求给出比num小的所有数的二进制位中1的位数，隐藏提示是使用动态规划。</p>
-<p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.<br>Example:</p>
-<p>For num = 5 you should return [0,1,1,2,1,2].<br>Follow up:</p>
-<p>It is very easy to come up with a solution with run time O(n*sizeof(integer)). But can you do it in linear time O(n) /possibly in a single pass?<br>Space complexity should be O(n).<br>Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.</p>
-        
-          <a class="article-more-a" href="/2016/03/27/leetcode-338-Counting-Bits/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位操作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/27/leetcode-338-Counting-Bits/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode-65-valid-number" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/23/leetcode-65-valid-number/">Valid Number</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/23/leetcode-65-valid-number/" class="archive-article-date">
-  	<time datetime="2016-03-23T01:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>检查给定字符串是否为合法的数字。</p>
-<p>Validate if a given string is numeric.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Some examples:</div><div class="line">&quot;0&quot; =&gt; true</div><div class="line">&quot; 0.1 &quot; =&gt; true</div><div class="line">&quot;abc&quot; =&gt; false</div><div class="line">&quot;1 a&quot; =&gt; false</div><div class="line">&quot;2e10&quot; =&gt; true</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/03/23/leetcode-65-valid-number/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/23/leetcode-65-valid-number/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-android-01-android-view-InflateException" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/27/android-01-android-view-InflateException/">android.view.InflateException: Binary XML file line 错误</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/27/android-01-android-view-InflateException/" class="archive-article-date">
-  	<time datetime="2016-01-27T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>自定义的View，在XML中调用出现android.view.InflateException: Binary XML file line 错误。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">View(Context context)     <span class="comment">//Simple constructor to use when creating a view from code</span></div><div class="line"></div><div class="line">View(Context context, AttributeSet attrs)     <span class="comment">//Constructor that is called when inflating a view from XML</span></div><div class="line"></div><div class="line">View(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)     <span class="comment">//Perform inflation from XML and apply a class-specific base style</span></div></pre></td></tr></table></figure>
-<p>第二个和第三个构造函数对于XML这种引用方式是必须实现的，这三个构造函数应该是在不同的应用场合来实例化一个View对象。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">坑</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/27/android-01-android-view-InflateException/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode-74-search-a-2d-matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">search a 2dmatrix</a>
-    </h1>
-  
-
-        
-        <a href="/2015/09/01/leetcode-74-search-a-2d-matrix/" class="archive-article-date">
-  	<time datetime="2015-09-01T07:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个矩阵，求特定的数是否在矩阵中。<br>矩阵每一行从小到大排列。每一行的最小元素比上一行最大元素大。</p>
-<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
-<pre><code>Integers in each row are sorted from left to right.
-The first integer of each row is greater than the last integer of the previous row.
-</code></pre><p>For example,</p>
-<p>Consider the following matrix: </p>
-        
-          <a class="article-more-a" href="/2015/09/01/leetcode-74-search-a-2d-matrix/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">矩阵</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode-13-Roman-to-Integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/03/leetcode-13-Roman-to-Integer/">Roman to Integer</a>
-    </h1>
-  
-
-        
-        <a href="/2014/12/03/leetcode-13-Roman-to-Integer/" class="archive-article-date">
-  	<time datetime="2014-12-03T09:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个罗马数字字符串，将其计算为阿拉伯数字。</p>
-<p>Given a roman numeral, convert it to an integer.</p>
-<p>Input is guaranteed to be within the range from 1 to 3999.</p>
-<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>罗马数字是阿拉伯数字传入之前使用的一种数码。罗马数字采用七个罗马字母作数字、即Ⅰ（1）、X（10）、C（100）、M（1000）、V（5）、L（50）、D（500）。记数的方法：<br>    1.相同的数字连写，所表示的数等于这些数字相加得到的数，如 Ⅲ=3；<br>    2.小的数字在大的数字的右边，所表示的数等于这些数字相加得到的数，如 Ⅷ=8、Ⅻ=12；<br>    3.小的数字（限于 Ⅰ、X 和 C）在大的数字的左边，所表示的数等于大数减小数得到的数，如 Ⅳ=4、Ⅸ=9；<br>    4.在一个数的上面画一条横线，表示这个数增值 1,000 倍，如=5000。<br>
-        
-          <a class="article-more-a" href="/2014/12/03/leetcode-13-Roman-to-Integer/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/12/03/leetcode-13-Roman-to-Integer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode-02-Add-Two-Numbers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">Add Two Numbers</a>
-    </h1>
-  
-
-        
-        <a href="/2014/07/03/leetcode-02-Add-Two-Numbers/" class="archive-article-date">
-  	<time datetime="2014-07-03T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个由个位数组成的非空链表，按位置相加，进位累加到下一个元素上，每个元素只留个位，两个链表长度可能不等。</p>
-<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-        
-          <a class="article-more-a" href="/2014/07/03/leetcode-02-Add-Two-Numbers/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
-    </h1>
-  
-
-        
-        <a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
-  	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整形元素组成的数组，给出一个数，求数组中是否存在两个数之和与给定数相等。<br>不能使用同一个元素两次，同时一定只会有一个解。</p>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>Example:</p>
-<p>Given nums = [2, 7, 11, 15], target = 9,</p>
-<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-        
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-FunctionalProgrammingForTheRestOfUs-cn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/">傻瓜函数式编程</a>
+    <h1 class="article-title" itemprop="name">
+      傻瓜函数式编程
     </h1>
   
 
@@ -828,18 +315,78 @@ The first integer of each row is greater than the last integer of the previous r
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://londbell,github.io/2006/06/19/FunctionalProgrammingForTheRestOfUs-cn/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+    <a href="/2014/07/01/leetcode-01-Two-Sum/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Two Sum
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
 
@@ -847,11 +394,10 @@ The first integer of each row is greater than the last integer of the previous r
 
 
   
+    <div class="duoshuo"></div>
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
+
 
 
           </div>
@@ -873,8 +419,8 @@ The first integer of each row is greater than the last integer of the previous r
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
