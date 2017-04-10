@@ -27,7 +27,7 @@
 行(col): 每一行用来描述某个人/物的具体信息;
 值(valu">
 <meta property="og:image" content="http://londbell,github.io/imgs/mysql-learn/1.png">
-<meta property="og:updated_time" content="2017-04-10T11:51:54.581Z">
+<meta property="og:updated_time" content="2017-04-10T11:57:30.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="21分钟 MySQL 入门教程">
 <meta name="twitter:description" content="MySQL的相关概念介绍MySQL 为关系型数据库(Relational Database Management System), 这种所谓的”关系型”可以理解为”表格”的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:
@@ -237,8 +237,8 @@
 <li>键(key): 表中用来识别某个特定的人\物的方法, 键的值在当前列中具有唯一性。</li>
 </ul>
 <a id="more"></a>
-<h2 id="Windows下MySQL的配置"><a href="#Windows下MySQL的配置" class="headerlink" title="Windows下MySQL的配置"></a>Windows下MySQL的配置</h2><p>以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip<br>(官方下载页: <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/5.1.html#downloads</a>)</p>
-<h3 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤:"></a>配置步骤:</h3><ol>
+<h1 id="Windows下MySQL的配置"><a href="#Windows下MySQL的配置" class="headerlink" title="Windows下MySQL的配置"></a>Windows下MySQL的配置</h1><p>以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip<br>(官方下载页: <a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/5.1.html#downloads</a>)</p>
+<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤:"></a>配置步骤:</h2><ol>
 <li><p>将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如: C:\Program Files;</p>
 </li>
 <li><p>在安装文件夹下找到 my-small.ini 配置文件, 将其重命名为 my.ini , 打开进行编辑, 在 [client] 与 [mysqld] 下均添加一行: default-character-set = gbk</p>
@@ -260,13 +260,13 @@
 <li><p>卸载: sc delete MySQL</p>
 </li>
 </ul>
-<h3 id="MySQL脚本的基本组成"><a href="#MySQL脚本的基本组成" class="headerlink" title="MySQL脚本的基本组成"></a>MySQL脚本的基本组成</h3><p>与常规的脚本语言类似, MySQL 也具有一套对字符、单词以及特殊符号的使用规定, MySQL 通过执行 SQL 脚本来完成对数据库的操作, 该脚本由一条或多条MySQL语句(SQL语句 + 扩展语句)组成, 保存时脚本文件后缀名一般为 .sql。在控制台下, MySQL 客户端也可以对语句进行单句的执行而不用保存为.sql文件。</p>
+<h1 id="MySQL脚本的基本组成"><a href="#MySQL脚本的基本组成" class="headerlink" title="MySQL脚本的基本组成"></a>MySQL脚本的基本组成</h1><p>与常规的脚本语言类似, MySQL 也具有一套对字符、单词以及特殊符号的使用规定, MySQL 通过执行 SQL 脚本来完成对数据库的操作, 该脚本由一条或多条MySQL语句(SQL语句 + 扩展语句)组成, 保存时脚本文件后缀名一般为 .sql。在控制台下, MySQL 客户端也可以对语句进行单句的执行而不用保存为.sql文件。</p>
 <h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符用来命名一些对象, 如数据库、表、列、变量等, 以便在脚本中的其他地方引用。MySQL标识符命名规则稍微有点繁琐, 这里我们使用万能命名规则: 标识符由字母、数字或下划线(_)组成, 且第一个字符必须是字母或下划线。</p>
 <p>对于标识符是否区分大小写取决于当前的操作系统, Windows下是不敏感的, 但对于大多数 linux\unix 系统来说, 这些标识符大小写是敏感的。</p>
 <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>MySQL的关键字众多, 这里不一一列出, 在学习中学习。 这些关键字有自己特定的含义, 尽量避免作为标识符。</p>
 <h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>MySQL语句是组成MySQL脚本的基本单位, 每条语句能完成特定的操作, 他是由 SQL 标准语句 + MySQL 扩展语句组成。</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>MySQL函数用来实现数据库操作的一些高级功能, 这些函数大致分为以下几类: 字符串函数、数学函数、日期时间函数、搜索函数、加密函数、信息函数。</p>
-<h3 id="MySQL中的数据类型"><a href="#MySQL中的数据类型" class="headerlink" title="MySQL中的数据类型"></a>MySQL中的数据类型</h3><p>MySQL有三大类数据类型, 分别为数字、日期\时间、字符串, 这三大类中又更细致的划分了许多子类型:</p>
+<h1 id="MySQL中的数据类型"><a href="#MySQL中的数据类型" class="headerlink" title="MySQL中的数据类型"></a>MySQL中的数据类型</h1><p>MySQL有三大类数据类型, 分别为数字、日期\时间、字符串, 这三大类中又更细致的划分了许多子类型:</p>
 <h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><ul>
 <li>整数: tinyint、smallint、mediumint、int、bigint</li>
 <li>浮点数: float、double、real、decimal</li>
@@ -280,7 +280,7 @@
 <li>二进制(可用来存储图片、音乐等): tinyblob、blob、mediumblob、longblob</li>
 </ul>
 <p>这里不能详细对这些类型进行介绍了, 篇幅可能会很长, 详细介绍参见: 《MySQL数据类型》 : <a href="http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html" target="_blank" rel="external">http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html</a></p>
-<h3 id="使用MySQL数据库"><a href="#使用MySQL数据库" class="headerlink" title="使用MySQL数据库"></a>使用MySQL数据库</h3><h2 id="登录到MySQL"><a href="#登录到MySQL" class="headerlink" title="登录到MySQL"></a>登录到MySQL</h2><p>当 MySQL 服务已经运行时, 我们可以通过MySQL自带的客户端工具登录到MySQL数据库中, 首先打开命令提示符, 输入以下格式的命名:</p>
+<h1 id="使用MySQL数据库"><a href="#使用MySQL数据库" class="headerlink" title="使用MySQL数据库"></a>使用MySQL数据库</h1><h2 id="登录到MySQL"><a href="#登录到MySQL" class="headerlink" title="登录到MySQL"></a>登录到MySQL</h2><p>当 MySQL 服务已经运行时, 我们可以通过MySQL自带的客户端工具登录到MySQL数据库中, 首先打开命令提示符, 输入以下格式的命名:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h 主机名 -u 用户名 -p</div></pre></td></tr></table></figure>
 <ul>
 <li>-h : 该命令用于指定客户端所要登录的MySQL主机名, 登录当前机器该参数可以省略;</li>
@@ -311,7 +311,7 @@
 <p>对于一些较长的语句在命令提示符下可能容易输错, 因此我们可以通过任何文本编辑器将语句输入好后保存为 createtable.sql 的文件中, 通过命令提示符下的文件重定向执行执行该脚本。</p>
 <p>打开命令提示符, 输入: mysql -D samp_db -u root -p &lt; createtable.sql</p>
 <p>(提示: 1.如果连接远程主机请加上 -h 指令; 2. createtable.sql 文件若不在当前工作目录下需指定文件的完整路径。)</p>
-<h2 id="语句解说"><a href="#语句解说" class="headerlink" title="语句解说:"></a>语句解说:</h2><p>create table tablename(columns) 为创建数据库表的命令, 列的名称以及该列的数据类型将在括号内完成;</p>
+<h3 id="语句解说"><a href="#语句解说" class="headerlink" title="语句解说:"></a>语句解说:</h3><p>create table tablename(columns) 为创建数据库表的命令, 列的名称以及该列的数据类型将在括号内完成;</p>
 <p>括号内声明了5列内容, id、name、sex、age、tel为每列的名称, 后面跟的是数据类型描述, 列与列的描述之间用逗号(,)隔开;</p>
 <p>以 “id int unsigned not null auto_increment primary key” 行进行介绍:</p>
 <pre><code>&quot;id&quot; 为列的名称;
@@ -322,7 +322,7 @@
 </code></pre><p>下面的 char(8) 表示存储的字符长度为8, tinyint的取值范围为 -127到128, default 属性指定当该列值为空时的默认值。</p>
 <p>更多的数据类型请参阅 《MySQL数据类型》 : <a href="http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html" target="_blank" rel="external">http://www.cnblogs.com/zbseoag/archive/2013/03/19/2970004.html</a></p>
 <p>提示: 1. 使用 show tables; 命令可查看已创建了表的名称; 2. 使用 describe 表名; 命令可查看已创建的表的详细信息。</p>
-<h3 id="操作MySQL数据库"><a href="#操作MySQL数据库" class="headerlink" title="操作MySQL数据库"></a>操作MySQL数据库</h3><h2 id="向表中插入数据"><a href="#向表中插入数据" class="headerlink" title="向表中插入数据"></a>向表中插入数据</h2><p>insert 语句可以用来将一行或多行数据插到数据库表中, 使用的一般形式如下:</p>
+<h1 id="操作MySQL数据库"><a href="#操作MySQL数据库" class="headerlink" title="操作MySQL数据库"></a>操作MySQL数据库</h1><h2 id="向表中插入数据"><a href="#向表中插入数据" class="headerlink" title="向表中插入数据"></a>向表中插入数据</h2><p>insert 语句可以用来将一行或多行数据插到数据库表中, 使用的一般形式如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert [into] 表名 [(列名1, 列名2, 列名3, ...)] values (值1, 值2, 值3, ...);</div></pre></td></tr></table></figure>
 <p>其中 [] 内的内容是可选的, 例如, 要给 samp_db 数据库中的 students 表插入一条记录, 执行语句:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into students values(NULL, &quot;王刚&quot;, &quot;男&quot;, 20, &quot;13811371377&quot;);</div></pre></td></tr></table></figure>
@@ -351,43 +351,41 @@
 6 rows in set (0.00 sec)
 
 mysql&gt;
-</code></pre><p>也可以使用通配符 <em> 查询表中所有的内容, 语句: select </em> from students;<br>按特定条件查询:</p>
-<p>where 关键词用于指定查询条件, 用法形式为: </p>
+</code></pre><p>也可以使用通配符 <em> 查询表中所有的内容, 语句: select </em> from students;</p>
+<h2 id="按特定条件查询"><a href="#按特定条件查询" class="headerlink" title="按特定条件查询:"></a>按特定条件查询:</h2><p>where 关键词用于指定查询条件, 用法形式为: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 列名称 from 表名称 where 条件;</div></pre></td></tr></table></figure>
 <p>以查询所有性别为女的信息为例, 输入查询语句: select * from students where sex=”女”;</p>
 <p>where 子句不仅仅支持 “where 列名 = 值” 这种名等于值的查询形式, 对一般的比较运算的运算符都是支持的, 例如 =、&gt;、&lt;、&gt;=、&lt;、!= 以及一些扩展运算符 is [not] null、in、like 等等。 还可以对查询条件使用 or 和 and 进行组合查询, 以后还会学到更加高级的条件查询方式, 这里不再多做介绍。</p>
-<p>示例:</p>
-<p>查询年龄在21岁以上的所有人信息: select * from students where age &gt; 21;</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h2><p>查询年龄在21岁以上的所有人信息: select * from students where age &gt; 21;</p>
 <p>查询名字中带有 “王” 字的所有人信息: select * from students where name like “%王%”;</p>
 <p>查询id小于5且年龄大于20的所有人信息: select * from students where id<5 and="" age="">20;</5></p>
 <h2 id="更新表中的数据"><a href="#更新表中的数据" class="headerlink" title="更新表中的数据"></a>更新表中的数据</h2><p>update 语句可用来修改表中的数据, 基本的使用形式为:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update 表名称 set 列名称=新值 where 更新条件;</div></pre></td></tr></table></figure>
-<h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h1><p>将id为5的手机号改为默认的”-“: update students set tel=default where id=5;</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h3><p>将id为5的手机号改为默认的”-“: update students set tel=default where id=5;</p>
 <p>将所有人的年龄增加1: update students set age=age+1;</p>
 <p>将手机号为 13288097888 的姓名改为 “张伟鹏”, 年龄改为 19: update students set name=”张伟鹏”, age=19 where tel=”13288097888”;</p>
-<h3 id="删除表中的数据"><a href="#删除表中的数据" class="headerlink" title="删除表中的数据"></a>删除表中的数据</h3><p>delete 语句用于删除表中的数据, 基本用法为:</p>
+<h2 id="删除表中的数据"><a href="#删除表中的数据" class="headerlink" title="删除表中的数据"></a>删除表中的数据</h2><p>delete 语句用于删除表中的数据, 基本用法为:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete from 表名称 where 删除条件;</div></pre></td></tr></table></figure>
 <p>使用示例:</p>
 <p>删除id为2的行: delete from students where id=2;</p>
 <p>删除所有年龄小于21岁的数据: delete from students where age&lt;20;</p>
 <p>删除表中的所有数据: delete from students;</p>
-<h3 id="创建后表的修改"><a href="#创建后表的修改" class="headerlink" title="创建后表的修改"></a>创建后表的修改</h3><p>alter table 语句用于创建后对表的修改, 基础用法如下:</p>
+<h1 id="创建后表的修改"><a href="#创建后表的修改" class="headerlink" title="创建后表的修改"></a>创建后表的修改</h1><p>alter table 语句用于创建后对表的修改, 基础用法如下:</p>
 <h2 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h2><p>基本形式: alter table 表名 add 列名 列数据类型 [after 插入位置];</p>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h1><p>在表的最后追加列 address: alter table students add address char(60);</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例:"></a>示例:</h3><p>在表的最后追加列 address: alter table students add address char(60);</p>
 <p>在名为 age 的列后插入列 birthday: alter table students add birthday date after age;</p>
 <h2 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h2><p>基本形式: alter table 表名 change 列名称 列新名称 新数据类型;</p>
-<h1 id="示例-1"><a href="#示例-1" class="headerlink" title="示例:"></a>示例:</h1><p>将表 tel 列改名为 telphone: alter table students change tel telphone char(13) default “-“;</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例:"></a>示例:</h3><p>将表 tel 列改名为 telphone: alter table students change tel telphone char(13) default “-“;</p>
 <p>将 name 列的数据类型改为 char(16): alter table students change name name char(16) not null;<br>删除列</p>
-<h2 id="基本形式-alter-table-表名-drop-列名称"><a href="#基本形式-alter-table-表名-drop-列名称" class="headerlink" title="基本形式: alter table 表名 drop 列名称;"></a>基本形式: alter table 表名 drop 列名称;</h2><h1 id="示例-2"><a href="#示例-2" class="headerlink" title="示例:"></a>示例:</h1><p>删除 birthday 列: alter table students drop birthday;</p>
+<h2 id="基本形式-alter-table-表名-drop-列名称"><a href="#基本形式-alter-table-表名-drop-列名称" class="headerlink" title="基本形式: alter table 表名 drop 列名称;"></a>基本形式: alter table 表名 drop 列名称;</h2><h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例:"></a>示例:</h3><p>删除 birthday 列: alter table students drop birthday;</p>
 <h2 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h2><p>基本形式: alter table 表名 rename 新表名;</p>
-<p>#示例:</p>
-<p>重命名 students 表为 workmates: alter table students rename workmates;</p>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例:"></a>示例:</h3><p>重命名 students 表为 workmates: alter table students rename workmates;</p>
 <h2 id="删除整张表"><a href="#删除整张表" class="headerlink" title="删除整张表"></a>删除整张表</h2><p>基本形式: drop table 表名;</p>
-<h1 id="示例-3"><a href="#示例-3" class="headerlink" title="示例:"></a>示例:</h1><p>删除 workmates 表: drop table workmates;</p>
+<h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例:"></a>示例:</h3><p>删除 workmates 表: drop table workmates;</p>
 <h2 id="删除整个数据库"><a href="#删除整个数据库" class="headerlink" title="删除整个数据库"></a>删除整个数据库</h2><p>基本形式: drop database 数据库名;</p>
-<h1 id="示例-4"><a href="#示例-4" class="headerlink" title="示例:"></a>示例:</h1><p>删除 samp_db 数据库: drop database samp_db;</p>
-<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h2 id="修改-root-用户密码"><a href="#修改-root-用户密码" class="headerlink" title="修改 root 用户密码"></a>修改 root 用户密码</h2><p>按照本文的安装方式, root 用户默认是没有密码的, 重设 root 密码的方式也较多, 这里仅介绍一种较常用的方式。</p>
-<h1 id="使用-mysqladmin-方式"><a href="#使用-mysqladmin-方式" class="headerlink" title="使用 mysqladmin 方式:"></a>使用 mysqladmin 方式:</h1><p>打开命令提示符界面, 执行命令: mysqladmin -u root -p password 新密码</p>
+<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例:"></a>示例:</h3><p>删除 samp_db 数据库: drop database samp_db;</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="修改-root-用户密码"><a href="#修改-root-用户密码" class="headerlink" title="修改 root 用户密码"></a>修改 root 用户密码</h2><p>按照本文的安装方式, root 用户默认是没有密码的, 重设 root 密码的方式也较多, 这里仅介绍一种较常用的方式。</p>
+<h3 id="使用-mysqladmin-方式"><a href="#使用-mysqladmin-方式" class="headerlink" title="使用 mysqladmin 方式:"></a>使用 mysqladmin 方式:</h3><p>打开命令提示符界面, 执行命令: mysqladmin -u root -p password 新密码</p>
 <p>执行后提示输入旧密码完成密码修改, 当旧密码为空时直接按回车键确认即可。</p>
 <h2 id="可视化管理工具-MySQL-Workbench"><a href="#可视化管理工具-MySQL-Workbench" class="headerlink" title="可视化管理工具 MySQL Workbench"></a>可视化管理工具 MySQL Workbench</h2><p>尽管我们可以在命令提示符下通过一行行的输入或者通过重定向文件来执行mysql语句, 但该方式效率较低, 由于没有执行前的语法自动检查, 输入失误造成的一些错误的可能性会大大增加, 这时不妨试试一些可视化的MySQL数据库管理工具, MySQL Workbench 就是 MySQL 官方 为 MySQL 提供的一款可视化管理工具, 你可以在里面通过可视化的方式直接管理数据库中的内容, 并且 MySQL Workbench 的 SQL 脚本编辑器支持语法高亮以及输入时的语法检查, 当然, 它的功能强大, 绝不仅限于这两点。</p>
 <p>MySQL Workbench官方介绍: <a href="http://www.mysql.com/products/workbench/" target="_blank" rel="external">http://www.mysql.com/products/workbench/</a></p>
