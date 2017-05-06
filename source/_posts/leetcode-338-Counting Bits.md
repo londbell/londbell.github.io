@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Factorial Trailing Zeroes"
+title: "Counting Bits"
 date: 2016-03-27 10:03
 comments: true
 tags: 
