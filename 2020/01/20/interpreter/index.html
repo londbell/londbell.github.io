@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-573476c0d8151871.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-8cedc6f1791d0410.png">
-<meta property="og:updated_time" content="2020-01-20T12:40:11.526Z">
+<meta property="og:updated_time" content="2020-01-20T12:41:56.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王垠:怎样写一个解释器">
 <meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
@@ -271,7 +271,17 @@
 <p>好了，下面就是这个计算器的代码。它接受一个表达式，输出一个数字作为结果。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#lang racket                                  ; 声明用 Racket 语言</div><div class="line"></div><div class="line">(define calc</div><div class="line">  (lambda (exp)</div><div class="line">    (match exp                                ; 分支匹配：表达式的两种情况</div><div class="line">      [(? number? x) x]                       ; 是数字，直接返回</div><div class="line">      [`(,op ,e1 ,e2)                         ; 匹配提取操作符op和两个操作数e1,e2</div><div class="line">       (let ([v1 (calc e1)]                   ; 递归调用 calc 自己，得到 e1 的值</div><div class="line">             [v2 (calc e2)])                  ; 递归调用 calc 自己，得到 e2 的值</div><div class="line">         (match op                            ; 分支匹配：操作符 op 的 4 种情况</div><div class="line">           ['+ (+ v1 v2)]                     ; 如果是加号，输出结果为 (+ v1 v2)</div><div class="line">           ['- (- v1 v2)]                     ; 如果是减号，乘号，除号，相似的处理</div><div class="line">           ['* (* v1 v2)]</div><div class="line">           ['/ (/ v1 v2)]))])))</div></pre></td></tr></table></figure>
 <p>你可以得到如下的结果：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">calc</span> '(+ <span class="number">1</span> <span class="number">2</span>))</div><div class="line"><span class="comment">;; =&gt; 3</span></div><div class="line">(<span class="name">calc</span> '(* <span class="number">2</span> <span class="number">3</span>))</div><div class="line"><span class="comment">;; =&gt; 6</span></div><div class="line">(<span class="name">calc</span> '(* (+ <span class="number">1</span> <span class="number">2</span>) (+ <span class="number">3</span> <span class="number">4</span>)))</div><div class="line"><span class="comment">;; =&gt; 21</span></div></pre></td></tr></table></figure></p>
-
+<p>（完整的代码和示例，可以在<a href="https://github.com/londbell/interpreters/blob/master/calculator.ss" target="_blank" rel="external">这里下载</a>。）</p>
+<p>跟之前的二叉树求和代码比较一下，你会发现它们惊人的相似，因为解释器本来就是一个树遍历算法。不过你发现它们有什么不同吗？它们的不同点在于：</p>
+<ul>
+<li><p>算术表达式的模式里面，多出了一个“操作符”（op）叶节点：(,op ,e1 ,e2)</p>
+</li>
+<li><p>对子树 e1 和 e2 分别求值之后，我们不是返回 (+ v1 v2)，而是根据 op 的不同，返回不同的结果：</p>
+</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">match</span> op</div><div class="line">  [<span class="symbol">'+</span> (<span class="name"><span class="builtin-name">+</span></span> v1 v2)]</div><div class="line">  [<span class="symbol">'-</span> (<span class="name"><span class="builtin-name">-</span></span> v1 v2)]</div><div class="line">  [<span class="symbol">'*</span> (<span class="name"><span class="builtin-name">*</span></span> v1 v2)]</div><div class="line">  [<span class="symbol">'/</span> (<span class="name"><span class="builtin-name">/</span></span> v1 v2)])</div></pre></td></tr></table></figure>
+<p>最后你发现，一个算术表达式的解释器，不过是一个稍加扩展的树遍历算法。</p>
+<h2 id="R2：一个很小的程序语言"><a href="#R2：一个很小的程序语言" class="headerlink" title="R2：一个很小的程序语言"></a>R2：一个很小的程序语言</h2>
       
 
       
