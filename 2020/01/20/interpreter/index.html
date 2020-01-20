@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-573476c0d8151871.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-8cedc6f1791d0410.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-ba6ffcfc96ef6f9b.png">
-<meta property="og:updated_time" content="2020-01-20T12:57:34.222Z">
+<meta property="og:updated_time" content="2020-01-20T12:59:10.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王垠:怎样写一个解释器">
 <meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
@@ -368,16 +368,7 @@
 <p>操作数 e1 的值 v1 是一个闭包，它里面包含一个函数定义时保存的环境 env-save。我们把这个环境 env-save 取出来，那我们就可以查询它，得到函数体内自由变量的值。然而函数体内不仅有自由变量，还有对函数参数的使用，所以我们必须扩展这个 env-save 环境，把参数的值加进去。这就是为什么我们使用 (ext-env x v2 env-save)，而不只是 env-save。</p>
 <p>你可能会奇怪，那么解释器的环境 env 难道这里就不用了吗？是的。我们通过 env 来计算 e1 和 e2 的值，是因为 e1 和 e2 里面的变量，在“当前环境”（env）里面看得见。可是函数体的定义，在当前环境下是看不见的。它的代码在别的地方，而那个地方看得见的环境，被我们存在闭包里了，它就是 env-save。所以我们把 v1 里面的闭包环境 env-save 取出来，用于计算函数体的值。</p>
 <p>有意思的是，如果我们用 env，而不是env-save 来解释函数体，那我们的语言就变成了 dynamic scoping。现在来实验一下：你可以把 (interp e (ext-env x v2 env-save)) 里面的 env-save 改成 env，再试试我们之前讨论过的代码，它的输出就会变成 12。那就是我们之前讲过的，dynamic scoping 的结果。<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="name">r2</span></div><div class="line">'(let ([x <span class="number">2</span>])</div><div class="line">   (let ([f (lambda (y) (* x y))])</div><div class="line">     (let ([x <span class="number">4</span>])</div><div class="line">       (f <span class="number">3</span>)))))</div><div class="line"></div><div class="line"><span class="comment">;; =&gt; 12</span></div></pre></td></tr></table></figure></p>
-<p>你也许发现了，如果我们的语言是 dynamic scoping，那就没必要使用闭包了，因为我们根本不需要闭包里面保存的环境。这样一来，dynamic scoping 的解释器就可以写成这样：<br><code>`` Scheme
-(define interp
-  (lambda (exp env)
-    (match exp                                          
-      ... ...
-      [</code>(lambda (,x) ,e)                          ; 函数：直接返回自己的表达式<br>       exp]<br>      … …<br>      [<code>(,e1 ,e2)                                       
-       (let ([v1 (interp e1 env)]
-             [v2 (interp e2 env)])
-         (match v1
-           [</code>(lambda (,x) ,e)                     ; 调用：直接使用函数的表达式本身<br>            (interp e (ext-env x v2 env))]))]<br>      … …<br>)))</p>
+<p>你也许发现了，如果我们的语言是 dynamic scoping，那就没必要使用闭包了，因为我们根本不需要闭包里面保存的环境。这样一来，dynamic scoping 的解释器就可以写成这样：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> interp</div><div class="line">  (<span class="name"><span class="builtin-name">lambda</span></span> (exp env)</div><div class="line">    (<span class="name">match</span> exp                                          </div><div class="line">      ... ...</div><div class="line">      [`(lambda (,x) ,e)                          <span class="comment">; 函数：直接返回自己的表达式</span></div><div class="line">       exp]</div><div class="line">      ... ...</div><div class="line">      [`(,e1 ,e2)                                       </div><div class="line">       (<span class="name"><span class="builtin-name">let</span></span> ([<span class="name">v1</span> (<span class="name">interp</span> e1 env)]</div><div class="line">             [<span class="name">v2</span> (<span class="name">interp</span> e2 env)])</div><div class="line">         (<span class="name">match</span> v1</div><div class="line">           [`(lambda (,x) ,e)                     <span class="comment">; 调用：直接使用函数的表达式本身</span></div><div class="line">            (<span class="name">interp</span> e (<span class="name">ext-env</span> x v2 env))]))]</div><div class="line">      ... ...</div><div class="line">)))</div></pre></td></tr></table></figure></p>
 <p>注意到这个解释器的函数有多容易实现吗？它就是这个函数的表达式自己，原封不动。用函数的表达式本身来表示它的值，是很直接很简单的做法，也是大部分人一开头就会想到的。然而这样实现出来的语言，就不知不觉地采用了 dynamic scoping。</p>
 <p>这就是为什么很多早期的 Lisp 语言，比如 Emacs Lisp，都使用 dynamic scoping。这并不是因为它们的设计者在 dynamic scoping 和 lexical scoping 两者之中做出了选择，而是因为使用函数的表达式本身来作为它的值，是最直接，一般人都会首先想到的做法。</p>
 <p>另外，在这里我们也看到环境用“函数式数据结构”表示的好处。闭包被调用时它的环境被扩展，但是这并不会影响原来的那个环境，我们得到的是一个新的环境。所以当函数调用返回之后，函数的参数绑定就自动“注销”了。</p>
