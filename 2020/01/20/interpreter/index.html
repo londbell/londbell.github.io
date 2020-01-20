@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://londbell,github.io">
   <title>怎样写一个解释器(未完) | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文来自于王垠的怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
+  <meta name="description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
 <meta name="keywords" content="笔记,转载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎样写一个解释器(未完)">
 <meta property="og:url" content="http://londbell,github.io/2020/01/20/interpreter/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
-<meta property="og:description" content="原文来自于王垠的怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
-<meta property="og:updated_time" content="2020-01-20T12:11:39.973Z">
+<meta property="og:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
+<meta property="og:updated_time" content="2020-01-20T12:19:58.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎样写一个解释器(未完)">
-<meta name="twitter:description" content="原文来自于王垠的怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
+<meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -208,9 +208,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原文来自于王垠的<a href="http://www.yinwang.org/blog-cn/2012/08/01/interpreter" target="_blank" rel="external">怎样写一个解释器</a><br>写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。</p>
+        <h1 id="王垠-怎样写一个解释器"><a href="#王垠-怎样写一个解释器" class="headerlink" title="王垠:怎样写一个解释器"></a>王垠:怎样写一个解释器</h1><p>原文来自于王垠的<a href="http://www.yinwang.org/blog-cn/2012/08/01/interpreter" target="_blank" rel="external">怎样写一个解释器</a>,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。</p>
+<h2 id="怎样写一个解释器"><a href="#怎样写一个解释器" class="headerlink" title="怎样写一个解释器"></a>怎样写一个解释器</h2><p>写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。</p>
 <a id="more"></a>
-<p>   所以可以这样解决：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1、运行 bcdedit /copy &#123;current&#125; /d “Windows 10 (关闭 Hyper-V)” 命令，随后会提示已经创建了另外一个启动菜单项，记下 &#123; &#125; 中的一串代码。</div><div class="line"></div><div class="line">　　2、运行 bcdedit /set &#123;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#125; hypervisorlaunchtype OFF 命令，将上面的代码替换掉这里的红色XXX代码即可</div></pre></td></tr></table></figure></p>
+<p>虽然我试图从最基本的原理讲起，尽量不依赖于其它知识，但这并不是一本编程入门教材。我假设你已经理解 Scheme 语言，以及基本的编程技巧（比如递归）。如果你完全不了解这些，那我建议你读一下 <a href="https://mitpress.mit.edu/sicp" target="_blank" rel="external">SICP</a>的第一，二章，或者 <a href="http://www.htdp.org/" target="_blank" rel="external">HtDP</a> 的前几章，习题可以不做。注意不要读太多书，否则你就回不来了 ;-) 当然你也可以直接读这篇文章，有不懂的地方再去查资料。</p>
+<p>实现语言容易犯的一个错误，就是一开头就试图去实现很复杂的语言（比如 JavaScript 或者 Python）。这样你很快就会因为这些语言的复杂性，以及各种历史遗留的设计问题而受到挫折，最后不了了之。学习实现语言，最好是从最简单，最干净的语言开始，迅速写出一个可用的解释器。之后再逐步往里面添加特性，同时保持正确。这样你才能有条不紊地构造出复杂的解释器。</p>
+<p>因为这个原因，这篇文章只针对一个很简单的语言，名叫“R2”。它可以作为一个简单的计算器用，还具有变量定义，函数定义和调用等功能。</p>
+<h2 id="我们的工具：Racket"><a href="#我们的工具：Racket" class="headerlink" title="我们的工具：Racket"></a>我们的工具：Racket</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1、运行 bcdedit /copy &#123;current&#125; /d “Windows 10 (关闭 Hyper-V)” 命令，随后会提示已经创建了另外一个启动菜单项，记下 &#123; &#125; 中的一串代码。</div><div class="line"></div><div class="line">　　2、运行 bcdedit /set &#123;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&#125; hypervisorlaunchtype OFF 命令，将上面的代码替换掉这里的红色XXX代码即可</div></pre></td></tr></table></figure>
 <p>再次启动 Windows 10 即可手动选择是否要启用 Hyper-V，在“关闭 Hyper-V”的模式中，即可运行 Vmware 虚拟机，而另一个选项则可以运行 Hyper-V 虚拟机，这样就可以避免为了运行 VMware 虚拟机而卸载 Hyper-V 功能了。</p>
 
       
