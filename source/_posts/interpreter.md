@@ -26,7 +26,8 @@ date: 2020-01-20 20:00:58
 
 `Racket` 具有宏（`macro`），所以它其实可以变成很多种语言。如果你之前用过 `DrRacket`，那它的“语言设置”可能被你改成了 `R5RS` 之类的。所以如果下面的程序不能运行，你可能需要检查一下 `DrRacket` 的“语言设置”，把 Language 设置成 “Racket”。
 
-![](https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png)
+![](https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png)
+
 
 ![](https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png)
 
@@ -574,6 +575,7 @@ ext-env 函数扩展一个环境。比如，如果原来的环境 env1 是 ((y .
             (interp e (ext-env x v2 env))]))]
       ... ...
 )))
+```
 
 注意到这个解释器的函数有多容易实现吗？它就是这个函数的表达式自己，原封不动。用函数的表达式本身来表示它的值，是很直接很简单的做法，也是大部分人一开头就会想到的。然而这样实现出来的语言，就不知不觉地采用了 dynamic scoping。
 
