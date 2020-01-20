@@ -17,7 +17,9 @@
 <meta property="og:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png">
-<meta property="og:updated_time" content="2020-01-20T12:27:11.486Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-573476c0d8151871.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-8cedc6f1791d0410.png">
+<meta property="og:updated_time" content="2020-01-20T12:37:05.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王垠:怎样写一个解释器">
 <meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
@@ -217,10 +219,39 @@
 <p>虽然我试图从最基本的原理讲起，尽量不依赖于其它知识，但这并不是一本编程入门教材。我假设你已经理解 Scheme 语言，以及基本的编程技巧（比如递归）。如果你完全不了解这些，那我建议你读一下 <a href="https://mitpress.mit.edu/sicp" target="_blank" rel="external">SICP</a>的第一，二章，或者 <a href="http://www.htdp.org/" target="_blank" rel="external">HtDP</a> 的前几章，习题可以不做。注意不要读太多书，否则你就回不来了 ;-) 当然你也可以直接读这篇文章，有不懂的地方再去查资料。</p>
 <p>实现语言容易犯的一个错误，就是一开头就试图去实现很复杂的语言（比如 JavaScript 或者 Python）。这样你很快就会因为这些语言的复杂性，以及各种历史遗留的设计问题而受到挫折，最后不了了之。学习实现语言，最好是从最简单，最干净的语言开始，迅速写出一个可用的解释器。之后再逐步往里面添加特性，同时保持正确。这样你才能有条不紊地构造出复杂的解释器。</p>
 <p>因为这个原因，这篇文章只针对一个很简单的语言，名叫“R2”。它可以作为一个简单的计算器用，还具有变量定义，函数定义和调用等功能。</p>
-<h2 id="我们的工具：Racket"><a href="#我们的工具：Racket" class="headerlink" title="我们的工具：Racket"></a>我们的工具：Racket</h2><p>本文的解释器是用 Scheme 语言实现的。Scheme 有很多的“实现”，这里我用的实现叫做 Racket，它可以在这里<a href="http://racket-lang.org/" target="_blank" rel="external">免费下载</a>。为了让程序简洁，我用了一点点 Racket 的模式匹配（pattern matching）功能。我对 Scheme 的实现没有特别的偏好，但 Racket 方便易用，适合教学。如果你用其它的 Scheme 实现，可能得自己做一些调整。</p>
-<p>Racket 具有宏（macro），所以它其实可以变成很多种语言。如果你之前用过 DrRacket，那它的“语言设置”可能被你改成了 R5RS 之类的。所以如果下面的程序不能运行，你可能需要检查一下 DrRacket 的“语言设置”，把 Language 设置成 “Racket”。</p>
+<h2 id="我们的工具：Racket"><a href="#我们的工具：Racket" class="headerlink" title="我们的工具：Racket"></a>我们的工具：Racket</h2><p>本文的解释器是用 Scheme 语言实现的。Scheme 有很多的“实现”，这里我用的实现叫做 Racket，它可以在这里<a href="http://racket-lang.org/" target="_blank" rel="external">免费下载</a>。为了让程序简洁，我用了一点点 <code>Racket</code> 的模式匹配（<code>pattern matching</code>）功能。我对 <code>Scheme</code> 的实现没有特别的偏好，但 <code>Racket</code> 方便易用，适合教学。如果你用其它的 <code>Scheme</code> 实现，可能得自己做一些调整。</p>
+<p><code>Racket</code> 具有宏（<code>macro</code>），所以它其实可以变成很多种语言。如果你之前用过 <code>DrRacket</code>，那它的“语言设置”可能被你改成了 <code>R5RS</code> 之类的。所以如果下面的程序不能运行，你可能需要检查一下 <code>DrRacket</code> 的“语言设置”，把 Language 设置成 “Racket”。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png" alt=""></p>
+<p>Racket 允许使用方括号而不只是圆括号，所以你可以写这样的代码：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">let</span></span> ([<span class="name">x</span> <span class="number">1</span>]</div><div class="line">      [<span class="name">y</span> <span class="number">2</span>])</div><div class="line">  (<span class="name"><span class="builtin-name">+</span></span> x y))</div></pre></td></tr></table></figure>
+<p>方括号跟圆括号可以互换，唯一的要求是方括号必须和方括号匹配。通常我喜欢用方括号来表示“无动作”的数据（比如上面的 <code>[x 1]</code>, <code>[y 2]</code>），这样可以跟函数调用和其它具有“动作”的代码，产生“视觉差”。这对于代码的可读性是一个改善，因为到处都是圆括号的话，确实有点太单调，容易打瞌睡。</p>
+<p>另外，Racket 程序的最上面都需要加上像 <code>#lang racket</code> 这样的语言选择标记，这样 <code>Racket</code> 才可以知道你想用哪个语言变种。</p>
+<h2 id="解释器是什么"><a href="#解释器是什么" class="headerlink" title="解释器是什么"></a>解释器是什么</h2><p>准备工作就到这里。现在我来谈一下，解释器到底是什么。说白了，解释器跟计算器差不多。解释器是一个函数，你输入一个“表达式”，它就输出一个 “值”，像这样：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-573476c0d8151871.png" alt=""></p>
+<p>比如，你输入表达式 ‘(+ 1 2) ，它就输出值，整数3。表达式是一种“表象”或者“符号”，而值却更加接近“本质”或者“意义”。我们“解释”了符号，得到它的意义，这也许就是为什么它叫做“解释器”。</p>
+<p>需要注意的是，表达式是一个数据结构，而不是一个字符串。我们用一种叫“S 表达式”（S-expression）的结构来存储表达式。比如表达式 ‘(+ 1 2) 其实是一个链表（list），它里面的内容是三个符号（symbol）：+, 1 和 2，而不是字符串”(+ 1 2)”。</p>
+<p>从 S 表达式这样的“结构化数据”里提取信息，方便又可靠，而从字符串里提取信息，麻烦而且容易出错。Scheme（Lisp）语言里面大量使用结构化数据，少用字符串，这是 Lisp 系统比 Unix 系统先进的地方之一。</p>
+<p>从计算理论的角度讲，每个程序都是一台机器的“描述”，而解释器就是在“模拟”这台机器的运转，也就是在进行“计算”。所以从某种意义上讲，解释器就是计算的本质。当然，不同的解释器就会带来不同的计算。</p>
+<p>CPU 也是一个解释器，它专门解释执行机器语言。如果你深刻理解了解释器，就可以从本质上看出各种 CPU 的设计为什么是那个样子，它们有什么优缺点，而不只是被动的作为它们的使用者。</p>
+<h2 id="抽象语法树（Abstract-Syntax-Tree）"><a href="#抽象语法树（Abstract-Syntax-Tree）" class="headerlink" title="抽象语法树（Abstract Syntax Tree）"></a>抽象语法树（Abstract Syntax Tree）</h2><p>用 S 表达式所表示的代码，本质上是一种叫做“树”（tree）的数据结构。更具体一点，这叫做“抽象语法树”（Abstract Syntax Tree，简称 AST）。下文为了简洁，我们省略掉“抽象”两个字，就叫它“语法树”。</p>
+<p>跟普通的树结构一样，语法树里的节点，要么是一个“叶节点”，要么是一颗“子树”。叶节点是不能再细分的“原子”，比如数字，字符串，操作符，变量名。而子树是可以再细分的“结构”，比如算术表达式，函数定义，函数调用，等等。</p>
+<p>举个简单的例子，表达式 ‘(* (+ 1 2) (+ 3 4))，就对应如下的语法树结构：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-8cedc6f1791d0410.png" alt=""></p>
+<p>其中，<code>*</code>，两个<code>+</code>，<code>1</code>，<code>2</code>，<code>3</code>，<code>4</code> 都是叶节点，而那三个红色节点，都表示子树结构：<code>&#39;(+ 1 2)</code>，<code>&#39;(+ 3 4)</code>，<code>&#39;(* (+ 1 2) (+ 3 4))</code>。</p>
+<h2 id="树遍历算法"><a href="#树遍历算法" class="headerlink" title="树遍历算法"></a>树遍历算法</h2><p>在基础的数据结构课程里，我们都学过二叉树的遍历操作，也就是所谓先序遍历，中序遍历和后序遍历。语法树跟二叉树，其实没有很大区别，所以你也可以在它上面进行遍历。解释器的算法，就是在语法树上的一种遍历操作。由于这个渊源关系，我们先来做一个遍历二叉树的练习。做好了之后，我们就可以把这段代码扩展成一个解释器。</p>
+<p>这个练习是这样：写出一个函数，名叫tree-sum，它对二叉树进行“求和”，把所有节点里的数加在一起，返回它们的和。举个例子，(tree-sum ‘((1 2) (3 4)))，执行后应该返回 10。注意：这是一颗二叉树，所以不会含有长度超过 2 的子树，你不需要考虑像 ((1 2) (3 4 5)) 这类情况。需要考虑的例子是像这样：(1 2)，(1 (2 3)), ((1 2) 3) ((1 2) (3 4))，……</p>
+<p>（为了达到最好的学习效果，你最好试一下写出这个函数再继续往下看。）</p>
+<p>好了，希望你得到了跟我差不多的结果。我的代码是这个样子：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#lang racket</div><div class="line"></div><div class="line">(define tree-sum</div><div class="line">  (lambda (exp)</div><div class="line">    (match exp                         ; 对输入exp进行模式匹配</div><div class="line">      [(? number? x) x]                ; exp是一个数x吗？如果是，那么返回这个数x</div><div class="line">      [`(,e1 ,e2)                      ; exp是一个含有两棵子树的中间节点吗？</div><div class="line">       (let ([v1 (tree-sum e1)]        ; 递归调用tree-sum自己，对左子树e1求值</div><div class="line">             [v2 (tree-sum e2)])       ; 递归调用tree-sum自己，对右子树e2求值</div><div class="line">         (+ v1 v2))])))                ; 返回左右子树结果v1和v2的和</div></pre></td></tr></table></figure>
+<p>你可以通过以下的例子来测试它的正确性：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">tree-sum</span> '(<span class="number">1</span> <span class="number">2</span>))</div><div class="line"><span class="comment">;; =&gt; 3</span></div><div class="line">(<span class="name">tree-sum</span> '(<span class="number">1</span> (<span class="number">2</span> <span class="number">3</span>)))</div><div class="line"><span class="comment">;; =&gt; 6</span></div><div class="line">(<span class="name">tree-sum</span> '((<span class="number">1</span> <span class="number">2</span>) <span class="number">3</span>))</div><div class="line"><span class="comment">;; =&gt; 6</span></div><div class="line">(<span class="name">tree-sum</span> '((<span class="number">1</span> <span class="number">2</span>) (<span class="number">3</span> <span class="number">4</span>)))</div><div class="line"><span class="comment">;; =&gt; 10</span></div></pre></td></tr></table></figure></p>
+<p>（完整的代码和示例，可以在<a href="https://github.com/londbell/interpreters/blob/master/tree-sum.ss" target="_blank" rel="external">这里下载</a>。）</p>
+<p>这个算法很简单，我们可以把它用文字描述如下：</p>
+<ul>
+<li>如果输入 exp 是一个数，那就返回这个数。</li>
+<li>否则如果 exp 是像 (,e1 ,e2) 这样的子树，那么分别对 e1 和 e2 递归调用 tree-sum，进行求和，得到 v1 和 v2，然后返回 v1 + v2 的和。</li>
+</ul>
+<p>你自己写出来的代码，也许用了 if 或者 cond 语句来进行分支，而我的代码里面使用的是 Racket 的模式匹配（match）。这个例子用 if 或者 cond 其实也可以，但我之后要把这代码扩展成一个解释器，所以提前使用了 match。这样跟后面的代码对比的时候，就更容易看出规律来。接下来，我就简单讲一下这个 match 表达式的工作原理。</p>
 
       
 
