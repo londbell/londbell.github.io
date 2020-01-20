@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-573476c0d8151871.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-8cedc6f1791d0410.png">
-<meta property="og:updated_time" content="2020-01-20T12:37:05.866Z">
+<meta property="og:updated_time" content="2020-01-20T12:38:57.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王垠:怎样写一个解释器">
 <meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
@@ -252,6 +252,14 @@
 <li>否则如果 exp 是像 (,e1 ,e2) 这样的子树，那么分别对 e1 和 e2 递归调用 tree-sum，进行求和，得到 v1 和 v2，然后返回 v1 + v2 的和。</li>
 </ul>
 <p>你自己写出来的代码，也许用了 if 或者 cond 语句来进行分支，而我的代码里面使用的是 Racket 的模式匹配（match）。这个例子用 if 或者 cond 其实也可以，但我之后要把这代码扩展成一个解释器，所以提前使用了 match。这样跟后面的代码对比的时候，就更容易看出规律来。接下来，我就简单讲一下这个 match 表达式的工作原理。</p>
+<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p>现在不得不插入一点 Racket 的技术细节，如果你已经学会使用 Racket 的模式匹配，可以跳过这一节。你也可以通过阅读 Racket 模式匹配的<a href="https://docs.racket-lang.org/reference/match.html" target="_blank" rel="external">文档</a>来代替这一节。但我建议你不要读太多文档，因为我接下去只用到很少的模式匹配功能，我把它们都解释如下。</p>
+<p>模式匹配的形式一般是这样：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name">match</span> x</div><div class="line">  [<span class="name">模式</span> 结果]</div><div class="line">  [<span class="name">模式</span> 结果]</div><div class="line">   ...   ...</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>它先对 x 求值，然后根据值的结构来进行分支。每个分支由两部分组成，左边是一个模式，右边是一个结果。整个 match 语句的语义是这样：从上到下依次考虑，找到第一个可以匹配 x 的值的模式，返回它右边的结果。左边的模式在匹配之后，可能会绑定一些变量，这些变量可以在右边的表达式里使用。</p>
+<p>模式匹配是一种分支语句，它在逻辑上就是 Scheme（Lisp） 的 cond 表达式，或者 Java 的嵌套条件语句 if … else if … else …。然而跟条件语句里的“条件”不同，每条 match 语句左边的模式，可以准确而形象地描述数据结构的形状，而且可以在匹配的同时，对结构里的成员进行“绑定”。这样我们可以在右边方便的访问结构成员，而不需要使用访问函数（accessor）或者 foo.x 这样的属性语法（attribute）。而且模式可以有嵌套的子结构，所以它能够一次性的表示复杂的数据结构。</p>
+<p>举个实在点的例子。我的代码里用了这样一个 match 表达式：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">match</span> exp</div><div class="line">  [(<span class="name">?</span> number? x) x]</div><div class="line">  [`(,e1 ,e2)</div><div class="line">   (<span class="name"><span class="builtin-name">let</span></span> ([<span class="name">v1</span> (<span class="name">tree-sum</span> e1)]</div><div class="line">         [<span class="name">v2</span> (<span class="name">tree-sum</span> e2)])</div><div class="line">     (<span class="name"><span class="builtin-name">+</span></span> v1 v2))])</div></pre></td></tr></table></figure></p>
+<p>第二行里面的 ‘(,e1 ,e2) 是一个模式（pattern），它被用来匹配 exp 的值。如果 exp 是 ‘(1 2)，那么它与’(,e1 ,e2)匹配的时候，就会把 e1 绑定到 ‘1，把 e2 绑定到 ‘2。这是因为它们结构相同：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">`(,e1 ,e2)</div><div class="line">'(  <span class="number">1</span>   <span class="number">2</span>)</div></pre></td></tr></table></figure>
 
       
 
