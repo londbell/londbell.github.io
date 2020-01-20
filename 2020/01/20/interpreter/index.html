@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://londbell,github.io">
-  <title>怎样写一个解释器(未完) | RA·CAILUM</title>
+  <title>王垠:怎样写一个解释器 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
 <meta name="keywords" content="笔记,转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎样写一个解释器(未完)">
+<meta property="og:title" content="王垠:怎样写一个解释器">
 <meta property="og:url" content="http://londbell,github.io/2020/01/20/interpreter/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/把 Language 设置成 Racket.png">
-<meta property="og:updated_time" content="2020-01-20T12:24:53.899Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png">
+<meta property="og:updated_time" content="2020-01-20T12:27:11.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="怎样写一个解释器(未完)">
+<meta name="twitter:title" content="王垠:怎样写一个解释器">
 <meta name="twitter:description" content="王垠:怎样写一个解释器原文来自于王垠的怎样写一个解释器,由于原文中的源码与图片已经无法访问，所以搜索全网找到这些资源后，在自己的blog上做一个备份，以方便以后阅读。 怎样写一个解释器写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/把 Language 设置成 Racket.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -197,7 +198,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      怎样写一个解释器(未完)
+      王垠:怎样写一个解释器
     </h1>
   
 
@@ -218,7 +219,8 @@
 <p>因为这个原因，这篇文章只针对一个很简单的语言，名叫“R2”。它可以作为一个简单的计算器用，还具有变量定义，函数定义和调用等功能。</p>
 <h2 id="我们的工具：Racket"><a href="#我们的工具：Racket" class="headerlink" title="我们的工具：Racket"></a>我们的工具：Racket</h2><p>本文的解释器是用 Scheme 语言实现的。Scheme 有很多的“实现”，这里我用的实现叫做 Racket，它可以在这里<a href="http://racket-lang.org/" target="_blank" rel="external">免费下载</a>。为了让程序简洁，我用了一点点 Racket 的模式匹配（pattern matching）功能。我对 Scheme 的实现没有特别的偏好，但 Racket 方便易用，适合教学。如果你用其它的 Scheme 实现，可能得自己做一些调整。</p>
 <p>Racket 具有宏（macro），所以它其实可以变成很多种语言。如果你之前用过 DrRacket，那它的“语言设置”可能被你改成了 R5RS 之类的。所以如果下面的程序不能运行，你可能需要检查一下 DrRacket 的“语言设置”，把 Language 设置成 “Racket”。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/把 Language 设置成 Racket.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-42a709b7a2e7e422.png.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/68562-c7da638e83bfb95e.png" alt=""></p>
 
       
 
