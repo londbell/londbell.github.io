@@ -1,14 +1,15 @@
 ---
 layout: post
-title: Windows-Hpyer-V-Fixaaa
+title: 怎样写一个解释器(未完)
 comments: true
 tags:
   - 笔记
-date: 2017-03-30 10:46:58
+  - 转载
+date: 2020-01-20 20:00:58
 ---
-在Windows 10操作系统中，微软为其搭载了自家的服务器虚拟化技术 Hyper-V，只需要在功能中启动即可创建并运行需要的的虚拟机实现操作系统测试或服务器虚拟化的工作。
+原文来自于王垠的[怎样写一个解释器](http://www.yinwang.org/blog-cn/2012/08/01/interpreter)
+写一个解释器，通常是设计和实现程序语言的第一步。解释器是简单却又深奥的东西，以至于好多人都不会写，所以我决定写一篇这方面的入门读物。
 
-　　但有的时候除了 Hyper-V 之外，还需要运行 VMware 的虚拟机，但如果在系统中同时安装着两个虚拟机平台， VMware、VM VirtualBox虚拟机都不能运行，提示与Hyper-V不兼容。
 
 <!-- more -->
    所以可以这样解决：
