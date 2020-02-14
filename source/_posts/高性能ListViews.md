@@ -4,11 +4,11 @@ title: "高性能ListViews"
 date: 2017-04-10 10:34
 comments: true
 tags: 
-	- 笔记
-	- 转载 
-	- 收藏 
-	- android 
-	- java 
+    - 笔记
+    - 转载 
+    - 收藏 
+    - android 
+    - java 
 ---
 
 > * 原文链接 : [Performance ListViews](http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&utm_campaign=038d344835-Android_Weekly_178&utm_medium=email&utm_term=0_4eb677ad19-038d344835-337955857)
