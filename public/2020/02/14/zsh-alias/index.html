@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://londbell.github.io">
   <title>zsh alias折腾记录 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="zsh alias折腾记录zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。 基础alias比如说最简单的： 1alias ll=&apos;ls -al&apos;">
+  <meta name="description" content="zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。">
 <meta name="keywords" content="zsh,alias,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zsh alias折腾记录">
 <meta property="og:url" content="http://londbell.github.io/2020/02/14/zsh-alias/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
-<meta property="og:description" content="zsh alias折腾记录zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。 基础alias比如说最简单的： 1alias ll=&apos;ls -al&apos;">
+<meta property="og:description" content="zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-14T12:03:37.440Z">
+<meta property="og:updated_time" content="2020-02-15T14:40:08.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zsh alias折腾记录">
-<meta name="twitter:description" content="zsh alias折腾记录zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。 基础alias比如说最简单的： 1alias ll=&apos;ls -al&apos;">
+<meta name="twitter:description" content="zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -48,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://londbell.github.io/imgs/avatar.jpg" class="js-avatar">
+			<img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/banagher-links.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Londbell</a></h1>
@@ -118,7 +118,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://londbell.github.io/imgs/avatar.jpg" class="js-avatar">
+				<img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/banagher-links.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Londbell</h1>
@@ -209,12 +209,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="zsh-alias折腾记录"><a href="#zsh-alias折腾记录" class="headerlink" title="zsh alias折腾记录"></a>zsh alias折腾记录</h1><p><code>zsh</code>可以自定义<code>alias</code>，它的<code>alias</code>有很多类型，非常灵活。</p>
+        <p><code>zsh</code>可以自定义<code>alias</code>，它的<code>alias</code>有很多类型，非常灵活。</p>
 <h2 id="zsh-which-alias"><a href="#zsh-which-alias" class="headerlink" title="zsh which alias"></a>zsh which alias</h2><p><code>zsh</code>提供了一个方法来确认某个<code>alias</code>真正指代的指令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which ll</span><br></pre></td></tr></table></figure>
 <p>在我的<code>zsh</code>上，他会输出：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll: aliased to la -l</span><br></pre></td></tr></table></figure>
 <p>所以想确认这个<code>alias</code>指代了什么，使用<code>which</code>即可。</p>
+<a id="more"></a>
 <h2 id="基础alias"><a href="#基础alias" class="headerlink" title="基础alias"></a>基础alias</h2><p>比如说最简单的：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias ll='ls -al'</span><br></pre></td></tr></table></figure>
 <p>注意<code>=</code>两边不要有空格，后面最好用单引号<code>&#39;</code>来包裹要表达的语句。</p>
@@ -550,7 +551,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,11 +559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
