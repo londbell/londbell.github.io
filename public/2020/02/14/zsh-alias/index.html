@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-15T14:40:08.500Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/alias-fault-grammar-wrong.png">
+<meta property="og:updated_time" content="2020-02-15T15:22:20.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zsh alias折腾记录">
 <meta name="twitter:description" content="zsh可以自定义alias，它的alias有很多类型，非常灵活。 zsh which aliaszsh提供了一个方法来确认某个alias真正指代的指令： 1which ll 在我的zsh上，他会输出： 1ll: aliased to la -l 所以想确认这个alias指代了什么，使用which即可。">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/alias-fault-grammar-wrong.png">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -235,6 +237,7 @@
 <p>于是我的<code>gua alias</code>就变成了这样：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias gua() &#123;</span><br><span class="line">    git branch -r | grep -v '\-&gt;' | while read remote;do git branch --track "$&#123;remote#origin/&#125;" "$remote";done</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>于是每次开机的时候，gua()会自动执行…在我的终端上留下一堆错误信息：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/alias-fault-grammar-wrong.png" alt="Alias 语法错误"></p>
 <p>这个问题困扰了我很久，后面才发现是语法错误了。因此我猜测写成alias就变成了js那种立即执行函数的形式。在这里提醒一下自己，以后务必要细心。</p>
 <p>其实在上面的这个方法错误后，我在修正过程中，还使用了另外一种错误的形式：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gua() &#123;</span><br><span class="line">    git branch -r | grep -v '\-&gt;' | while read remote;do git branch --track "$&#123;remote#origin/&#125;" "$remote";done</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
