@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://londbell.github.io">
-  <title>Archives: 2020 | RA·CAILUM</title>
+  <title>Mac下的Sed问题 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell.github.io/archives/2020/index.html">
+  <meta name="description" content="我最近在折腾自己的dotfiles配置，由于在初始化自己使用环境的步骤中，要经常对配置文件进行字符串替换、添加等操作。所以我大量地使用了sed来操作字符串，可是在实际运用中，发现了sed指令在GNU和BSD下有很大的不同，这个问题是在Mac下发现的。">
+<meta name="keywords" content="Mac,sed,GNU,BSD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下的Sed问题">
+<meta property="og:url" content="http://londbell.github.io/2020/02/22/mac-sed/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="我最近在折腾自己的dotfiles配置，由于在初始化自己使用环境的步骤中，要经常对配置文件进行字符串替换、添加等操作。所以我大量地使用了sed来操作字符串，可是在实际运用中，发现了sed指令在GNU和BSD下有很大的不同，这个问题是在Mac下发现的。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-22T13:24:01.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="Mac下的Sed问题">
+<meta name="twitter:description" content="我最近在折腾自己的dotfiles配置，由于在初始化自己使用环境的步骤中，要经常对配置文件进行字符串替换、添加等操作。所以我大量地使用了sed来操作字符串，可是在实际运用中，发现了sed指令在GNU和BSD下有很大的不同，这个问题是在Mac下发现的。">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -184,36 +189,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mac-sed" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/22/mac-sed/" class="archive-article-date">
-  	<time datetime="2020-02-22T13:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/22/mac-sed/">Mac下的Sed问题</a>
+    <h1 class="article-title" itemprop="name">
+      Mac下的Sed问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/02/22/mac-sed/" class="archive-article-date">
+  	<time datetime="2020-02-22T13:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我最近在折腾自己的<a href="https://github.com/londbell/dotfiles" target="_blank" rel="noopener">dotfiles</a>配置，由于在初始化自己使用环境的步骤中，要经常对配置文件进行字符串替换、添加等操作。所以我大量地使用了<code>sed</code>来操作字符串，可是在实际运用中，发现了<code>sed</code>指令在<code>GNU</code>和<code>BSD</code>下有很大的不同，这个问题是在Mac下发现的。</p>
+<a id="more"></a>
+<h2 id="来龙去脉"><a href="#来龙去脉" class="headerlink" title="来龙去脉"></a>来龙去脉</h2><p>大体来讲，Mac下的<code>sed</code>和<code>GNU</code>的<code>sed</code>最大的不同是不可忽略备份扩展，换言之你必须指定一个备份扩展，即使可以为空。</p>
+<p>下面这条指令在<code>GNU</code>下没有问题，语义是在.zshrc文件中搜索<code>prompt pure</code>字符串并将其删除。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i "\:prompt pure:d" $&#123;HOME&#125;/.zshrc</span><br></pre></td></tr></table></figure>
+<p>但是在mac下，这条指令会直接报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed: 1: "~/.zshrc": undefined label '/.zshrc'</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">man sed</span><br><span class="line">     -i extension</span><br><span class="line">             Edit files in-place, saving backups with the specified extension.  If a zero-length extension is given, no backup will be saved.  It is not</span><br><span class="line">             recommended to give a zero-length extension when in-place editing files, as you risk corruption or partial content in situations where disk</span><br><span class="line">             space is exhausted, etc.</span><br></pre></td></tr></table></figure>
+<p>无论如何，你要制定备份扩展，可以改成这样子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i '' "\:prompt pure:d" $&#123;HOME&#125;/.zshrc</span><br></pre></td></tr></table></figure>
+<p>你以为这就完了?如果改成这样，会导致<code>GNU</code>下的sed无法使用。</p>
+<p>参考这位同学给出的<a href="https://github.com/qiwihui/blog/issues/48" target="_blank" rel="noopener">实验结果</a>，这些兼容写法都是不行的:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sed -i -e ...</span><br><span class="line">在Mac上不起作用，会创建 -e 备份</span><br><span class="line">sed -i'' -e ...</span><br><span class="line">在 OS X 10.6 不起作用，但在 10.9+ 可行</span><br><span class="line">sed -i '' -e ...</span><br><span class="line">兼容了Mac的写法，但是GNU运行出错</span><br></pre></td></tr></table></figure>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>用<code>gnu-sed</code>代替<code>sed</code>，需要自己安装，然后创建<code>sed</code>的alias指向<code>gsed</code></li>
+<li>使用perl指令来代替</li>
+</ul>
+<p>perl用法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -i -pe's/foo/bar/g' target</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -237,199 +280,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://londbell.github.io/2020/02/22/mac-sed/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/22/manjaro-in-wsl/" class="archive-article-date">
-  	<time datetime="2020-02-22T12:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/22/manjaro-in-wsl/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WSL安装Manjaro体验(烂尾工程)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/22/manjaro-in-wsl/">WSL安装Manjaro体验(烂尾工程)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">wsl</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">manjaro</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/15/FunctionalProgrammingForTheRestOfUs.cn/" class="archive-article-date">
-  	<time datetime="2020-02-15T14:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/15/FunctionalProgrammingForTheRestOfUs.cn/">傻瓜函数式编程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/interpreter/" class="archive-article-date">
-  	<time datetime="2020-02-14T08:56:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/14/interpreter/">王垠:怎样写一个解释器</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/zsh-alias/" class="archive-article-date">
-  	<time datetime="2020-02-14T08:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/14/zsh-alias/">zsh alias折腾记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">alias</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -452,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

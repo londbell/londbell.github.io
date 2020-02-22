@@ -186,6 +186,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mac-sed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/22/mac-sed/">Mac下的Sed问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/22/mac-sed/" class="archive-article-date">
+  	<time datetime="2020-02-22T13:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我最近在折腾自己的<a href="https://github.com/londbell/dotfiles" target="_blank" rel="noopener">dotfiles</a>配置，由于在初始化自己使用环境的步骤中，要经常对配置文件进行字符串替换、添加等操作。所以我大量地使用了<code>sed</code>来操作字符串，可是在实际运用中，发现了<code>sed</code>指令在<code>GNU</code>和<code>BSD</code>下有很大的不同，这个问题是在Mac下发现的。</p>
+        
+          <a class="article-more-a" href="/2020/02/22/mac-sed/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Mac</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sed</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GNU</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BSD</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/22/mac-sed/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-manjaro-in-wsl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -207,7 +295,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h2><p>使用<a href="https://github.com/DDoSolitary/LxRunOffline/wiki" target="_blank" rel="noopener">LxRunOffline</a>来安装Arch，需要准备好<a href="https://lxrunoffline.apphb.com/download/ArchLinux" target="_blank" rel="noopener">Arch</a></p>
-<p>在管理员权限运行下的Powershell中，使用以下的指令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\LxRunOffline.exe i -n Manjaro -d .\Manjaro\ -f .\archlinux-bootstrap-2020.01.01-x86_64.tar.gz -s -r root.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>在管理员权限运行下的Powershell中，使用以下的指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\LxRunOffline.exe i -n Manjaro -d .\Manjaro\ -f .\archlinux-bootstrap-2020.01.01-x86_64.tar.gz -s -r root.x86_64</span><br></pre></td></tr></table></figure>
 <p>上面只针对于我自己的配置，需要根据你自己想安装到的位置和名称来修改。</p>
 <p>对于Arch，命令中的<code>-r root.x86_64</code>是必须的，<code>-s</code>说明会生成快捷方式。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/微信截图_20200125201236.png" alt><br>如上图所示，说明完成了Manjaro的安装。</p>
@@ -992,86 +1081,6 @@
 
 
   
-    <article id="post-521-longest-Uncommon-Subsequence-I" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/521-longest-Uncommon-Subsequence-I/">521-longest-Uncommon-Subsequence-I</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/06/521-longest-Uncommon-Subsequence-I/" class="archive-article-date">
-  	<time datetime="2017-04-06T12:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.</p>
-        
-          <a class="article-more-a" href="/2017/04/06/521-longest-Uncommon-Subsequence-I/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/06/521-longest-Uncommon-Subsequence-I/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1193,11 +1202,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color4">sed</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GNU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BSD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1227,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">

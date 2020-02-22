@@ -12,9 +12,11 @@ tags:
 使用[LxRunOffline](https://github.com/DDoSolitary/LxRunOffline/wiki)来安装Arch，需要准备好[Arch](https://lxrunoffline.apphb.com/download/ArchLinux)
 
 在管理员权限运行下的Powershell中，使用以下的指令：
+
 ``` shell
 .\LxRunOffline.exe i -n Manjaro -d .\Manjaro\ -f .\archlinux-bootstrap-2020.01.01-x86_64.tar.gz -s -r root.x86_64
 ```
+
 上面只针对于我自己的配置，需要根据你自己想安装到的位置和名称来修改。
 
 对于Arch，命令中的`-r root.x86_64`是必须的，`-s`说明会生成快捷方式。
