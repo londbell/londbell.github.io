@@ -186,6 +186,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-manjaro-in-wsl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/22/manjaro-in-wsl/">WSL安装Manjaro体验(烂尾工程)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/22/manjaro-in-wsl/" class="archive-article-date">
+  	<time datetime="2020-02-22T12:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h2><p>使用<a href="https://github.com/DDoSolitary/LxRunOffline/wiki" target="_blank" rel="noopener">LxRunOffline</a>来安装Arch，需要准备好<a href="https://lxrunoffline.apphb.com/download/ArchLinux" target="_blank" rel="noopener">Arch</a></p>
+<p>在管理员权限运行下的Powershell中，使用以下的指令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\LxRunOffline.exe i -n Manjaro -d .\Manjaro\ -f .\archlinux-bootstrap-2020.01.01-x86_64.tar.gz -s -r root.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>上面只针对于我自己的配置，需要根据你自己想安装到的位置和名称来修改。</p>
+<p>对于Arch，命令中的<code>-r root.x86_64</code>是必须的，<code>-s</code>说明会生成快捷方式。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/微信截图_20200125201236.png" alt><br>如上图所示，说明完成了Manjaro的安装。</p>
+<p>直接启动LxRunOffline生成的快捷方式，会进入这个WSL环境的Bash，默认以Root用户登录。说明已经安装成功：<br><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/微信截图_20200125201414.png" alt></p>
+        
+          <a class="article-more-a" href="/2020/02/22/manjaro-in-wsl/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">wsl</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">manjaro</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/22/manjaro-in-wsl/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-FunctionalProgrammingForTheRestOfUs.cn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -983,83 +1072,6 @@
 
 
   
-    <article id="post-Windows-Hpyer-V-Fix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/Windows-Hpyer-V-Fix/">Windows-Hpyer-V-Fix</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/Windows-Hpyer-V-Fix/" class="archive-article-date">
-  	<time datetime="2017-03-30T02:46:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Windows 10操作系统中，微软为其搭载了自家的服务器虚拟化技术 Hyper-V，只需要在功能中启动即可创建并运行需要的的虚拟机实现操作系统测试或服务器虚拟化的工作。</p>
-<p>　　但有的时候除了 Hyper-V 之外，还需要运行 VMware 的虚拟机，但如果在系统中同时安装着两个虚拟机平台， VMware、VM VirtualBox虚拟机都不能运行，提示与Hyper-V不兼容。</p>
-        
-          <a class="article-more-a" href="/2017/03/30/Windows-Hpyer-V-Fix/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/Windows-Hpyer-V-Fix/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1186,6 +1198,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
               </li>
              
               <li class="article-tag-list-item">
