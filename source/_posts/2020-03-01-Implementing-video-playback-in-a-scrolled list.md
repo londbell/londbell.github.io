@@ -19,23 +19,23 @@ tags:
 
 <!-- more -->
 
-###Facebook:
+### Facebook
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif)
+![facebook-listview-video][1]
 
-###Magisto:
+### Magisto
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131707_8101.gif)
+![magisto-listview-video][2]
 
-###Instagram:
+### Instagram
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131742_4068.gif)
+![Instagram-listview-video][3]
 
 博文内容基于此Github 项目：[VideoPlayerManager](https://github.com/danylovolokh/VideoPlayerManager).
 
 博文中涉及的所有代码和范例都在该项目中，所以本篇博文不会详细讲解每一个细节。如果有人真的想知道实现的机制，最好是下载源码，结合 IDE 边看源码边阅读本文。不过就算你不结合源码，光看我在这里说的内容，也能理解的七七八八了。
 
-##两个问题
+## 两个问题
 
 为了实现这个功能，我们需要解决以下两个问题：
 
@@ -43,13 +43,13 @@ tags:
 
 2. 我们还需要知道滚动列表中的哪一个 View 要被激活（播放视频），所以我们还需要追踪用户的滚动行为并定义可见域最大的 View。
 
-##管理视频播放
+## 管理视频播放
 
 我们希望提供以下功能：
 
 假设某个视频正在播放，此时用户滚动了列表使得列表中某个子项目的可见域大于正在播放视频的子项目的可见域，这样我们就需要停止正在播放的视频，并开始播放新的视频（可见域更大的子项目对应的视频）。
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131709_2495.gif)
+![demo-listview-video-mananger][4]
 
 ##VideoPlayerView
 
@@ -59,7 +59,7 @@ tags:
 
 1. 创建继承于 TextureView 的 ScalableTextureView，它能够调整 SurfaceTexture（正在播放视频的表面结构中）而且提供了一些类似于 ImageView 缩放类型的选项。
 
-```java
+``` java
 public enum ScaleType {
     CENTER_CROP, TOP, BOTTOM, FILL
 }
@@ -67,7 +67,7 @@ public enum ScaleType {
 
 2. 创建 ScalableTextureView 的子类 VideoPlayerView，它包含所有与 MediaPlayer 相关的功能。即，这是一个封装了 MediaPlayer 并提供与 VideoView 几近一致的 API 的自定义 View。VideoPlayerView 具有所有直接调用 MediaPlayer 的方法：setDataSource，prepare, start, stop, pause, reset, release。
 
-##ViedioPlayer 管理器及消息控制机制
+## ViedioPlayer 管理器及消息控制机制
 
 视频播放管理器与负责异步调用 MediaPlayer 方法的 MessageHandlerThread 协作。因为我们需要调用的方法，如：prepare(), start() 等等……与硬件直接相关，所以我们需要在一个独立的线程中完成这些调用。此外，当我们在 UI 线程中调用 MediaPlayer.reset() MediaPlayer 会发生一些奇怪的问题，使得该方法阻塞了将近 4 分钟！这也是我们不必须调用异步的 MediaPlayer.prepareAsync() 方法的原因，因为我们完全可以在另一个线程中调用 MediaPlayer.prepare() 方法，免得让这些奇怪的问题折腾自己。因此，我们将在一个独立的线程中异步完成所有任务。
 
@@ -93,7 +93,7 @@ public enum ScaleType {
 
 以上所有行为都被包裹到 Message 中，交给一个独立的线程完成，例如这是一个 Stop 命令的 Message，它将调用 VideoPlayerView.stop()，实际上他调用的是 MediaPlayer.stop()。我们需要自定义 Message，因为我们可能需要设置当前状态，例如现在是正在停止，还是已经停止，或者是其他的状态……这有助于我们了解当前处理的 Message 是什么命令，如果我们需要用这个命令的话我们可以做什么，例如，开始一个新的播放任务。
 
-```java
+``` java
 /**
  * This PlayerMessage calls {@link MediaPlayer#stop()} on the instance that is used inside {@link VideoPlayerView}
  */
@@ -121,7 +121,7 @@ public class Stop extends PlayerMessage {
 
 如果我们需要开始一个新的播放任务，我们只需要调用 VideoPlayerManager 的一个方法，它就会添加下列 Message 到 MessagesHandlerThread 中：
 
-```java
+``` java
 // pause the queue processing and check current state
 // if current state is "started" then stop old playback
 mPlayerHandler.addMessage(new Stop(mCurrentPlayer, this));
@@ -156,19 +156,19 @@ mPlayerHandler.addMessages(Arrays.asList(
 
 下面是相关的依赖：
 
-```
+``` gradle
 dependencies {
     compile 'com.github.danylovolokh:video-player-manager:0.2.0'
 }
 ```
 
-##区分列表中可见域最大的 View——列表可见域判断工具
+## 区分列表中可见域最大的 View——列表可见域判断工具
 
 第一个问题是控制视频的播放，第二个问题则是判断哪一个 View 可见域最大，并切换该 View 对应的视频为新的播放视频。下面是调用 ListItemsVisibilityCalculator 的实体，它的具体实现 SingleListViewItemActiveCalculator 会完成对应的工作。
 
 在 Adapter 中被使用的 Model 类必须实现 ListItem 接口，以计算 List 中子项目的可见域：
 
-```java
+``` java
 /**
  * A general interface for list items.
  * This interface is used by {@link ListItemsVisibilityCalculator}
@@ -208,7 +208,7 @@ public interface ListItem {
 
 ListItemsVisibilityCalculator 将追踪滚动方向，并在运行时计算子项目的可见域。子项目的可见域依赖于列表中的任意一个咨询项目，即取决于你实现 getVisibilityPercents() 方法的方式：
 
-```java
+``` java
 /**
  * This method calculates visibility percentage of currentView.
  * This method works correctly when currentView is smaller then it's enclosure.
@@ -241,7 +241,7 @@ public int getVisibilityPercents(View currentView) {
 
 下面是与 Adapter 功能类似的的 ItemsPositionGetter 的抽象逻辑，它将建立 ListItemsVisibilityCalculator 与 ListView/RecyclerView 交互的桥梁。这样的话 ListItemsVisibilityCalculator 不需要了解它需要操作的 View 到底是 ListView 还是 RecyclerView。只需要完成它自己的工作，但仍需要一些由 ItemsPositionGetter 提供的信息。
 
-```java
+``` java
 /**
  * This class is an API for {@link ListItemsVisibilityCalculator}
  * Using this class is can access all the data from RecyclerView / 
@@ -255,7 +255,6 @@ public int getVisibilityPercents(View currentView) {
  * Created by danylo.volokh on 9/20/2015.
  */
 public interface ItemsPositionGetter {
- 
    View getChildAt(int position);
 
     int indexOfChild(View view);
@@ -272,22 +271,21 @@ public interface ItemsPositionGetter {
 
 下面是预览图和依赖：
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131709_9926.gif)
+![demo-listview-video-mananger][5]
 
-
-```
+``` gradle
 dependencies {
     compile 'com.github.danylovolokh:list-visibility-utils:0.2.0'
 }
 ```
 
-##组合使用上面完成的工作
+## 组合使用上面完成的工作
 
 现在我们需要将上面的工具库结合起来使用以完成我们的功能，下面是使用 RecyclerView 实现的代码：
 
 1. 初始化 ListItemsVisibilityCalculator，并传递列表的引用
 
-```java
+``` java
 /**
  * Only the one (most visible) view should be active (and playing).
  * To calculate visibility of views we use {@link SingleListViewItemActiveCalculator}
@@ -298,7 +296,7 @@ new DefaultSingleItemCalculatorCallback(), mList);
 
 当被激活（播放视频）的 View 发生改变，DefaultSingleItemCalculatorCallback 只调用 ListItem.setActive 方法，但你可以重载该方法并按照你的需求实现相应逻辑：
 
-```java
+``` java
 /**
  * Methods of this callback will be called when new active item is found {@link Callback#activateNewCurrentItem(ListItem, View, int)}
  * or when there is no active item {@link Callback#deactivateCurrentItem(ListItem, View, int)} - this might happen when user scrolls really fast
@@ -311,7 +309,7 @@ public interface Callback<T extends ListItem>{
 
 2. 初始化 VideoPlayerManager
 
-```java
+``` java
 /**
  * Here we use {@link SingleVideoPlayerManager}, which means that only one video playback is possible.
  */
@@ -325,7 +323,7 @@ private final VideoPlayerManager<MetaData> mVideoPlayerManager = new SingleVideo
 
 3. 为 RecyclerView 设置滚动监听，并传递滚动事件给列表可见工具库处理。
 
-```java
+``` java
 @Override
 public void onScrollStateChanged(RecyclerView view, int scrollState) {
  mScrollState = scrollState;
@@ -354,14 +352,14 @@ public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
 4. 创建 ItemsPositionGetter
 
-```java
+``` java
 ItemsPositionGetter mItemsPositionGetter = 
 new RecyclerViewItemPositionGetter(mLayoutManager, mRecyclerView);
 ```
 
 5. 在 onResume() 中调用方法以开始计算子项目的可见域，在我们显示出列表时选出可见域最大的子项目
 
-```java
+``` java
 @Override
 public void onResume() {
     super.onResume();
@@ -385,10 +383,18 @@ public void onResume() {
 
 然后就完成了，在滚动列表中播放许多视频：
 
-![](http://img.my.csdn.net/uploads/201601/30/1454131535_2903.gif)
+![final-demo-listview-video][6]
 
 这个项目关键部分的讲解基本上已经完成了，下面是具体的代码和范例：
 
 [https://github.com/danylovolokh/VideoPlayerManager](https://github.com/danylovolokh/VideoPlayerManager)
 
-感谢阅读 ;)
+感谢阅读;
+
+  [1]: https://cdn.jsdelivr.net/gh/londbell/pic/img/facebook-listview-video.gif
+  [2]: https://cdn.jsdelivr.net/gh/londbell/pic/img/magisto-listview-video.gif
+  [3]: https://cdn.jsdelivr.net/gh/londbell/pic/img/Instagram-listview-vieo.gif
+  [4]: https://cdn.jsdelivr.net/gh/londbell/pic/img/demo-listview-video-mananger.gif
+  [5]: https://cdn.jsdelivr.net/gh/londbell/pic/img/simple-demo-listview-video.gif
+  [6]: https://cdn.jsdelivr.net/gh/londbell/pic/img/final-demo-listview-video.gif
+  

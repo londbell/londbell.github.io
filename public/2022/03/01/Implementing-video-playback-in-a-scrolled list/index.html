@@ -9,24 +9,24 @@
   <title>在滚动列表中播放视频 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
-<meta name="keywords" content="笔记,转载,收藏,android,java">
+<meta name="keywords" content="笔记,android,转载,收藏,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在滚动列表中播放视频">
 <meta property="og:url" content="http://londbell.github.io/2022/03/01/Implementing-video-playback-in-a-scrolled list/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131707_8101.gif">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131742_4068.gif">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131709_2495.gif">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131709_9926.gif">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131535_2903.gif">
-<meta property="og:updated_time" content="2020-03-01T15:30:32.696Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/facebook-listview-video.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/magisto-listview-video.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/Instagram-listview-vieo.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/demo-listview-video-mananger.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/simple-demo-listview-video.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/final-demo-listview-video.gif">
+<meta property="og:updated_time" content="2020-03-01T16:11:33.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在滚动列表中播放视频">
 <meta name="twitter:description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
-<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/facebook-listview-video.gif">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -225,26 +225,21 @@
 </blockquote>
 <p>本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：</p>
 <a id="more"></a>
-<p>###Facebook:</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif" alt></p>
-<p>###Magisto:</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131707_8101.gif" alt></p>
-<p>###Instagram:</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131742_4068.gif" alt></p>
+<h3 id="Facebook"><a href="#Facebook" class="headerlink" title="Facebook"></a>Facebook</h3><p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/facebook-listview-video.gif" alt="facebook-listview-video"></p>
+<h3 id="Magisto"><a href="#Magisto" class="headerlink" title="Magisto"></a>Magisto</h3><p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/magisto-listview-video.gif" alt="magisto-listview-video"></p>
+<h3 id="Instagram"><a href="#Instagram" class="headerlink" title="Instagram"></a>Instagram</h3><p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/Instagram-listview-vieo.gif" alt="Instagram-listview-video"></p>
 <p>博文内容基于此Github 项目：<a href="https://github.com/danylovolokh/VideoPlayerManager" target="_blank" rel="noopener">VideoPlayerManager</a>.</p>
 <p>博文中涉及的所有代码和范例都在该项目中，所以本篇博文不会详细讲解每一个细节。如果有人真的想知道实现的机制，最好是下载源码，结合 IDE 边看源码边阅读本文。不过就算你不结合源码，光看我在这里说的内容，也能理解的七七八八了。</p>
-<p>##两个问题</p>
-<p>为了实现这个功能，我们需要解决以下两个问题：</p>
+<h2 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h2><p>为了实现这个功能，我们需要解决以下两个问题：</p>
 <ol>
 <li><p>管理视频播放。在 Android 框架层中我们可以利用 MediaPlayer 和 SurfaceView 来播放视频，但这种实现方式有许多缺点。我们不能在列表中使用一般的 VideoView，因为 VideoView 是 SurfaceView 的子类，而 SurfaceView 不具有 UI 异步缓存。而这会导致我们无法在滚动时记录视频到底播放到哪个时间点。TextureView 具有 UI 异步缓存，但在 Android SDK 15 没有 VideoView 的实现方式是借助 TextureView 来完成的。因此，我们需要一个 TextureView 的子类与 MediaPlayer 协作完成视频播放的功能。当然了，MediaPlayer 中的所有方法（准备，开始，停止等等……）几乎都是调用与硬件交互的内核层代码。而硬件往往意味着复杂，如果我们需要完成的任何工作的耗时超过 16ms（一般都会），就会看到滞后的视频列表。这也是为什么需要在后台线程中调用它们的原因。</p>
 </li>
 <li><p>我们还需要知道滚动列表中的哪一个 View 要被激活（播放视频），所以我们还需要追踪用户的滚动行为并定义可见域最大的 View。</p>
 </li>
 </ol>
-<p>##管理视频播放</p>
-<p>我们希望提供以下功能：</p>
+<h2 id="管理视频播放"><a href="#管理视频播放" class="headerlink" title="管理视频播放"></a>管理视频播放</h2><p>我们希望提供以下功能：</p>
 <p>假设某个视频正在播放，此时用户滚动了列表使得列表中某个子项目的可见域大于正在播放视频的子项目的可见域，这样我们就需要停止正在播放的视频，并开始播放新的视频（可见域更大的子项目对应的视频）。</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131709_2495.gif" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/demo-listview-video-mananger.gif" alt="demo-listview-video-mananger"></p>
 <p>##VideoPlayerView</p>
 <p>我们要做的第一件事就是以 TextureView 为父类实现 VideoView。而且我们在滚动列表中不能使用系统的 VideoView，因为用户在视频播放的过程中滚动列表的话，视频渲染就会乱掉。</p>
 <p>我把这部分工作分为几个部分：</p>
@@ -255,8 +250,7 @@
 <ol start="2">
 <li>创建 ScalableTextureView 的子类 VideoPlayerView，它包含所有与 MediaPlayer 相关的功能。即，这是一个封装了 MediaPlayer 并提供与 VideoView 几近一致的 API 的自定义 View。VideoPlayerView 具有所有直接调用 MediaPlayer 的方法：setDataSource，prepare, start, stop, pause, reset, release。</li>
 </ol>
-<p>##ViedioPlayer 管理器及消息控制机制</p>
-<p>视频播放管理器与负责异步调用 MediaPlayer 方法的 MessageHandlerThread 协作。因为我们需要调用的方法，如：prepare(), start() 等等……与硬件直接相关，所以我们需要在一个独立的线程中完成这些调用。此外，当我们在 UI 线程中调用 MediaPlayer.reset() MediaPlayer 会发生一些奇怪的问题，使得该方法阻塞了将近 4 分钟！这也是我们不必须调用异步的 MediaPlayer.prepareAsync() 方法的原因，因为我们完全可以在另一个线程中调用 MediaPlayer.prepare() 方法，免得让这些奇怪的问题折腾自己。因此，我们将在一个独立的线程中异步完成所有任务。</p>
+<h2 id="ViedioPlayer-管理器及消息控制机制"><a href="#ViedioPlayer-管理器及消息控制机制" class="headerlink" title="ViedioPlayer 管理器及消息控制机制"></a>ViedioPlayer 管理器及消息控制机制</h2><p>视频播放管理器与负责异步调用 MediaPlayer 方法的 MessageHandlerThread 协作。因为我们需要调用的方法，如：prepare(), start() 等等……与硬件直接相关，所以我们需要在一个独立的线程中完成这些调用。此外，当我们在 UI 线程中调用 MediaPlayer.reset() MediaPlayer 会发生一些奇怪的问题，使得该方法阻塞了将近 4 分钟！这也是我们不必须调用异步的 MediaPlayer.prepareAsync() 方法的原因，因为我们完全可以在另一个线程中调用 MediaPlayer.prepare() 方法，免得让这些奇怪的问题折腾自己。因此，我们将在一个独立的线程中异步完成所有任务。</p>
 <p>在开始新的视频播放任务的事件流中，下面是一些与 MediaPlayer 相关的步骤：</p>
 <ol>
 <li><p>停止前一个播放任务，通过调用 MediaPlayer.stop() 方法完成。</p>
@@ -296,9 +290,8 @@
 </ol>
 <p>这样我们就能依照我们设想的那样执行播放任务：停止前一个播放任务，并开始新的播放任务。</p>
 <p>下面是相关的依赖：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.danylovolokh:video-player-manager:0.2.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##区分列表中可见域最大的 View——列表可见域判断工具</p>
-<p>第一个问题是控制视频的播放，第二个问题则是判断哪一个 View 可见域最大，并切换该 View 对应的视频为新的播放视频。下面是调用 ListItemsVisibilityCalculator 的实体，它的具体实现 SingleListViewItemActiveCalculator 会完成对应的工作。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.github.danylovolokh:video-player-manager:0.2.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区分列表中可见域最大的-View——列表可见域判断工具"><a href="#区分列表中可见域最大的-View——列表可见域判断工具" class="headerlink" title="区分列表中可见域最大的 View——列表可见域判断工具"></a>区分列表中可见域最大的 View——列表可见域判断工具</h2><p>第一个问题是控制视频的播放，第二个问题则是判断哪一个 View 可见域最大，并切换该 View 对应的视频为新的播放视频。下面是调用 ListItemsVisibilityCalculator 的实体，它的具体实现 SingleListViewItemActiveCalculator 会完成对应的工作。</p>
 <p>在 Adapter 中被使用的 Model 类必须实现 ListItem 接口，以计算 List 中子项目的可见域：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A general interface for list items.</span></span><br><span class="line"><span class="comment"> * This interface is used by &#123;<span class="doctag">@link</span> ListItemsVisibilityCalculator&#125;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> danylo.volokh</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ListItem</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * When this method is called, the implementation should provide a</span></span><br><span class="line"><span class="comment">     * visibility percents in range 0 - 100 %</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> view the view which visibility percent should be</span></span><br><span class="line"><span class="comment">     * calculated.</span></span><br><span class="line"><span class="comment">     * Note: visibility doesn't have to depend on the visibility of a</span></span><br><span class="line"><span class="comment">     * full view. </span></span><br><span class="line"><span class="comment">     * It might be calculated by calculating the visibility of any</span></span><br><span class="line"><span class="comment">     * inner View</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> percents of visibility</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getVisibilityPercents</span><span class="params">(View view)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * When view visibility become bigger than "current active" view</span></span><br><span class="line"><span class="comment">     * visibility then the new view becomes active.</span></span><br><span class="line"><span class="comment">     * This method is called</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setActive</span><span class="params">(View newActiveView, <span class="keyword">int</span> newActiveViewPosition)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * There might be a case when not only new view becomes active,</span></span><br><span class="line"><span class="comment">     * but also when no view is active.</span></span><br><span class="line"><span class="comment">     * When view should stop being active this method is called</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deactivate</span><span class="params">(View currentView, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>ListItemsVisibilityCalculator 将追踪滚动方向，并在运行时计算子项目的可见域。子项目的可见域依赖于列表中的任意一个咨询项目，即取决于你实现 getVisibilityPercents() 方法的方式：</p>
@@ -306,13 +299,12 @@
 <p>因此，每一个 View 都需要知道计算其可见域的细节。当发生滚动时，SingleListViewItemActiveCalculator 会要求每一个 View 计算其可见域大小，这也意味其开销之重。</p>
 <p>当任意一个子项目的可见域大小超过了当前播放视频项目的可见域大小，就会调用 setActive 方法切换播放任务。</p>
 <p>下面是与 Adapter 功能类似的的 ItemsPositionGetter 的抽象逻辑，它将建立 ListItemsVisibilityCalculator 与 ListView/RecyclerView 交互的桥梁。这样的话 ListItemsVisibilityCalculator 不需要了解它需要操作的 View 到底是 ListView 还是 RecyclerView。只需要完成它自己的工作，但仍需要一些由 ItemsPositionGetter 提供的信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This class is an API for &#123;<span class="doctag">@link</span> ListItemsVisibilityCalculator&#125;</span></span><br><span class="line"><span class="comment"> * Using this class is can access all the data from RecyclerView / </span></span><br><span class="line"><span class="comment"> * ListView</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * There is two different implementations for ListView and for </span></span><br><span class="line"><span class="comment"> * RecyclerView.</span></span><br><span class="line"><span class="comment"> * RecyclerView introduced LayoutManager that's why some of data moved</span></span><br><span class="line"><span class="comment"> * there</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Created by danylo.volokh on 9/20/2015.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ItemsPositionGetter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">   <span class="function">View <span class="title">getChildAt</span><span class="params">(<span class="keyword">int</span> position)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">indexOfChild</span><span class="params">(View view)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getChildCount</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getLastVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getFirstVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This class is an API for &#123;<span class="doctag">@link</span> ListItemsVisibilityCalculator&#125;</span></span><br><span class="line"><span class="comment"> * Using this class is can access all the data from RecyclerView / </span></span><br><span class="line"><span class="comment"> * ListView</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * There is two different implementations for ListView and for </span></span><br><span class="line"><span class="comment"> * RecyclerView.</span></span><br><span class="line"><span class="comment"> * RecyclerView introduced LayoutManager that's why some of data moved</span></span><br><span class="line"><span class="comment"> * there</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Created by danylo.volokh on 9/20/2015.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ItemsPositionGetter</span> </span>&#123;</span><br><span class="line">   <span class="function">View <span class="title">getChildAt</span><span class="params">(<span class="keyword">int</span> position)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">indexOfChild</span><span class="params">(View view)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getChildCount</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getLastVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getFirstVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样的实现无疑会让 Model 类混入一些业务逻辑，违反了设计模式的部分原则。但通过一些简单的修改就能将它们解耦。不过现在这样它用起来也没多大的问题。</p>
 <p>下面是预览图和依赖：</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131709_9926.gif" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.danylovolokh:list-visibility-utils:0.2.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##组合使用上面完成的工作</p>
-<p>现在我们需要将上面的工具库结合起来使用以完成我们的功能，下面是使用 RecyclerView 实现的代码：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/simple-demo-listview-video.gif" alt="demo-listview-video-mananger"></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'com.github.danylovolokh:list-visibility-utils:0.2.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组合使用上面完成的工作"><a href="#组合使用上面完成的工作" class="headerlink" title="组合使用上面完成的工作"></a>组合使用上面完成的工作</h2><p>现在我们需要将上面的工具库结合起来使用以完成我们的功能，下面是使用 RecyclerView 实现的代码：</p>
 <ol>
 <li>初始化 ListItemsVisibilityCalculator，并传递列表的引用</li>
 </ol>
@@ -336,10 +328,10 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">    <span class="keyword">if</span>(!mList.isEmpty())&#123;</span><br><span class="line">        <span class="comment">// need to call this method from list view handler in order to have filled list</span></span><br><span class="line"></span><br><span class="line">        mRecyclerView.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                mVideoVisibilityCalculator.onScrollStateIdle(</span><br><span class="line">                        mItemsPositionGetter,</span><br><span class="line">                        mLayoutManager.findFirstVisibleItemPosition(),</span><br><span class="line">                        mLayoutManager.findLastVisibleItemPosition());</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后就完成了，在滚动列表中播放许多视频：</p>
-<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131535_2903.gif" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/final-demo-listview-video.gif" alt="final-demo-listview-video"></p>
 <p>这个项目关键部分的讲解基本上已经完成了，下面是具体的代码和范例：</p>
 <p><a href="https://github.com/danylovolokh/VideoPlayerManager" target="_blank" rel="noopener">https://github.com/danylovolokh/VideoPlayerManager</a></p>
-<p>感谢阅读 ;)</p>
+<p>感谢阅读;</p>
 
       
 
@@ -378,15 +370,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -624,26 +616,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -660,6 +632,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
@@ -672,6 +652,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -680,15 +672,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">位操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -9,14 +9,14 @@
   <title>高性能ListViews | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文链接 : Performance ListViews 原文作者 : Brandon 译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!   列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
-<meta name="keywords" content="笔记,转载,收藏,android,java">
+<meta name="keywords" content="笔记,android,转载,收藏,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高性能ListViews">
 <meta property="og:url" content="http://londbell.github.io/2020/03/01/performance-listviews/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="原文链接 : Performance ListViews 原文作者 : Brandon 译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!   列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T15:32:08.588Z">
+<meta property="og:updated_time" content="2020-03-01T15:34:42.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能ListViews">
 <meta name="twitter:description" content="原文链接 : Performance ListViews 原文作者 : Brandon 译文出自 : 开发技术前线 www.devtf.cn。未经允许，不得转载!   列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示">
@@ -219,9 +219,9 @@
 <p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
 <a id="more"></a>
 <p>关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public View getView(int position, View convertView, ViewGroup parent) &#123;</span><br><span class="line"></span><br><span class="line">    LayoutInflater inflater = (LayoutInflater) context</span><br><span class="line">            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">    View rowView = inflater.inflate(R.layout.view_test_row, parent, false);</span><br><span class="line"></span><br><span class="line">    TextView testName = (TextView)rowView.findViewById(R.id.text_view_test_name);</span><br><span class="line">    TextView testDesc = (TextView)rowView.findViewById(R.id.text_view_test_desc);</span><br><span class="line"></span><br><span class="line">    //modify TextViews, in some arbitrary way</span><br><span class="line"></span><br><span class="line">    return rowView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    LayoutInflater inflater = (LayoutInflater) context</span><br><span class="line">            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">    View rowView = inflater.inflate(R.layout.view_test_row, parent, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    TextView testName = (TextView)rowView.findViewById(R.id.text_view_test_name);</span><br><span class="line">    TextView testDesc = (TextView)rowView.findViewById(R.id.text_view_test_desc);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//modify TextViews, in some arbitrary way</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> rowView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当所有列表项都能够一次性在一屏中显示的时候，这种写法并没有什么问题，但这样你就创建了一个基本视图，并完全避免了ArrayAdapter的麻烦了吗？当ListView需要显示一个很大的列表集，而且列表子项是一个非常复杂的视图的时候，上面的方式会消耗大量的性能。当用户滑动屏幕的时候，每个视图都会被inflate并且调用findViewById()方法。当findViewById()方法被调用的时候，会遍历整个视图层级，直到找到正确的Id。每个子视图都要执行上述过程！并且用户滑动的越快，卡顿现象愈加明显。为了解决这个问题，我们可以使用一个静态类来绑定还没被使用的convertView。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">static class ViewHolder()&#123;</span><br><span class="line"></span><br><span class="line">        TextView testName;</span><br><span class="line">        TextView testDesc;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line"> public View getView(int position, View convertView, ViewGroup parent) &#123;</span><br><span class="line"></span><br><span class="line">    View rowView = convertView;  //reference to one of the previous Views in the list that we can reuse.</span><br><span class="line"></span><br><span class="line">    if(convertView == null) &#123;</span><br><span class="line"></span><br><span class="line">        LayoutInflater inflater = (LayoutInflater) context</span><br><span class="line">                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">        rowView = inflater.inflate(R.layout.view_test_row, parent, false);</span><br><span class="line"></span><br><span class="line">        ViewHolder viewHolder = new ViewHolder();</span><br><span class="line">        viewHolder.testName = (TextView) rowView.findViewById(R.id.text_view_test_name);</span><br><span class="line">        viewHolder.testDesc = (TextView) rowView.findViewById(R.id.text_view_test_desc);</span><br><span class="line"></span><br><span class="line">        rowView.setTag(viewHolder);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ViewHolder holder = (ViewHolder) rowView.getTag();</span><br><span class="line">    </span><br><span class="line">    //in real code these strings should be in res</span><br><span class="line">    holder.testName.setText(&quot;Test&quot;+position); </span><br><span class="line">    holder.testDesc.setText(&quot;This is number &quot;+position);</span><br><span class="line"></span><br><span class="line">    return rowView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> class <span class="title">ViewHolder</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        TextView testName;</span><br><span class="line">        TextView testDesc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    View rowView = convertView;  <span class="comment">//reference to one of the previous Views in the list that we can reuse.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">        LayoutInflater inflater = (LayoutInflater) context</span><br><span class="line">                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">        rowView = inflater.inflate(R.layout.view_test_row, parent, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        ViewHolder viewHolder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">        viewHolder.testName = (TextView) rowView.findViewById(R.id.text_view_test_name);</span><br><span class="line">        viewHolder.testDesc = (TextView) rowView.findViewById(R.id.text_view_test_desc);</span><br><span class="line"></span><br><span class="line">        rowView.setTag(viewHolder);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ViewHolder holder = (ViewHolder) rowView.getTag();</span><br><span class="line">    <span class="comment">//in real code these strings should be in res</span></span><br><span class="line">    holder.testName.setText(<span class="string">"Test"</span>+position); </span><br><span class="line">    holder.testDesc.setText(<span class="string">"This is number "</span>+position);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> rowView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那convertView又是什么呢？它可以让ListView跳过一些显示一行内容所需要的设置。如果某一行的视图不在屏幕中显示，我们可以重复使用这个视图来显示一个新行。当ListView刚开始显示的时候，一切都是正常的。既然没有视图可以被用来复用，convertView为空。视图也像前面版本一样被inflate，但是TextViews会被找到且它的引用被保存在一个ViewHolder中。然后我们可以调用setTag()方法将ViewHolder存储在视图中。正如修订过后的getView()方法中后半段代码所示，我们可以在视图中存储后面我们需要用到的数据。</p>
 <p>我们所做的更改可能看起来并没有太大的效果，但是随着布局越来越复杂并且数量也越来越多，效果将变得越来越明显。作为开发者，我最不想做的事就是开发一个用户体验很差的app。所以请记住，仅仅一个低水平的ListView都有可能让一个app死掉，我们一定得避免这种情况发生。</p>
 
@@ -262,15 +262,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -517,26 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -553,6 +533,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
@@ -565,6 +553,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -573,15 +573,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">位操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">

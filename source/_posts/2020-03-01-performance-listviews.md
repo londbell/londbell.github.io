@@ -21,7 +21,7 @@ tags:
 
 关于ListView中ArrayAdapter的用法，标准的新手写法是这样子的：
 
-```
+``` java
 @Override
 public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -40,12 +40,11 @@ public View getView(int position, View convertView, ViewGroup parent) {
 
 当所有列表项都能够一次性在一屏中显示的时候，这种写法并没有什么问题，但这样你就创建了一个基本视图，并完全避免了ArrayAdapter的麻烦了吗？当ListView需要显示一个很大的列表集，而且列表子项是一个非常复杂的视图的时候，上面的方式会消耗大量的性能。当用户滑动屏幕的时候，每个视图都会被inflate并且调用findViewById()方法。当findViewById()方法被调用的时候，会遍历整个视图层级，直到找到正确的Id。每个子视图都要执行上述过程！并且用户滑动的越快，卡顿现象愈加明显。为了解决这个问题，我们可以使用一个静态类来绑定还没被使用的convertView。
 
-```
+``` java
 static class ViewHolder(){
 
         TextView testName;
         TextView testDesc;
-        
 }
 
 @Override
@@ -67,7 +66,6 @@ static class ViewHolder(){
     }
 
     ViewHolder holder = (ViewHolder) rowView.getTag();
-    
     //in real code these strings should be in res
     holder.testName.setText("Test"+position); 
     holder.testDesc.setText("This is number "+position);
