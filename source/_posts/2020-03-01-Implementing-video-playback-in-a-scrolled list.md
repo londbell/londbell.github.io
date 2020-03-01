@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "在滚动列表中播放视频"
-date: 2017-04-10 10:35
+date: 2022-03-01 23:35
 comments: true
 tags: 
 	- 笔记
@@ -14,8 +14,6 @@ tags:
 > * 原文链接 : [Implementing video playback in a scrolled list (ListView & RecyclerView)](https://medium.com/@v.danylo/implementing-video-playback-in-a-scrolled-list-listview-recyclerview-d04bc2148429#.giv0pte0s)
 * 原文作者 : [Danylo Volokh](https://medium.com/@v.danylo)
 * 译文出自 : [开发技术前线 www.devtf.cn](http://www.devtf.cn)
-
-
 
 本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：
 

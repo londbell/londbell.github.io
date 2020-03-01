@@ -186,6 +186,204 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Implementing-video-playback-in-a-scrolled list" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/01/Implementing-video-playback-in-a-scrolled list/">在滚动列表中播放视频</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/01/Implementing-video-playback-in-a-scrolled list/" class="archive-article-date">
+  	<time datetime="2022-03-01T15:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li>原文链接 : <a href="https://medium.com/@v.danylo/implementing-video-playback-in-a-scrolled-list-listview-recyclerview-d04bc2148429#.giv0pte0s" target="_blank" rel="noopener">Implementing video playback in a scrolled list (ListView &amp; RecyclerView)</a></li>
+<li>原文作者 : <a href="https://medium.com/@v.danylo" target="_blank" rel="noopener">Danylo Volokh</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="noopener">开发技术前线 www.devtf.cn</a></li>
+</ul>
+</blockquote>
+<p>本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：</p>
+        
+          <a class="article-more-a" href="/2022/03/01/Implementing-video-playback-in-a-scrolled list/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/01/Implementing-video-playback-in-a-scrolled list/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-performance-listviews" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/01/performance-listviews/">高性能ListViews</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/01/performance-listviews/" class="archive-article-date">
+  	<time datetime="2020-03-01T15:31:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li>原文链接 : <a href="http://willowtreeapps.com/blog/performance-listviews/?utm_source=Android+Weekly&amp;utm_campaign=038d344835-Android_Weekly_178&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-038d344835-337955857" target="_blank" rel="noopener">Performance ListViews</a></li>
+<li>原文作者 : <a href="http://willowtreeapps.com/blog/" target="_blank" rel="noopener">Brandon</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="noopener">开发技术前线 www.devtf.cn。未经允许，不得转载!</a></li>
+</ul>
+</blockquote>
+<p>列表展示功能几乎在所有app中都会被用到，使用列表可以很方便的展示一些列表项，比如菜谱、联系人，或者任意类型的类别。所以Android有一个内置的方式来展示此类型的数据，也是在情理之中的。RecyclerView是一种最新的展示列表数据的方式，它非常高效，因为它重用视图而不是每一行出现在屏幕上都重新创建。在RecyclerView出现之前，我们可以使用ListView，即使到了现在，ListView也是广泛的被开发者所使用。虽然ListView也是可以回收视图的，但它也一直都是Android中最容易被错误使用的一个控件。我们知道在此之前这个话题已经被写过无数遍了，但是今天我还是要在博客中提出来，因为我们仍然发现很多app在错误的使用它们。</p>
+        
+          <a class="article-more-a" href="/2020/03/01/performance-listviews/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/01/performance-listviews/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-zsh-p10k-instant-prompt" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -301,21 +499,9 @@
 <p>虽然通常情况下 a 和 n 都是整数，但许多计算系统允许其他类型的数字操作，如：对浮点数取模。一个整数对 n 取模的结果范围为： 0 到 n − 1（a mod 1 恒等于 0；a mod 0 则是未定义的，在编程语言里可能会导致除零错误）。 有关概念在数论中的应用请参阅模算数。</p>
 <p>当 a 和 n 均为负数时，通常的定义就不适用了，不同的编程语言对结果有不同的处理。</p>
 </blockquote>
-<h2 id="数学性质"><a href="#数学性质" class="headerlink" title="数学性质"></a>数学性质</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>模除的定义：<br>给定一个正整数$p$,任意一个整数n（包括正数,负数,0),一定存在这样的等式：<br>$$n = p*k+r （0\le r&lt;p）$$<br>此时k为整数，也就是商。这个等式很重要，后面许多性质都要用到这个等式。</p>
-<p>根据这个等式，我们可以计算出：<br>$$r = n\bmod p$$</p>
-<p>同余式：如果有$a\bmod p = b\bmod p$成立，则记作<br>$$a\equiv b\pmod p$$</p>
-<h3 id="运算定义"><a href="#运算定义" class="headerlink" title="运算定义"></a>运算定义</h3><p>模p加法：<br>$$ (a+b)\bmod p $$</p>
-<p>模p减法：<br>$$ (a-b)\bmod p $$</p>
-<p>模p乘法：<br>$$(a*b)\bmod p$$</p>
-<h3 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h3><p>恒等式：</p>
-<p>$$ (a\bmod p)\bmod p =a\bmod p$$</p>
-<p>这个等式很好证明：<br>$$\because r=a\bmod p$$<br>$$\therefore 0\le r=a-p<em>k&lt;p$$<br>$$\therefore 0\le r-p</em>0&lt;p$$<br>$$\therefore r\bmod p=r-p*0=r$$<br>$$\therefore r\bmod p=a\bmod p$$<br>$$\therefore (a\bmod p)\bmod p=r\bmod p=a\bmod p$$</p>
-<h3 id="运算规则"><a href="#运算规则" class="headerlink" title="运算规则"></a>运算规则</h3><p>模p加法规则：<br>$$ (a+b)\bmod p = (a\bmod p + b\bmod p)\bmod p$$<br>加法的证明并不困难：<br>$$\because r=(a+b)\bmod p$$<br>$$\therefore r=(a+b)-p<em>k(存在整数k，且0\le r&lt;p)$$<br>$$\therefore 取k_1,k_2使得0\le a-p</em>k_1&lt;p,0\le b-p<em>k_2&lt;p$$<br>$$\therefore 0\le r=a-p</em>k_1+b-p<em>k_2-(k-k_1-k_2)</em>p&lt;p$$<br>$$\therefore 0\le r=a\bmod p+b\bmod p-(k-k_1-k_2)*p&lt;p$$<br>$$\therefore 0\le r=(a\bmod p+b\bmod p)\bmod p&lt;p$$<br>$$\therefore r=(a+b)\bmod p=(a\bmod p+b\bmod p)\bmod p$$</p>
-<p>模p减法规则：<br>$$(a-b)\bmod p=(a\bmod p- b\bmod p)\bmod p$$<br>减法的证明：<br>$$\because r=(a-b)\bmod p$$<br>$$\therefore r=(a-b)-p<em>k(存在整数k，且0\le r&lt;p)$$<br>$$\therefore 取k_1,k_2使得0\le a-p</em>k_1&lt;p,0\le b-p<em>k_2&lt;p$$<br>$$\therefore 0\le r=a-p</em>k_1-(b-p<em>k_2)-(k-k_1+k_2)</em>p&lt;p$$<br>$$\therefore 0\le r=a\bmod p-b\bmod p-(k-k_1+k_2)*p&lt;p$$<br>$$\therefore 0\le r=(a\bmod p-b\bmod p)\bmod p&lt;p$$<br>$$\therefore r=(a-b)\bmod p=(a\bmod p-b\bmod p)\bmod p$$</p>
-<p>模p乘法规则：<br>$$ (a<em>b)\mod p = ((a\bmod p) </em> (b\bmod p))\bmod p$$<br>利用前面的加法规则来完成乘法的证明：<br>$$c = a\bmod p = (m<em>p+c)\bmod p$$<br>$$d = b\bmod p = (n</em>p+d)\bmod p$$<br>$$(a<em>b)\bmod p=((m</em>p+c)<em>(n</em>p+d))\bmod p$$<br>$$((m<em>p+c)</em>(n<em>p+d))\bmod p=(m</em>n<em>p^2+d</em>m<em>p+c</em>n<em>p+c</em>d)\bmod p$$<br>$$((m<em>p+c)</em>(n<em>p+d))\bmod p=0+0+0+c</em>d\bmod p=c<em>d\bmod p$$<br>$$(a</em>b)\bmod p=(c*d)\bmod p$$</p>
-<p>结合律：<br>$$((x+y)\bmod p +z)\bmod p = (x+(y+z)\bmod p)\bmod p$$</p>
-<p>证明：<br>$$等式左边展开:(r_1+r_2+z)\bmod p=r_1+r_2+z\bmod p$$<br>$$等式右边展开(x+(y+z)\bmod p)\bmod p=(r_1+p<em>k_1+r_2+z\bmod p)\bmod p$$<br>$$整理得到(r_1+p</em>k_1+r_2+z\bmod p)\bmod p=r_1+0+r_2+(z\bmod p)\bmod p$$<br>$$即等式右边=r_1+r_2+z\bmod p$$<br>$$等式两边相等$$<br>$$\therefore ((x+y)\bmod p +z)\bmod p = (x+(y+z)\bmod p)\bmod p$$</p>
-
+        
+          <a class="article-more-a" href="/2020/02/28/modulo/#more">more >></a>
+        
       
 
       
@@ -911,181 +1097,6 @@
 
 
   
-    <article id="post-阅读列表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/阅读列表/">阅读列表</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/10/阅读列表/" class="archive-article-date">
-  	<time datetime="2017-04-10T07:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://exvim.github.io/docs-zh/intro/" target="_blank" rel="noopener">https://exvim.github.io/docs-zh/intro/</a><br><a href="https://github.com/hehonghui/android-tech-frontier/blob/master/issue-36/Gradle%E5%B0%8F%E7%9F%A5%E8%AF%862.md" target="_blank" rel="noopener">https://github.com/hehonghui/android-tech-frontier/blob/master/issue-36/Gradle%E5%B0%8F%E7%9F%A5%E8%AF%862.md</a><br><a href="http://hukai.me/android-training-course-in-chinese/index.html" target="_blank" rel="noopener">http://hukai.me/android-training-course-in-chinese/index.html</a><br>
-        
-          <a class="article-more-a" href="/2017/04/10/阅读列表/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/10/阅读列表/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-在滚动列表中播放视频" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/在滚动列表中播放视频/">在滚动列表中播放视频</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/10/在滚动列表中播放视频/" class="archive-article-date">
-  	<time datetime="2017-04-10T02:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>原文链接 : <a href="https://medium.com/@v.danylo/implementing-video-playback-in-a-scrolled-list-listview-recyclerview-d04bc2148429#.giv0pte0s" target="_blank" rel="noopener">Implementing video playback in a scrolled list (ListView &amp; RecyclerView)</a></li>
-<li>原文作者 : <a href="https://medium.com/@v.danylo" target="_blank" rel="noopener">Danylo Volokh</a></li>
-<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="noopener">开发技术前线 www.devtf.cn</a></li>
-</ul>
-</blockquote>
-<p>本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：</p>
-        
-          <a class="article-more-a" href="/2017/04/10/在滚动列表中播放视频/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/10/在滚动列表中播放视频/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1207,6 +1218,38 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -1235,31 +1278,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1271,27 +1298,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LeetCode - 动态规划 - 字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">

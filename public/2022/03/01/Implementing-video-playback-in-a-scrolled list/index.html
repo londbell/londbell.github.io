@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://londbell.github.io">
-  <title>Archives: 2016/3 | RA·CAILUM</title>
+  <title>在滚动列表中播放视频 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell.github.io/archives/2016/03/index.html">
+  <meta name="description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
+<meta name="keywords" content="笔记,转载,收藏,android,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在滚动列表中播放视频">
+<meta property="og:url" content="http://londbell.github.io/2022/03/01/Implementing-video-playback-in-a-scrolled list/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131707_8101.gif">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131742_4068.gif">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131709_2495.gif">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131709_9926.gif">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201601/30/1454131535_2903.gif">
+<meta property="og:updated_time" content="2020-03-01T15:30:32.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="在滚动列表中播放视频">
+<meta name="twitter:description" content="原文链接 : Implementing video playback in a scrolled list (ListView &amp;amp; RecyclerView) 原文作者 : Danylo Volokh 译文出自 : 开发技术前线 www.devtf.cn   本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -184,114 +196,306 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Implementing-video-playback-in-a-scrolled list" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/27/leetcode-338-Counting-Bits/" class="archive-article-date">
-  	<time datetime="2016-03-27T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/27/leetcode-338-Counting-Bits/">Counting Bits</a>
+    <h1 class="article-title" itemprop="name">
+      在滚动列表中播放视频
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2022/03/01/Implementing-video-playback-in-a-scrolled list/" class="archive-article-date">
+  	<time datetime="2022-03-01T15:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li>原文链接 : <a href="https://medium.com/@v.danylo/implementing-video-playback-in-a-scrolled-list-listview-recyclerview-d04bc2148429#.giv0pte0s" target="_blank" rel="noopener">Implementing video playback in a scrolled list (ListView &amp; RecyclerView)</a></li>
+<li>原文作者 : <a href="https://medium.com/@v.danylo" target="_blank" rel="noopener">Danylo Volokh</a></li>
+<li>译文出自 : <a href="http://www.devtf.cn" target="_blank" rel="noopener">开发技术前线 www.devtf.cn</a></li>
+</ul>
+</blockquote>
+<p>本篇博文将会介绍如何实现在列表中播放视频，具体效果参见：Facebook，Instagram 或 Magiston：</p>
+<a id="more"></a>
+<p>###Facebook:</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131534_4403.gif" alt></p>
+<p>###Magisto:</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131707_8101.gif" alt></p>
+<p>###Instagram:</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131742_4068.gif" alt></p>
+<p>博文内容基于此Github 项目：<a href="https://github.com/danylovolokh/VideoPlayerManager" target="_blank" rel="noopener">VideoPlayerManager</a>.</p>
+<p>博文中涉及的所有代码和范例都在该项目中，所以本篇博文不会详细讲解每一个细节。如果有人真的想知道实现的机制，最好是下载源码，结合 IDE 边看源码边阅读本文。不过就算你不结合源码，光看我在这里说的内容，也能理解的七七八八了。</p>
+<p>##两个问题</p>
+<p>为了实现这个功能，我们需要解决以下两个问题：</p>
+<ol>
+<li><p>管理视频播放。在 Android 框架层中我们可以利用 MediaPlayer 和 SurfaceView 来播放视频，但这种实现方式有许多缺点。我们不能在列表中使用一般的 VideoView，因为 VideoView 是 SurfaceView 的子类，而 SurfaceView 不具有 UI 异步缓存。而这会导致我们无法在滚动时记录视频到底播放到哪个时间点。TextureView 具有 UI 异步缓存，但在 Android SDK 15 没有 VideoView 的实现方式是借助 TextureView 来完成的。因此，我们需要一个 TextureView 的子类与 MediaPlayer 协作完成视频播放的功能。当然了，MediaPlayer 中的所有方法（准备，开始，停止等等……）几乎都是调用与硬件交互的内核层代码。而硬件往往意味着复杂，如果我们需要完成的任何工作的耗时超过 16ms（一般都会），就会看到滞后的视频列表。这也是为什么需要在后台线程中调用它们的原因。</p>
+</li>
+<li><p>我们还需要知道滚动列表中的哪一个 View 要被激活（播放视频），所以我们还需要追踪用户的滚动行为并定义可见域最大的 View。</p>
+</li>
+</ol>
+<p>##管理视频播放</p>
+<p>我们希望提供以下功能：</p>
+<p>假设某个视频正在播放，此时用户滚动了列表使得列表中某个子项目的可见域大于正在播放视频的子项目的可见域，这样我们就需要停止正在播放的视频，并开始播放新的视频（可见域更大的子项目对应的视频）。</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131709_2495.gif" alt></p>
+<p>##VideoPlayerView</p>
+<p>我们要做的第一件事就是以 TextureView 为父类实现 VideoView。而且我们在滚动列表中不能使用系统的 VideoView，因为用户在视频播放的过程中滚动列表的话，视频渲染就会乱掉。</p>
+<p>我把这部分工作分为几个部分：</p>
+<ol>
+<li>创建继承于 TextureView 的 ScalableTextureView，它能够调整 SurfaceTexture（正在播放视频的表面结构中）而且提供了一些类似于 ImageView 缩放类型的选项。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ScaleType &#123;</span><br><span class="line">    CENTER_CROP, TOP, BOTTOM, FILL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建 ScalableTextureView 的子类 VideoPlayerView，它包含所有与 MediaPlayer 相关的功能。即，这是一个封装了 MediaPlayer 并提供与 VideoView 几近一致的 API 的自定义 View。VideoPlayerView 具有所有直接调用 MediaPlayer 的方法：setDataSource，prepare, start, stop, pause, reset, release。</li>
+</ol>
+<p>##ViedioPlayer 管理器及消息控制机制</p>
+<p>视频播放管理器与负责异步调用 MediaPlayer 方法的 MessageHandlerThread 协作。因为我们需要调用的方法，如：prepare(), start() 等等……与硬件直接相关，所以我们需要在一个独立的线程中完成这些调用。此外，当我们在 UI 线程中调用 MediaPlayer.reset() MediaPlayer 会发生一些奇怪的问题，使得该方法阻塞了将近 4 分钟！这也是我们不必须调用异步的 MediaPlayer.prepareAsync() 方法的原因，因为我们完全可以在另一个线程中调用 MediaPlayer.prepare() 方法，免得让这些奇怪的问题折腾自己。因此，我们将在一个独立的线程中异步完成所有任务。</p>
+<p>在开始新的视频播放任务的事件流中，下面是一些与 MediaPlayer 相关的步骤：</p>
+<ol>
+<li><p>停止前一个播放任务，通过调用 MediaPlayer.stop() 方法完成。</p>
+</li>
+<li><p>通过调用 MediaPlayer.reset 方法重置 MediaPlayer。之所以需要这样做是因为：在滚动列表中，View 可能会被重用，而我们想要释放所有的资源。</p>
+</li>
+<li><p>通过调用 MediaPlayer.release() 方法释放 MediaPlayer 占用的资源。</p>
+</li>
+<li><p>清除 MediaPlayer 的实例，当 View 执行新的播放任务时，创建新的 MediaPlayer 实例。</p>
+</li>
+<li><p>为新的可见域最大的 View 创建 MediaPlayer 实例。</p>
+</li>
+<li><p>调用 MediaPlayer.setDataSource(String url) 为新的 MediaPlayer 设置数据源。</p>
+</li>
+<li><p>调用 MediaPlayer.prepare() 方法而不是 MediaPlayer.prepareAsync()。</p>
+</li>
+<li><p>调用 MediaPlayer.start()。</p>
+</li>
+<li><p>等待播放开始。</p>
+</li>
+</ol>
+<p>以上所有行为都被包裹到 Message 中，交给一个独立的线程完成，例如这是一个 Stop 命令的 Message，它将调用 VideoPlayerView.stop()，实际上他调用的是 MediaPlayer.stop()。我们需要自定义 Message，因为我们可能需要设置当前状态，例如现在是正在停止，还是已经停止，或者是其他的状态……这有助于我们了解当前处理的 Message 是什么命令，如果我们需要用这个命令的话我们可以做什么，例如，开始一个新的播放任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This PlayerMessage calls &#123;<span class="doctag">@link</span> MediaPlayer#stop()&#125; on the instance that is used inside &#123;<span class="doctag">@link</span> VideoPlayerView&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stop</span> <span class="keyword">extends</span> <span class="title">PlayerMessage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Stop</span><span class="params">(VideoPlayerView videoView, VideoPlayerManagerCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(videoView, callback);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">performAction</span><span class="params">(VideoPlayerView currentPlayer)</span> </span>&#123;</span><br><span class="line">        currentPlayer.stop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> PlayerMessageState <span class="title">stateBefore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> PlayerMessageState.STOPPING;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> PlayerMessageState <span class="title">stateAfter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> PlayerMessageState.STOPPED;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们需要开始一个新的播放任务，我们只需要调用 VideoPlayerManager 的一个方法，它就会添加下列 Message 到 MessagesHandlerThread 中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pause the queue processing and check current state</span></span><br><span class="line"><span class="comment">// if current state is "started" then stop old playback</span></span><br><span class="line">mPlayerHandler.addMessage(<span class="keyword">new</span> Stop(mCurrentPlayer, <span class="keyword">this</span>));</span><br><span class="line">mPlayerHandler.addMessage(<span class="keyword">new</span> Reset(mCurrentPlayer, <span class="keyword">this</span>));</span><br><span class="line">mPlayerHandler.addMessage(<span class="keyword">new</span> Release(mCurrentPlayer, <span class="keyword">this</span>));</span><br><span class="line">mPlayerHandler.addMessage(<span class="keyword">new</span> ClearPlayerInstance(mCurrentPlayer, <span class="keyword">this</span>));</span><br><span class="line"><span class="comment">// set new video player view</span></span><br><span class="line">mPlayerHandler.addMessage(<span class="keyword">new</span> SetNewViewForPlayback(newVideoPlayerView, <span class="keyword">this</span>));</span><br><span class="line"><span class="comment">// start new playback</span></span><br><span class="line">mPlayerHandler.addMessages(Arrays.asList(</span><br><span class="line">        <span class="keyword">new</span> CreateNewPlayerInstance(videoPlayerView, <span class="keyword">this</span>),</span><br><span class="line">        <span class="keyword">new</span> SetAssetsDataSourceMessage(videoPlayerView, assetFileDescriptor, <span class="keyword">this</span>), <span class="comment">// I use local file for demo</span></span><br><span class="line">        <span class="keyword">new</span> Prepare(videoPlayerView, <span class="keyword">this</span>),</span><br><span class="line">        <span class="keyword">new</span> Start(videoPlayerView, <span class="keyword">this</span>)</span><br><span class="line">));</span><br><span class="line"><span class="comment">// resume queue processing</span></span><br></pre></td></tr></table></figure>
+<p>这些 Message 都是异步处理的，因此我们能在任意时刻停止消息队列对消息的处理，并投递新的消息，例如：</p>
+<p>当前一个影片处于准备状态（已经调用了 MediaPlayer.prepare() 方法，而且 MediaPlayer.start() 方法正在消息队列中等待被执行），此时用户滚动了列表，所以我们需要在一个新的 View 上开始新的播放任务。在这种情况下我们会：</p>
+<ol>
+<li><p>停止正在执行的消息队列</p>
+</li>
+<li><p>移除所有等待执行的消息</p>
+</li>
+<li><p>投递 “Stop”, “Reset”, “Release”, “Clear Player instance” 这些消息给消息队列，它们将会在 Prepare 消息回调方法执行完成后立刻被执行。</p>
+</li>
+<li><p>投递 “Create new Media Player instance”, “Set Current Media Player”（将 MediaPlayer 对象绑定到当前需要播放视频的消息上），“Set data source”, “Prepare”, “Start”等消息。这样就会在新的 View 上播放相应的视频。</p>
+</li>
+</ol>
+<p>这样我们就能依照我们设想的那样执行播放任务：停止前一个播放任务，并开始新的播放任务。</p>
+<p>下面是相关的依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.danylovolokh:video-player-manager:0.2.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##区分列表中可见域最大的 View——列表可见域判断工具</p>
+<p>第一个问题是控制视频的播放，第二个问题则是判断哪一个 View 可见域最大，并切换该 View 对应的视频为新的播放视频。下面是调用 ListItemsVisibilityCalculator 的实体，它的具体实现 SingleListViewItemActiveCalculator 会完成对应的工作。</p>
+<p>在 Adapter 中被使用的 Model 类必须实现 ListItem 接口，以计算 List 中子项目的可见域：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A general interface for list items.</span></span><br><span class="line"><span class="comment"> * This interface is used by &#123;<span class="doctag">@link</span> ListItemsVisibilityCalculator&#125;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> danylo.volokh</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ListItem</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * When this method is called, the implementation should provide a</span></span><br><span class="line"><span class="comment">     * visibility percents in range 0 - 100 %</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> view the view which visibility percent should be</span></span><br><span class="line"><span class="comment">     * calculated.</span></span><br><span class="line"><span class="comment">     * Note: visibility doesn't have to depend on the visibility of a</span></span><br><span class="line"><span class="comment">     * full view. </span></span><br><span class="line"><span class="comment">     * It might be calculated by calculating the visibility of any</span></span><br><span class="line"><span class="comment">     * inner View</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> percents of visibility</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getVisibilityPercents</span><span class="params">(View view)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * When view visibility become bigger than "current active" view</span></span><br><span class="line"><span class="comment">     * visibility then the new view becomes active.</span></span><br><span class="line"><span class="comment">     * This method is called</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setActive</span><span class="params">(View newActiveView, <span class="keyword">int</span> newActiveViewPosition)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * There might be a case when not only new view becomes active,</span></span><br><span class="line"><span class="comment">     * but also when no view is active.</span></span><br><span class="line"><span class="comment">     * When view should stop being active this method is called</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deactivate</span><span class="params">(View currentView, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ListItemsVisibilityCalculator 将追踪滚动方向，并在运行时计算子项目的可见域。子项目的可见域依赖于列表中的任意一个咨询项目，即取决于你实现 getVisibilityPercents() 方法的方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This method calculates visibility percentage of currentView.</span></span><br><span class="line"><span class="comment"> * This method works correctly when currentView is smaller then it's enclosure.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> currentView - view which visibility should be calculated</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> currentView visibility percents</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVisibilityPercents</span><span class="params">(View currentView)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> percents = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    currentView.getLocalVisibleRect(mCurrentViewRect);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> height = currentView.getHeight();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(viewIsPartiallyHiddenTop())&#123;</span><br><span class="line">        <span class="comment">// view is partially hidden behind the top edge</span></span><br><span class="line">    percents = (height - mCurrentViewRect.top) * <span class="number">100</span> / height;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(viewIsPartiallyHiddenBottom(height))&#123;</span><br><span class="line">        percents = mCurrentViewRect.bottom * <span class="number">100</span> / height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> percents;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，每一个 View 都需要知道计算其可见域的细节。当发生滚动时，SingleListViewItemActiveCalculator 会要求每一个 View 计算其可见域大小，这也意味其开销之重。</p>
+<p>当任意一个子项目的可见域大小超过了当前播放视频项目的可见域大小，就会调用 setActive 方法切换播放任务。</p>
+<p>下面是与 Adapter 功能类似的的 ItemsPositionGetter 的抽象逻辑，它将建立 ListItemsVisibilityCalculator 与 ListView/RecyclerView 交互的桥梁。这样的话 ListItemsVisibilityCalculator 不需要了解它需要操作的 View 到底是 ListView 还是 RecyclerView。只需要完成它自己的工作，但仍需要一些由 ItemsPositionGetter 提供的信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * This class is an API for &#123;<span class="doctag">@link</span> ListItemsVisibilityCalculator&#125;</span></span><br><span class="line"><span class="comment"> * Using this class is can access all the data from RecyclerView / </span></span><br><span class="line"><span class="comment"> * ListView</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * There is two different implementations for ListView and for </span></span><br><span class="line"><span class="comment"> * RecyclerView.</span></span><br><span class="line"><span class="comment"> * RecyclerView introduced LayoutManager that's why some of data moved</span></span><br><span class="line"><span class="comment"> * there</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Created by danylo.volokh on 9/20/2015.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ItemsPositionGetter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">   <span class="function">View <span class="title">getChildAt</span><span class="params">(<span class="keyword">int</span> position)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">indexOfChild</span><span class="params">(View view)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getChildCount</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getLastVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getFirstVisiblePosition</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的实现无疑会让 Model 类混入一些业务逻辑，违反了设计模式的部分原则。但通过一些简单的修改就能将它们解耦。不过现在这样它用起来也没多大的问题。</p>
+<p>下面是预览图和依赖：</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131709_9926.gif" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.danylovolokh:list-visibility-utils:0.2.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##组合使用上面完成的工作</p>
+<p>现在我们需要将上面的工具库结合起来使用以完成我们的功能，下面是使用 RecyclerView 实现的代码：</p>
+<ol>
+<li>初始化 ListItemsVisibilityCalculator，并传递列表的引用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Only the one (most visible) view should be active (and playing).</span></span><br><span class="line"><span class="comment"> * To calculate visibility of views we use &#123;<span class="doctag">@link</span> SingleListViewItemActiveCalculator&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ListItemsVisibilityCalculator mVideoVisibilityCalculator = <span class="keyword">new</span> SingleListViewItemActiveCalculator(</span><br><span class="line"><span class="keyword">new</span> DefaultSingleItemCalculatorCallback(), mList);</span><br></pre></td></tr></table></figure>
+<p>当被激活（播放视频）的 View 发生改变，DefaultSingleItemCalculatorCallback 只调用 ListItem.setActive 方法，但你可以重载该方法并按照你的需求实现相应逻辑：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Methods of this callback will be called when new active item is found &#123;<span class="doctag">@link</span> Callback#activateNewCurrentItem(ListItem, View, int)&#125;</span></span><br><span class="line"><span class="comment"> * or when there is no active item &#123;<span class="doctag">@link</span> Callback#deactivateCurrentItem(ListItem, View, int)&#125; - this might happen when user scrolls really fast</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Callback</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">ListItem</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">activateNewCurrentItem</span><span class="params">(T item, View view, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deactivateCurrentItem</span><span class="params">(T item, View view, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>初始化 VideoPlayerManager</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Here we use &#123;<span class="doctag">@link</span> SingleVideoPlayerManager&#125;, which means that only one video playback is possible.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> VideoPlayerManager&lt;MetaData&gt; mVideoPlayerManager = <span class="keyword">new</span> SingleVideoPlayerManager(<span class="keyword">new</span> PlayerItemChangeListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPlayerItemChanged</span><span class="params">(MetaData metaData)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为 RecyclerView 设置滚动监听，并传递滚动事件给列表可见工具库处理。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView view, <span class="keyword">int</span> scrollState)</span> </span>&#123;</span><br><span class="line"> mScrollState = scrollState;</span><br><span class="line"> <span class="keyword">if</span>(scrollState == RecyclerView.SCROLL_STATE_IDLE &amp;&amp; mList.isEmpty())&#123;</span><br><span class="line"></span><br><span class="line"> mVideoVisibilityCalculator.onScrollStateIdle(</span><br><span class="line">          mItemsPositionGetter,</span><br><span class="line">          mLayoutManager.findFirstVisibleItemPosition(),</span><br><span class="line">          mLayoutManager.findLastVisibleItemPosition());</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">if</span>(!mList.isEmpty())&#123;</span><br><span class="line">   mVideoVisibilityCalculator.onScroll(</span><br><span class="line">         mItemsPositionGetter,</span><br><span class="line">         mLayoutManager.findFirstVisibleItemPosition(),</span><br><span class="line">         mLayoutManager.findLastVisibleItemPosition() -</span><br><span class="line">         mLayoutManager.findFirstVisibleItemPosition() + <span class="number">1</span>,</span><br><span class="line">         mScrollState);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>创建 ItemsPositionGetter</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ItemsPositionGetter mItemsPositionGetter = </span><br><span class="line"><span class="keyword">new</span> RecyclerViewItemPositionGetter(mLayoutManager, mRecyclerView);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在 onResume() 中调用方法以开始计算子项目的可见域，在我们显示出列表时选出可见域最大的子项目</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">    <span class="keyword">if</span>(!mList.isEmpty())&#123;</span><br><span class="line">        <span class="comment">// need to call this method from list view handler in order to have filled list</span></span><br><span class="line"></span><br><span class="line">        mRecyclerView.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                mVideoVisibilityCalculator.onScrollStateIdle(</span><br><span class="line">                        mItemsPositionGetter,</span><br><span class="line">                        mLayoutManager.findFirstVisibleItemPosition(),</span><br><span class="line">                        mLayoutManager.findLastVisibleItemPosition());</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就完成了，在滚动列表中播放许多视频：</p>
+<p><img src="http://img.my.csdn.net/uploads/201601/30/1454131535_2903.gif" alt></p>
+<p>这个项目关键部分的讲解基本上已经完成了，下面是具体的代码和范例：</p>
+<p><a href="https://github.com/danylovolokh/VideoPlayerManager" target="_blank" rel="noopener">https://github.com/danylovolokh/VideoPlayerManager</a></p>
+<p>感谢阅读 ;)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">收藏</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位操作</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://londbell.github.io/2022/03/01/Implementing-video-playback-in-a-scrolled list/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/23/leetcode-65-valid-number/" class="archive-article-date">
-  	<time datetime="2016-03-23T01:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/01/performance-listviews/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高性能ListViews</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/23/leetcode-65-valid-number/">Valid Number</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -314,8 +518,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
