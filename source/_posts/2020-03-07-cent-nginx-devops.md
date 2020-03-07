@@ -14,20 +14,7 @@ tags:
 2. 非源码编译升级PHP：[yum安装PHP升级到7.2版本][2]
 3. [在CentOS6.4 yum 线上升级 php5.3.3 至 PHP5.6 .24][3]
 4. [如何在CentOS 7上升级到PHP 7][4]
-5. 这篇有个sh脚本教你备份，强烈推荐 [用 yum 把服务器的 php 升级到 7][5]  
-
-    ``` shell
-    echo "yum remove -y \\">removephp.sh
-    # yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" >> removephp.sh
-    
-    echo "yum install \\">installphp7.sh
- yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" >>installphp7.sh 
- 
-  yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh
-Warning: No matches found for: php70w-pecl-xhprof
-No Matches found
-    ```
-    
+5. 这篇有个sh脚本教你备份，强烈推荐 [用 yum 把服务器的 php 升级到 7][5]
 6. [Centos7升级和安装PHP][6]
 7. [php-fpm监听socket类型-解决Connection refused][7]
 8. [connect() to unix:/tmp/php-fpm.sock failed (2: No such file or directory)][8]
@@ -38,6 +25,15 @@ No Matches found
 13. [Discuz!教程之启用HTTPS后解决各处遗留http://网址问题][13]
 14. [CentOS7启动、停止MySQL][14]
 15. [one-tab聚合][15]
+
+``` shell
+    echo "yum remove -y \\">removephp.sh
+    yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" >> removephp.sh
+    echo "yum install \\">installphp7.sh
+    yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" >>installphp7.sh
+    yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh
+    # Warning: No matches found for: php70w-pecl-xhprof No Matches found
+```
 
   [1]: https://blog.csdn.net/yyyyu3/article/details/80090668
   [2]: https://blog.csdn.net/qq_31725371/article/details/83033884

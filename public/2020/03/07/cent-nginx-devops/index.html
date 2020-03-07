@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="我的服务器维护能力也就是个半吊子水平，还是把一些日常案例记下来，以后方便维护：  Cent OS使用Mariadb-sever，而不是MySQL:CentOS7.2安装mariadb-server,解决Failed to start mysqld.service: Unit not found 非源码编译升级PHP：yum安装PHP升级到7.2版本 在CentOS6.4 yum 线上升级 php5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-07T09:17:56.974Z">
+<meta property="og:updated_time" content="2020-03-07T09:25:21.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下的运维记录">
 <meta name="twitter:description" content="我的服务器维护能力也就是个半吊子水平，还是把一些日常案例记下来，以后方便维护：  Cent OS使用Mariadb-sever，而不是MySQL:CentOS7.2安装mariadb-server,解决Failed to start mysqld.service: Unit not found 非源码编译升级PHP：yum安装PHP升级到7.2版本 在CentOS6.4 yum 线上升级 php5">
@@ -215,11 +215,7 @@
 <li>非源码编译升级PHP：<a href="https://blog.csdn.net/qq_31725371/article/details/83033884" target="_blank" rel="noopener">yum安装PHP升级到7.2版本</a></li>
 <li><a href="https://blog.csdn.net/xfcy1990/article/details/52851510" target="_blank" rel="noopener">在CentOS6.4 yum 线上升级 php5.3.3 至 PHP5.6 .24</a></li>
 <li><a href="https://cloud.tencent.com/developer/article/1356524" target="_blank" rel="noopener">如何在CentOS 7上升级到PHP 7</a></li>
-<li><p>这篇有个sh脚本教你备份，强烈推荐 <a href="https://cloud.tencent.com/developer/article/10057:" target="_blank" rel="noopener">用 yum 把服务器的 php 升级到 7</a>  </p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    echo "yum remove -y \\"&gt;removephp.sh</span><br><span class="line">    # yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" &gt;&gt; removephp.sh</span><br><span class="line">    </span><br><span class="line">    echo "yum install \\"&gt;installphp7.sh</span><br><span class="line"> yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" &gt;&gt;installphp7.sh </span><br><span class="line"> </span><br><span class="line">  yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh</span><br><span class="line">Warning: No matches found for: php70w-pecl-xhprof</span><br><span class="line">No Matches found</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="6">
+<li>这篇有个sh脚本教你备份，强烈推荐 <a href="https://cloud.tencent.com/developer/article/10057:" target="_blank" rel="noopener">用 yum 把服务器的 php 升级到 7</a></li>
 <li><a href="https://www.cnblogs.com/biaopei/p/7730464.html" target="_blank" rel="noopener">Centos7升级和安装PHP</a></li>
 <li><a href="https://blog.csdn.net/ty_hf/article/details/78483057" target="_blank" rel="noopener">php-fpm监听socket类型-解决Connection refused</a></li>
 <li><a href="https://stackoverflow.com/questions/35989291/connect-to-unix-tmp-php-fpm-sock-failed-2-no-such-file-or-directory" target="_blank" rel="noopener">connect() to unix:/tmp/php-fpm.sock failed (2: No such file or directory)</a></li>
@@ -231,6 +227,7 @@
 <li><a href="https://blog.csdn.net/plg17/article/details/78300416" target="_blank" rel="noopener">CentOS7启动、停止MySQL</a></li>
 <li><a href="https://www.one-tab.com/page/6mh8vNGYTf2K3oaJA09XLA" target="_blank" rel="noopener">one-tab聚合</a></li>
 </ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo "yum remove -y \\"&gt;removephp.sh</span><br><span class="line">yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" &gt;&gt; removephp.sh</span><br><span class="line">echo "yum install \\"&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" &gt;&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> Warning: No matches found <span class="keyword">for</span>: php70w-pecl-xhprof No Matches found</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -508,6 +505,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
              
@@ -536,14 +541,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
@@ -568,6 +565,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">p10k</a>
               </li>
              
@@ -589,14 +594,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cent os</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
