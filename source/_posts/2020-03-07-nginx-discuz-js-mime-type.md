@@ -140,7 +140,6 @@ Dz官方也有类似的问题，[Content-Type错误导致验证码无法加载][
 
 问题结束。
 
-
   [1]: http://www.luoxiao123.cn/content-option-nosniff-mime-bug.html
   [2]: https://gitee.com/ComsenzDiscuz/DiscuzX/issues/IKKGE
   [3]: https://gitee.com/ComsenzDiscuz/DiscuzX/issues/ID8TQ

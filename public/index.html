@@ -285,6 +285,113 @@
 
 
   
+    <article id="post-cent-nginx-devops" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/cent-nginx-devops/">CentOS下的运维记录</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/07/cent-nginx-devops/" class="archive-article-date">
+  	<time datetime="2020-03-07T08:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我的服务器维护能力也就是个半吊子水平，还是把一些日常案例记下来，以后方便维护：</p>
+<ol>
+<li><code>Cent OS</code>使用<code>Mariadb-sever</code>，而不是<code>MySQL</code>:<a href="https://blog.csdn.net/yyyyu3/article/details/80090668" target="_blank" rel="noopener">CentOS7.2安装mariadb-server,解决Failed to start mysqld.service: Unit not found</a></li>
+<li>非源码编译升级PHP：<a href="https://blog.csdn.net/qq_31725371/article/details/83033884" target="_blank" rel="noopener">yum安装PHP升级到7.2版本</a></li>
+<li><a href="https://blog.csdn.net/xfcy1990/article/details/52851510" target="_blank" rel="noopener">在CentOS6.4 yum 线上升级 php5.3.3 至 PHP5.6 .24</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1356524" target="_blank" rel="noopener">如何在CentOS 7上升级到PHP 7</a></li>
+<li><p>这篇有个sh脚本教你备份，强烈推荐 <a href="https://cloud.tencent.com/developer/article/10057:" target="_blank" rel="noopener">用 yum 把服务器的 php 升级到 7</a>  </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    echo "yum remove -y \\"&gt;removephp.sh</span><br><span class="line">    # yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" &gt;&gt; removephp.sh</span><br><span class="line">    </span><br><span class="line">    echo "yum install \\"&gt;installphp7.sh</span><br><span class="line"> yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" &gt;&gt;installphp7.sh </span><br><span class="line"> </span><br><span class="line">  yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh</span><br><span class="line">Warning: No matches found for: php70w-pecl-xhprof</span><br><span class="line">No Matches found</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="6">
+<li><a href="https://www.cnblogs.com/biaopei/p/7730464.html" target="_blank" rel="noopener">Centos7升级和安装PHP</a></li>
+<li><a href="https://blog.csdn.net/ty_hf/article/details/78483057" target="_blank" rel="noopener">php-fpm监听socket类型-解决Connection refused</a></li>
+<li><a href="https://stackoverflow.com/questions/35989291/connect-to-unix-tmp-php-fpm-sock-failed-2-no-such-file-or-directory" target="_blank" rel="noopener">connect() to unix:/tmp/php-fpm.sock failed (2: No such file or directory)</a></li>
+<li><a href="https://www.cnblogs.com/zhangyin6985/p/6047333.html" target="_blank" rel="noopener">Nginx常见502错误</a></li>
+<li><a href="http://www.511yj.com/centos-yum-php.html" target="_blank" rel="noopener">centos7.2yum安装php70w.x86_64</a></li>
+<li><a href="https://blog.csdn.net/zhengbin9/article/details/82745758" target="_blank" rel="noopener">CentOS7添加epel源和remi源支持PHP7.1</a></li>
+<li><a href="https://www.cnblogs.com/Jimmy1988/p/7243699.html" target="_blank" rel="noopener">Linux文件权限与属性详解 之 一般权限</a></li>
+<li><a href="https://blog.csdn.net/lih062624/article/details/77320739" target="_blank" rel="noopener">Discuz!教程之启用HTTPS后解决各处遗留http://网址问题</a></li>
+<li><a href="https://blog.csdn.net/plg17/article/details/78300416" target="_blank" rel="noopener">CentOS7启动、停止MySQL</a></li>
+<li><a href="https://www.one-tab.com/page/6mh8vNGYTf2K3oaJA09XLA" target="_blank" rel="noopener">one-tab聚合</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cent os</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/07/cent-nginx-devops/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-nginx-discuz-js-mime-type" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -325,11 +432,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">discuz</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">discuz</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1002,98 +1109,9 @@
 
 
   
-    <article id="post-zsh-alias" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/14/zsh-alias/">zsh alias折腾记录</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/14/zsh-alias/" class="archive-article-date">
-  	<time datetime="2020-02-14T08:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>zsh</code>可以自定义<code>alias</code>，它的<code>alias</code>有很多类型，非常灵活。</p>
-<h2 id="zsh-which-alias"><a href="#zsh-which-alias" class="headerlink" title="zsh which alias"></a>zsh which alias</h2><p><code>zsh</code>提供了一个方法来确认某个<code>alias</code>真正指代的指令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which ll</span><br></pre></td></tr></table></figure>
-<p>在我的<code>zsh</code>上，他会输出：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll: aliased to la -l</span><br></pre></td></tr></table></figure>
-<p>所以想确认这个<code>alias</code>指代了什么，使用<code>which</code>即可。</p>
-        
-          <a class="article-more-a" href="/2020/02/14/zsh-alias/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">alias</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/14/zsh-alias/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1212,14 +1230,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
              
@@ -1229,18 +1239,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,6 +1258,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
@@ -1272,6 +1278,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">p10k</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dotfiles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">devops</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cent os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
@@ -1280,15 +1322,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">discuz</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,19 +1338,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">p10k</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dotfiles</a>
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
               </li>
              
               <li class="article-tag-list-item">
