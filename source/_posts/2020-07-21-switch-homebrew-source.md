@@ -2,8 +2,8 @@
 title: switch-homebrew-source
 date: 2020-07-21 14:27:54
 tags:
-    -- homebrew
-    -- mac
+    - homebrew
+    - mac
 ---
 
 HomeBrew每次更新包和安装包都非常慢，本来替换为了清华源，结果发现清华源也一样卡顿，于是换成了中科大源，表现相对好了不少。
