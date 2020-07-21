@@ -1,5 +1,5 @@
 ---
-title: switch-homebrew-source
+title: HomeBrew替换为中科大源
 date: 2020-07-21 14:27:54
 tags:
     - homebrew
