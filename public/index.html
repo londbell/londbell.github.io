@@ -186,6 +186,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-binary-tree-inorder-travesal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/14/binary-tree-inorder-travesal/">binary-tree-inorder-travesal</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/14/binary-tree-inorder-travesal/" class="archive-article-date">
+  	<time datetime="2020-09-14T07:58:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，返回它的中序遍历结果。</p>
+<p>示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,null,2,3]</span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    /</span><br><span class="line">   3</span><br><span class="line">输出: [1,3,2]</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/09/14/binary-tree-inorder-travesal/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/14/binary-tree-inorder-travesal/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-switch-homebrew-source" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -207,20 +289,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>HomeBrew每次更新包和安装包都非常慢，本来替换为了清华源，结果发现清华源也一样卡顿，于是换成了中科大源，表现相对好了不少。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入 brew 的仓库根目录</span></span><br><span class="line">cd "$(brew --repo)"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改为中科大的源</span></span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br></pre></td></tr></table></figure>
-<p>继续修改 <code>homebrew-cask</code>、<code>homebrew-core</code>、<code>homebrew-services</code> 的远程仓库地址:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask"</span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line">cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"</span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br></pre></td></tr></table></figure>
-<p>修改完仓库地址后，更新一下，加上 <code>-v</code>参数可以看到当前跑的进度：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update -v</span><br></pre></td></tr></table></figure>
-<p>最后修改<code>homebrew-bottles</code>的源信息，如果你使用<code>Bash</code>，长期更换方案：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' &gt;&gt; ~/.bash_profile</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>临时更换方案：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles</span><br></pre></td></tr></table></figure>
-<p>如果使用<code>zsh</code>，长期更换方案：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>临时更换方案：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles</span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2020/07/21/switch-homebrew-source/#more">more >></a>
+        
       
 
       
@@ -311,11 +382,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java - LeetCode - DP</a>
         		</li>
       		
 		</ul>
@@ -1019,96 +1086,6 @@
 
 
   
-    <article id="post-manjaro-in-wsl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/manjaro-in-wsl/">WSL安装Manjaro体验(烂尾工程)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/22/manjaro-in-wsl/" class="archive-article-date">
-  	<time datetime="2020-02-22T12:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装Arch"><a href="#安装Arch" class="headerlink" title="安装Arch"></a>安装Arch</h2><p>使用<a href="https://github.com/DDoSolitary/LxRunOffline/wiki" target="_blank" rel="noopener">LxRunOffline</a>来安装Arch，需要准备好<a href="https://lxrunoffline.apphb.com/download/ArchLinux" target="_blank" rel="noopener">Arch</a></p>
-<p>在管理员权限运行下的Powershell中，使用以下的指令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\LxRunOffline.exe i -n Manjaro -d .\Manjaro\ -f .\archlinux-bootstrap-2020.01.01-x86_64.tar.gz -s -r root.x86_64</span><br></pre></td></tr></table></figure>
-<p>上面只针对于我自己的配置，需要根据你自己想安装到的位置和名称来修改。</p>
-<p>对于Arch，命令中的<code>-r root.x86_64</code>是必须的，<code>-s</code>说明会生成快捷方式。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/微信截图_20200125201236.png" alt><br>如上图所示，说明完成了Manjaro的安装。</p>
-<p>直接启动LxRunOffline生成的快捷方式，会进入这个WSL环境的Bash，默认以Root用户登录。说明已经安装成功：<br><img src="https://cdn.jsdelivr.net/gh/londbell/pic/img/微信截图_20200125201414.png" alt></p>
-        
-          <a class="article-more-a" href="/2020/02/22/manjaro-in-wsl/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">wsl</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">arch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">manjaro</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/22/manjaro-in-wsl/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1250,6 +1227,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -1263,30 +1252,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BSD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,14 +1271,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -1327,6 +1284,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cent os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Java - LeetCode - DP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1346,19 +1331,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
               </li>
              
               <li class="article-tag-list-item">
