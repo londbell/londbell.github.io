@@ -186,19 +186,107 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-leetcode-74-search-a-2d-matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-android-01-android-view-InflateException" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">search a 2dmatrix</a>
+      <a class="article-title" href="/2016/01/27/android-01-android-view-InflateException/">android.view.InflateException: Binary XML file line 错误</a>
     </h1>
   
 
         
-        <a href="/2015/09/01/leetcode-74-search-a-2d-matrix/" class="archive-article-date">
+        <a href="/2016/01/27/android-01-android-view-InflateException/" class="archive-article-date">
+  	<time datetime="2016-01-27T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>自定义的View，在XML中调用出现android.view.InflateException: Binary XML file line 错误。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">View(Context context)     <span class="comment">//Simple constructor to use when creating a view from code</span></span><br><span class="line"></span><br><span class="line">View(Context context, AttributeSet attrs)     <span class="comment">//Constructor that is called when inflating a view from XML</span></span><br><span class="line"></span><br><span class="line">View(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)     <span class="comment">//Perform inflation from XML and apply a class-specific base style</span></span><br></pre></td></tr></table></figure>
+<p>第二个和第三个构造函数对于XML这种引用方式是必须实现的，这三个构造函数应该是在不同的应用场合来实例化一个View对象。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">坑</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/01/27/android-01-android-view-InflateException/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-leetcode-leetcode-74-search-a-2d-matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/01/leetcode-leetcode-74-search-a-2d-matrix/">search a 2dmatrix</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/01/leetcode-leetcode-74-search-a-2d-matrix/" class="archive-article-date">
   	<time datetime="2015-09-01T07:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-01</time>
 </a>
         
@@ -213,7 +301,7 @@ The first integer of each row is greater than the last integer of the previous r
 </code></pre><p>For example,</p>
 <p>Consider the following matrix: </p>
         
-          <a class="article-more-a" href="/2015/09/01/leetcode-74-search-a-2d-matrix/#more">more >></a>
+          <a class="article-more-a" href="/2015/09/01/leetcode-leetcode-74-search-a-2d-matrix/#more">more >></a>
         
       
 
@@ -245,7 +333,7 @@ The first integer of each row is greater than the last integer of the previous r
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/01/leetcode-74-search-a-2d-matrix/">展开全文 >></a>
+          <a class="article-more-a" href="/2015/09/01/leetcode-leetcode-74-search-a-2d-matrix/">展开全文 >></a>
         </p>
       
 
@@ -275,19 +363,19 @@ The first integer of each row is greater than the last integer of the previous r
 
 
   
-    <article id="post-leetcode-13-Roman-to-Integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-leetcode-leetcode-13-Roman-to-Integer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/03/leetcode-13-Roman-to-Integer/">Roman to Integer</a>
+      <a class="article-title" href="/2014/12/03/leetcode-leetcode-13-Roman-to-Integer/">Roman to Integer</a>
     </h1>
   
 
         
-        <a href="/2014/12/03/leetcode-13-Roman-to-Integer/" class="archive-article-date">
+        <a href="/2014/12/03/leetcode-leetcode-13-Roman-to-Integer/" class="archive-article-date">
   	<time datetime="2014-12-03T09:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-03</time>
 </a>
         
@@ -300,7 +388,7 @@ The first integer of each row is greater than the last integer of the previous r
 <p>Input is guaranteed to be within the range from 1 to 3999.</p>
 <h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>罗马数字是阿拉伯数字传入之前使用的一种数码。罗马数字采用七个罗马字母作数字、即Ⅰ（1）、X（10）、C（100）、M（1000）、V（5）、L（50）、D（500）。记数的方法：<br>    1.相同的数字连写，所表示的数等于这些数字相加得到的数，如 Ⅲ=3；<br>    2.小的数字在大的数字的右边，所表示的数等于这些数字相加得到的数，如 Ⅷ=8、Ⅻ=12；<br>    3.小的数字（限于 Ⅰ、X 和 C）在大的数字的左边，所表示的数等于大数减小数得到的数，如 Ⅳ=4、Ⅸ=9；<br>    4.在一个数的上面画一条横线，表示这个数增值 1,000 倍，如=5000。<br>
         
-          <a class="article-more-a" href="/2014/12/03/leetcode-13-Roman-to-Integer/#more">more >></a>
+          <a class="article-more-a" href="/2014/12/03/leetcode-leetcode-13-Roman-to-Integer/#more">more >></a>
         
       
 
@@ -328,7 +416,7 @@ The first integer of each row is greater than the last integer of the previous r
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/12/03/leetcode-13-Roman-to-Integer/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/12/03/leetcode-leetcode-13-Roman-to-Integer/">展开全文 >></a>
         </p>
       
 
@@ -358,19 +446,19 @@ The first integer of each row is greater than the last integer of the previous r
 
 
   
-    <article id="post-leetcode-02-Add-Two-Numbers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-leetcode-leetcode-02-Add-Two-Numbers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">Add Two Numbers</a>
+      <a class="article-title" href="/2014/07/03/leetcode-leetcode-02-Add-Two-Numbers/">Add Two Numbers</a>
     </h1>
   
 
         
-        <a href="/2014/07/03/leetcode-02-Add-Two-Numbers/" class="archive-article-date">
+        <a href="/2014/07/03/leetcode-leetcode-02-Add-Two-Numbers/" class="archive-article-date">
   	<time datetime="2014-07-03T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-03</time>
 </a>
         
@@ -383,7 +471,7 @@ The first integer of each row is greater than the last integer of the previous r
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 <p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
         
-          <a class="article-more-a" href="/2014/07/03/leetcode-02-Add-Two-Numbers/#more">more >></a>
+          <a class="article-more-a" href="/2014/07/03/leetcode-leetcode-02-Add-Two-Numbers/#more">more >></a>
         
       
 
@@ -415,7 +503,7 @@ The first integer of each row is greater than the last integer of the previous r
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/03/leetcode-02-Add-Two-Numbers/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/07/03/leetcode-leetcode-02-Add-Two-Numbers/">展开全文 >></a>
         </p>
       
 
@@ -445,19 +533,19 @@ The first integer of each row is greater than the last integer of the previous r
 
 
   
-    <article id="post-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-leetcode-leetcode-01-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/01/leetcode-01-Two-Sum/">Two Sum</a>
+      <a class="article-title" href="/2014/07/01/leetcode-leetcode-01-Two-Sum/">Two Sum</a>
     </h1>
   
 
         
-        <a href="/2014/07/01/leetcode-01-Two-Sum/" class="archive-article-date">
+        <a href="/2014/07/01/leetcode-leetcode-01-Two-Sum/" class="archive-article-date">
   	<time datetime="2014-07-01T13:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-07-01</time>
 </a>
         
@@ -472,7 +560,7 @@ The first integer of each row is greater than the last integer of the previous r
 <p>Given nums = [2, 7, 11, 15], target = 9,</p>
 <p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
         
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/#more">more >></a>
+          <a class="article-more-a" href="/2014/07/01/leetcode-leetcode-01-Two-Sum/#more">more >></a>
         
       
 
@@ -500,7 +588,7 @@ The first integer of each row is greater than the last integer of the previous r
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/07/01/leetcode-01-Two-Sum/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/07/01/leetcode-leetcode-01-Two-Sum/">展开全文 >></a>
         </p>
       
 
@@ -699,6 +787,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -711,11 +807,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -743,6 +839,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">discuz</a>
               </li>
              
@@ -759,23 +859,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,6 +888,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LeetCode - 动态规划 - 字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">generics</a>
               </li>
             
             <div class="clearfix"></div>
