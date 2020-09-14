@@ -2,8 +2,9 @@
 title: partition-equal-subset-sum
 date: 2020-03-08 19:51:16
 tags:
-    - leetcode
-    - DP
+	- Java 
+	- LeetCode
+	- DP
 ---
 
-https://leetcode-cn.com/problems/partition-equal-subset-sum/
+[原题链接](https://leetcode-cn.com/problems/partition-equal-subset-sum/)

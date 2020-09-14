@@ -30,7 +30,8 @@ return [0, 1].
 
 [原题地址](https://leetcode.com/problems/two-sum/)
 
-逗逼解法：
+逗逼解法:
+
 ------------
 
 ```java
