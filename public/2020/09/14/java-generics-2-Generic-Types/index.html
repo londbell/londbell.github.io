@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://londbell.github.io">
-  <title>Archives: 2016/3 | RA·CAILUM</title>
+  <title>2.泛型类型 | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RA·CAILUM">
-<meta property="og:url" content="http://londbell.github.io/archives/2016/03/index.html">
+  <meta name="description" content="泛型类型是指将类型作为参数来定义的类或接口。下面的Box类会被逐步修改，以演示这个概念。">
+<meta name="keywords" content="java,generics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.泛型类型">
+<meta property="og:url" content="http://londbell.github.io/2020/09/14/java-generics-2-Generic-Types/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
+<meta property="og:description" content="泛型类型是指将类型作为参数来定义的类或接口。下面的Box类会被逐步修改，以演示这个概念。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-14T09:02:28.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RA·CAILUM">
+<meta name="twitter:title" content="2.泛型类型">
+<meta name="twitter:description" content="泛型类型是指将类型作为参数来定义的类或接口。下面的Box类会被逐步修改，以演示这个概念。">
   
     <link rel="alternative" href="/atom.xml" title="RA·CAILUM" type="application/atom+xml">
   
@@ -184,114 +189,210 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java-generics-2-Generic-Types" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/27/leetcode-leetcode-338-Counting-Bits/" class="archive-article-date">
-  	<time datetime="2016-03-27T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/27/leetcode-leetcode-338-Counting-Bits/">Counting Bits</a>
+    <h1 class="article-title" itemprop="name">
+      2.泛型类型
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/09/14/java-generics-2-Generic-Types/" class="archive-article-date">
+  	<time datetime="2020-09-14T09:01:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>泛型类型是指将类型作为参数来定义的类或接口。下面的<code>Box</code>类会被逐步修改，以演示这个概念。</p>
+<a id="more"></a>
+<h2 id="简单的Box类"><a href="#简单的Box类" class="headerlink" title="简单的Box类"></a>简单的Box类</h2><p>先开始审查这个操作<code>Object</code>以容纳任何类型的非泛型<code>Box</code>类。他只需要提供两个方法，<code>set</code>方法把一个对象添加到<code>box</code>对象中，<code>get</code>方法取出这个对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Box</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object object;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(Object object)</span> </span>&#123; <span class="keyword">this</span>.object = object; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> object; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于这些方法要么接受一个<code>Ojbect</code>，要么返回一个<code>Ojbect</code>。你可以自由的传递任何你想要的对象(假如传递的值并不是原始类型)。但在编译时，没有任何方法来验证这个类被如何使用。某部分的代码可能把一个<code>Integer</code>对象放进<code>Box</code>对象中，然后期望能从中取出一个<code>Integer</code>对象，同时其他部分的代码会错误的传递一个<code>String</code>对象，结果就是运行时出现异常。</p>
+<h2 id="Box类的泛型版本"><a href="#Box类的泛型版本" class="headerlink" title="Box类的泛型版本"></a>Box类的泛型版本</h2><p>泛型类可以按照下面的格式来定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">name</span>&lt;<span class="title">T1</span>, <span class="title">T2</span>, ..., <span class="title">Tn</span>&gt; </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>类型参数部分被尖括弧包括起来，在类名后面。它确定了类型参数(也可以叫类型变量)<code>T1</code>,<code>T2</code>,…,<code>Tn</code>。</p>
+<p>为了把Box类变成使用泛型的类，你应该把<code>public class Box</code>改成<code>public class Box&lt;T&gt;</code>来提供泛型类型定义，也就是类型变量，<code>T</code>，它可以在类中的任何位置使用。</p>
+<p>这样一来，<code>Box</code>类变成了:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Generic version of the Box class.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt; the type of the value being boxed</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Box</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// T stands for "Type"</span></span><br><span class="line">    <span class="keyword">private</span> T t;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T t)</span> </span>&#123; <span class="keyword">this</span>.t = t; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> t; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如你所见，<code>Object</code>出现的地方都变成了<code>T</code>，他可以是任何非原生类型，包括任何类类型、接口类型、数组类型，甚至是另一个类型变量。</p>
+<p>可以使用同样的方法来创建一个泛型接口。</p>
+<h2 id="类型参数命名约定"><a href="#类型参数命名约定" class="headerlink" title="类型参数命名约定"></a>类型参数命名约定</h2><p>按照约定，类型参数(“形式参数”)应该是单个、大写的英文字母。这和普通变量命名有着明显的反差，同时也有很合理的理由：没有这种约定，就很难区分类型变量与类、接口的命名。</p>
+<p>最常用的类型参数命名如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">E - Element (used extensively by the Java Collections Framework)</span><br><span class="line">K - Key</span><br><span class="line">N - Number</span><br><span class="line">T - Type</span><br><span class="line">V - Value</span><br><span class="line">S,U,V etc. - <span class="number">2</span>nd, <span class="number">3</span>rd, <span class="number">4</span>th types</span><br></pre></td></tr></table></figure>
+<p>你会在本课程的其他章节中看见这些贯穿于<code>Java SE API</code>的命名。</p>
+<h2 id="援引与实例化泛型类型"><a href="#援引与实例化泛型类型" class="headerlink" title="援引与实例化泛型类型"></a>援引与实例化泛型类型</h2><p>为了在代码中引用一个泛型化的<code>Box</code>类，你要进行泛型类型调用，也就是用一些具体的值来代替<code>T</code>，例如使用<code>Integer</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; integerBox;</span><br></pre></td></tr></table></figure>
+<p>你可以把泛型类型调用看成和普通方法调用类似，但和为方法传递实际参数不同，你应该传递一个类型作为实际参数。在这个例子中，<code>Integer</code>就是传递给<code>Box</code>类的类型参数。</p>
+<h3 id="类型形参与类型实参的术语描述"><a href="#类型形参与类型实参的术语描述" class="headerlink" title="类型形参与类型实参的术语描述"></a>类型形参与类型实参的术语描述</h3><p>很多开发者交换地使用<code>类型形参</code>和<code>类型实参</code>这两个术语。但这两个术语并不一样。在代码中，提供类型实参是为了创建一个参数化的类型。因此<code>Foo&lt;T&gt;</code>中的<code>T</code>是<code>类型形参</code>，<code>Foo&lt;String&gt;</code>中的<code>String</code>是<code>类型实参</code>，这个课程中会严格遵守这两个术语的定义。</p>
+<p>和其他变量声明类似，这些代码并没有实际创建一个<code>Box</code>对象，它只是简单地声明了<code>integerBox</code>会保存一个指向<code>存放Integer类型的Box对象</code>的引用。</p>
+<p>泛型类型的调用通常称为参数化类型。</p>
+<p>要实例化此类，请像往常一样使用new关键字，但需要将<code>&lt;Integer&gt;</code>放在类名和括号之间：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; integerBox = <span class="keyword">new</span> Box&lt;Integer&gt;();</span><br></pre></td></tr></table></figure>
+<h2 id="菱形语法"><a href="#菱形语法" class="headerlink" title="菱形语法"></a>菱形语法</h2><p>在<code>Java SE7</code>及之后的版本中，只要编译器可以从上下文确定或推断类型实参，就可以用空的类型实参（<code>&lt;&gt;</code>）替换调用通用类的构造函数所需的类型实参。 这对尖括号<code>&lt;&gt;</code>被非正式地称为菱形。 例如，您可以使用以下语句创建<code>Box &lt;Integer&gt;</code>的实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; integerBox = <span class="keyword">new</span> Box&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>有关菱形符号和类型推断的更多信息，请参见<a href="https://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html" target="_blank" rel="noopener">类型推断</a>。</p>
+<h2 id="多种类型形参"><a href="#多种类型形参" class="headerlink" title="多种类型形参"></a>多种类型形参</h2><p>如前所述，泛型类可以具有多个类型参数。 例如，通用的<code>OrderedPair</code>类实现了通用的<code>Pair</code>接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderedPair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> K key;</span><br><span class="line">    <span class="keyword">private</span> V value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OrderedPair</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以下语句创建<code>OrderedPair</code>类的两个实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;String, Integer&gt; p1 = <span class="keyword">new</span> OrderedPair&lt;String, Integer&gt;(<span class="string">"Even"</span>, <span class="number">8</span>);</span><br><span class="line">Pair&lt;String, String&gt;  p2 = <span class="keyword">new</span> OrderedPair&lt;String, String&gt;(<span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br></pre></td></tr></table></figure>
+<p><code>new OrderedPair &lt;String，Integer&gt;</code>这行语句将<code>K</code>实例化为<code>String</code>，将<code>V</code>实例化为<code>Integer</code>。 因此，<code>OrderedPair</code>的构造函数的参数类型分别为<code>String</code>和<code>Integer</code>。 由于自动装箱，将<code>String</code>和<code>int</code>传递给类构造函数是有效的。</p>
+<p>如菱形语法章节所述，由于Java编译器可以从声明<code>OrderedPair &lt;String，Integer&gt;</code>推断出<code>K</code>和<code>V</code>类型，因此可以使用菱形表示法来缩短这些语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OrderedPair&lt;String, Integer&gt; p1 = <span class="keyword">new</span> OrderedPair&lt;&gt;(<span class="string">"Even"</span>, <span class="number">8</span>);</span><br><span class="line">OrderedPair&lt;String, String&gt;  p2 = <span class="keyword">new</span> OrderedPair&lt;&gt;(<span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br></pre></td></tr></table></figure>
+<p>要创建泛型接口，请遵循与创建泛型类相同的做法。</p>
+<h2 id="使用参数化类型作为参数化类型的参数"><a href="#使用参数化类型作为参数化类型的参数" class="headerlink" title="使用参数化类型作为参数化类型的参数"></a>使用参数化类型作为参数化类型的参数</h2><p>您还可以用参数化类型（即<code>List &lt;String&gt;</code>）替换类型参数（即<code>K</code>或<code>V</code>）。 例如，使用“ <code>OrderedPair &lt;K，V&gt;</code>”示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OrderedPair&lt;String, Box&lt;Integer&gt;&gt; p = <span class="keyword">new</span> OrderedPair&lt;&gt;(<span class="string">"primes"</span>, <span class="keyword">new</span> Box&lt;Integer&gt;(...));</span><br></pre></td></tr></table></figure>
+<p>原文:<a href="https://docs.oracle.com/javase/tutorial/java/generics/types.html" target="_blank" rel="noopener">Generic Types</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位操作</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">generics</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://londbell.github.io/2020/09/14/java-generics-2-Generic-Types/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/03/23/leetcode-leetcode-65-valid-number/" class="archive-article-date">
-  	<time datetime="2016-03-23T01:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/14/java-generics-1-Why-Use-Generics/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.为什么使用泛型？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/23/leetcode-leetcode-65-valid-number/">Valid Number</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -314,8 +415,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
