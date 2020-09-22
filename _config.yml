@@ -71,6 +71,8 @@ deploy:
   type: git
   repo: git@github.com:londbell/londbell.github.io.git
   branch: master
+  name: londbell
+  email: tmacfeng@yeah.net
 
 jsonContent:
    meta: false
