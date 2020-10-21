@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/different-of-zsh-version.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/p10k-configure-instant-prompt.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/londbell/pic/img/quick-launch-zsh.gif">
-<meta property="og:updated_time" content="2020-09-22T03:06:19.704Z">
+<meta property="og:updated_time" content="2020-09-22T03:29:06.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Powerlevel10k:Instant Prompt模式">
 <meta name="twitter:description" content="最近在折腾我的zsh配置，oh-my-zsh、prezto、zinit等框架都折腾了个遍。以后大概会使用zinit为主体，混合搭配oh-my-zsh和prezto的插件来使用。其实我现在比较在意shell的反应速度，oh-my-zsh实在是有些臃肿（功能多插件多无解），prezto虽然优化了启动速度，但在功能性上不能让我满意（其实也是速度不够快orz)。">
@@ -231,14 +231,14 @@
 </ol>
 <p>在折腾这些框架的几天里，我发现<code>zsh</code>的性能其实由两方面决定，首先是前面讲到的插件数量和加载策略，这方面<code>zinit</code>和<code>prezto</code>已经做的很不错了。而另一方面就是<code>pyenv</code>和<code>nvm</code>这种包管理器插件非常影响性能，这也是为什么<code>zinit</code>和<code>prezto</code>不能让我满意的原因。</p>
 <p>这是我的<code>.bash_profile</code>里面的内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/aria2/bin:/Users/unicorn/.zinit/polaris/bin:/Users/unicorn/.nvm/versions/node/v11.3.0/bin:/Users/unicorn/sdk:/Users/unicorn/sdk/platform-tools:/Users/unicorn/sdk/tools:/Users/unicorn/maven/bin:/Users/unicorn/.rvm/bin"; export PATH;</span><br><span class="line">MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/aria2/share/doc/man:/Users/unicorn/.nvm/versions/node/v11.3.0/share/man:/usr/local/aria2/share/man:/Users/unicorn/.rvm/man:/Library/Developer/CommandLineTools/usr/share/man"; export MANPATH;</span><br><span class="line">ANDROID_HOME=$HOME/sdk</span><br><span class="line">GRADLE_USER_HOME=$HOME/.gradle</span><br><span class="line">export GRADLE_USER_HOME</span><br><span class="line">export ANDROID_HOME</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME/platform-tools</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME/tools</span><br><span class="line"></span><br><span class="line">export M2_HOME=$HOME/maven</span><br><span class="line">export M2=$M2_HOME/bin</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">export</span> MAVEN_OPTS=-Xmx:1024M</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">export</span> JAVA_TOOL_OPTIONS=-Xmx2028M</span></span><br><span class="line">export PATH=$PATH:$M2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Add RVM to PATH <span class="keyword">for</span> scripting. Make sure this is the last PATH variable change.</span></span><br><span class="line">export PATH="$PATH:$HOME/.rvm/bin"</span><br><span class="line">export NVM_DIR="/Users/unicorn/.nvm"</span><br><span class="line">[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh"  # This loads nvm</span><br><span class="line">[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*</span><br><span class="line"></span><br><span class="line">export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles</span><br><span class="line"></span><br><span class="line">if [ -f ~/.bashrc ]; then</span><br><span class="line">   source ~/.bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/aria2/bin:/Users/unicorn/.zinit/polaris/bin:/Users/unicorn/.nvm/versions/node/v11.3.0/bin:/Users/unicorn/sdk:/Users/unicorn/sdk/platform-tools:/Users/unicorn/sdk/tools:/Users/unicorn/maven/bin:/Users/unicorn/.rvm/bin"; export PATH;</span><br><span class="line">MANPATH="/usr/share/man:/usr/local/share/man:/usr/local/aria2/share/doc/man:/Users/unicorn/.nvm/versions/node/v11.3.0/share/man:/usr/local/aria2/share/man:/Users/unicorn/.rvm/man:/Library/Developer/CommandLineTools/usr/share/man"; export MANPATH;</span><br><span class="line">ANDROID_HOME=$HOME/sdk</span><br><span class="line">GRADLE_USER_HOME=$HOME/.gradle</span><br><span class="line">export GRADLE_USER_HOME</span><br><span class="line">export ANDROID_HOME</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME/platform-tools</span><br><span class="line">export PATH=$PATH:$ANDROID_HOME/tools</span><br><span class="line"></span><br><span class="line">export M2_HOME=$HOME/maven</span><br><span class="line">export M2=$M2_HOME/bin</span><br><span class="line"><span class="meta">#</span>export MAVEN_OPTS=-Xmx:1024M</span><br><span class="line"><span class="meta">#</span>export JAVA_TOOL_OPTIONS=-Xmx2028M</span><br><span class="line">export PATH=$PATH:$M2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Add RVM to PATH for scripting. Make sure this is the last PATH variable change.</span><br><span class="line">export PATH="$PATH:$HOME/.rvm/bin"</span><br><span class="line">export NVM_DIR="/Users/unicorn/.nvm"</span><br><span class="line">[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh"  # This loads nvm</span><br><span class="line">[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*</span><br><span class="line"></span><br><span class="line">export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles</span><br><span class="line"></span><br><span class="line">if [ -f ~/.bashrc ]; then</span><br><span class="line">   source ~/.bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>可以直接参考P10K作者的demo，就能知道这些玩意对性能的影响:<br><img src="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/no-instant-prompt.gif" alt="raw .zshrc with lag"></p>
 <h2 id="powerlevel10k"><a href="#powerlevel10k" class="headerlink" title="powerlevel10k"></a>powerlevel10k</h2><p>orz前面废话太多了，终于到正题了。<a href="https://github.com/romkatv/powerlevel10k" target="_blank" rel="noopener">powerlevel10k</a>是<a href="https://github.com/romkatv" target="_blank" rel="noopener">romkatv</a>为<code>zsh</code>开发的主题；其实称作主题还挺奇怪的，<code>powerlevel10k</code>有着普通主题做不到的魔力，它主打速度、灵活性和开箱即用的体验。以后可能会单独研究一下这个主题，但今天我只想讲讲它的<a href="https://github.com/romkatv/powerlevel10k/blob/master/README.md#instant-prompt" target="_blank" rel="noopener">Instant prompt</a>模式。</p>
 <h3 id="Instant-prompt"><a href="#Instant-prompt" class="headerlink" title="Instant prompt"></a>Instant prompt</h3><p>我们再来重放一下之前的lag表现：<br><img src="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/no-instant-prompt.gif" alt="raw .zshrc with lag"></p>
 <p>开启Instant prompt之后：<br><img src="https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/instant-prompt.gif" alt=".zshrc with instant prompt"></p>
 <p>说实话当我看到这个对比时确实惊到了，通过在<code>shell</code>加载过程中提供一个简化的<code>prompt</code>，Instant prompt通过后台加载机制大幅度降低了启动延迟，对于我这种强迫症患者真是太棒了（反正我输入第一条指令也需要至少2-3s的时间，那时候后台加载过程早就结束了）。</p>
 <h3 id="开启Instant-prompt遇到的问题"><a href="#开启Instant-prompt遇到的问题" class="headerlink" title="开启Instant prompt遇到的问题"></a>开启Instant prompt遇到的问题</h3><p>根据作者给出的指南<a href="https://github.com/romkatv/powerlevel10k/blob/master/README.md#how-do-i-enable-instant-prompt" target="_blank" rel="noopener">How do I enable instant prompt?</a>，绝大多数情况下只要将这段代码加入到<code>.zshrc</code>文件的开头即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Initialization code that may require console input (password prompts, [y/n]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> confirmations, etc.) must go above this block; everything <span class="keyword">else</span> may go below.</span></span><br><span class="line">if [[ -r "$&#123;XDG_CACHE_HOME:-$HOME/.cache&#125;/p10k-instant-prompt-$&#123;(%):-%n&#125;.zsh" ]]; then</span><br><span class="line">  source "$&#123;XDG_CACHE_HOME:-$HOME/.cache&#125;/p10k-instant-prompt-$&#123;(%):-%n&#125;.zsh"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.</span><br><span class="line"><span class="meta">#</span> Initialization code that may require console input (password prompts, [y/n]</span><br><span class="line"><span class="meta">#</span> confirmations, etc.) must go above this block; everything else may go below.</span><br><span class="line">if [[ -r "$&#123;XDG_CACHE_HOME:-$HOME/.cache&#125;/p10k-instant-prompt-$&#123;(%):-%n&#125;.zsh" ]]; then</span><br><span class="line">  source "$&#123;XDG_CACHE_HOME:-$HOME/.cache&#125;/p10k-instant-prompt-$&#123;(%):-%n&#125;.zsh"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>比较诡异的是我这么做之后发现打开速度还是很慢，于是开始了逐项排查。</p>
 <h4 id="zinit加载方式"><a href="#zinit加载方式" class="headerlink" title="zinit加载方式"></a>zinit加载方式</h4><p>因为我使用<code>zinit</code>来加载<code>p10k</code>主题，理所当然的我开始排查<code>zinit</code>。</p>
 <p><code>zinit</code>加载：</p>
@@ -554,6 +554,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
              
@@ -563,26 +571,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +599,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,30 +646,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">discuz</a>
               </li>
              
@@ -683,6 +659,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">content-type</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Skylake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">bios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CH341a</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">flashrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,11 +726,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

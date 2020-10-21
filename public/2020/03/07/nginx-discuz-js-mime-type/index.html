@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="起因最近帮人维护discuz站点，由于垃圾dz架构和设计实在是太奇葩，实在是令人头疼。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-22T03:06:19.705Z">
+<meta property="og:updated_time" content="2020-09-22T03:29:06.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="discuz@Nginx的mime type问题">
 <meta name="twitter:description" content="起因最近帮人维护discuz站点，由于垃圾dz架构和设计实在是太奇葩，实在是令人头疼。">
@@ -230,7 +230,7 @@
 <p><code>mime.types</code>文件已经针对不同文件做了不同header content-type配置，由于我们请求的是个<code>php</code>文件，会因为被<code>php-fpm</code>接管，最后<code>nginx</code>认为这是个<code>html</code>文件，会用<code>text/html</code>覆盖我们的设置。所以我们再怎么改都没用……纯属浪费时间。</p>
 <p>Dz官方也有类似的问题，<a href="https://gitee.com/ComsenzDiscuz/DiscuzX/issues/IKKGE" target="_blank" rel="noopener">Content-Type错误导致验证码无法加载</a>和<a href="https://gitee.com/ComsenzDiscuz/DiscuzX/issues/ID8TQ" target="_blank" rel="noopener">uc通信一直提示链接中，chrome 报错 because its MIME type text html is not executable and strict MIME type checking is enabled. </a>中，官方也推荐使用<code>header(&quot;content-type:application/x-javascript;&quot;);</code>来解决，但这样是修不好的。</p>
 <p>只能从<code>nginx</code>这边下手，参考<a href="https://segmentfault.com/q/1010000009266686/a-1020000009267783" target="_blank" rel="noopener">nginx配置content-type问题</a>和<a href="https://www.v2ex.com/t/451862" target="_blank" rel="noopener">只能针对目录重设 Nginx 的 Content-Type 吗？</a>通过正则表达式方式可以解决，但我实在懒，直接把<code>nginx</code>里面的<code>X-Content-Type-Options</code>关闭完事:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">   add_header X-Content-Type-Options <span class="string">"nosniff"</span>;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   直接注释了...</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>   add_header X-Content-Type-Options "nosniff";</span><br><span class="line"><span class="meta">#</span>   直接注释了...</span><br></pre></td></tr></table></figure>
 <p>问题结束。</p>
 
       
@@ -517,6 +517,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
              
@@ -526,26 +534,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +562,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,30 +609,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">discuz</a>
               </li>
              
@@ -646,6 +622,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">content-type</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Skylake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">bios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CH341a</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">flashrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,11 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

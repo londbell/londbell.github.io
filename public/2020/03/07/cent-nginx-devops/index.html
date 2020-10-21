@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="我的服务器维护能力也就是个半吊子水平，还是把一些日常案例记下来，以后方便维护：  Cent OS使用Mariadb-sever，而不是MySQL:CentOS7.2安装mariadb-server,解决Failed to start mysqld.service: Unit not found 非源码编译升级PHP：yum安装PHP升级到7.2版本 在CentOS6.4 yum 线上升级 php5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-22T03:06:19.705Z">
+<meta property="og:updated_time" content="2020-09-22T03:29:06.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下的运维记录">
 <meta name="twitter:description" content="我的服务器维护能力也就是个半吊子水平，还是把一些日常案例记下来，以后方便维护：  Cent OS使用Mariadb-sever，而不是MySQL:CentOS7.2安装mariadb-server,解决Failed to start mysqld.service: Unit not found 非源码编译升级PHP：yum安装PHP升级到7.2版本 在CentOS6.4 yum 线上升级 php5">
@@ -227,7 +227,7 @@
 <li><a href="https://blog.csdn.net/plg17/article/details/78300416" target="_blank" rel="noopener">CentOS7启动、停止MySQL</a></li>
 <li><a href="https://www.one-tab.com/page/6mh8vNGYTf2K3oaJA09XLA" target="_blank" rel="noopener">one-tab聚合</a></li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo "yum remove -y \\"&gt;removephp.sh</span><br><span class="line">yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" &gt;&gt; removephp.sh</span><br><span class="line">echo "yum install \\"&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" &gt;&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> Warning: No matches found <span class="keyword">for</span>: php70w-pecl-xhprof No Matches found</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo "yum remove -y \\"&gt;removephp.sh</span><br><span class="line">yum list installed | grep php |sed      "s/^\(php\\S*\).*$/\\1 \\\\/" &gt;&gt; removephp.sh</span><br><span class="line">echo "yum install \\"&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\).*$/\\170w\\2 \\\\/" &gt;&gt;installphp7.sh</span><br><span class="line">yum list installed | grep php |sed "s/^\(php\)\(\\S*\)\..*$/yum search \\170w\\2 |grep 'No Matches found'/" |sh</span><br><span class="line"><span class="meta">#</span> Warning: No matches found for: php70w-pecl-xhprof No Matches found</span><br></pre></td></tr></table></figure>
 
       
 
@@ -505,6 +505,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
               </li>
              
@@ -514,26 +522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">质数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,6 +550,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">质数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,30 +597,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">discuz</a>
               </li>
              
@@ -634,6 +610,46 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">content-type</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">homebrew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Skylake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">X1Carbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Thinkpad</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">bios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CH341a</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">flashrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,11 +677,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
