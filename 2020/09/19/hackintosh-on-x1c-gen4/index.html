@@ -9,14 +9,14 @@
   <title>X1C Gen4黑苹果(未完) | RA·CAILUM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="建议参考这个教程来进行，链接：Dortania’s OpenCore Install Guide，在我撰写的时间点，我使用的OpenCore版本为0.6.1；">
-<meta name="keywords" content="X1Carbon,Thinkpad,Hackintosh,OpenCore">
+<meta name="keywords" content="OpenCore,Hackintosh,X1Carbon,Thinkpad">
 <meta property="og:type" content="article">
 <meta property="og:title" content="X1C Gen4黑苹果(未完)">
 <meta property="og:url" content="http://londbell.github.io/2020/09/19/hackintosh-on-x1c-gen4/index.html">
 <meta property="og:site_name" content="RA·CAILUM">
 <meta property="og:description" content="建议参考这个教程来进行，链接：Dortania’s OpenCore Install Guide，在我撰写的时间点，我使用的OpenCore版本为0.6.1；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-22T03:29:06.402Z">
+<meta property="og:updated_time" content="2020-12-07T08:17:13.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="X1C Gen4黑苹果(未完)">
 <meta name="twitter:description" content="建议参考这个教程来进行，链接：Dortania’s OpenCore Install Guide，在我撰写的时间点，我使用的OpenCore版本为0.6.1；">
@@ -214,6 +214,17 @@
 <p>根据前面的步骤做完后，现在的<code>OpenCore</code>配置足以用来安装黑苹果，但是USB接口和内置键盘不能使用，需要继续以下的操作。</p>
 <h3 id="USB部分修复"><a href="#USB部分修复" class="headerlink" title="USB部分修复"></a>USB部分修复</h3><p>使用<code>USBInjectAll.kext</code>;</p>
 <h3 id="内置触摸板-键盘修复"><a href="#内置触摸板-键盘修复" class="headerlink" title="内置触摸板/键盘修复"></a>内置触摸板/键盘修复</h3><p>使用<code>VoodooPS2Controller.kext</code>;</p>
+<h3 id="挂载EFI分区"><a href="#挂载EFI分区" class="headerlink" title="挂载EFI分区"></a>挂载EFI分区</h3><p>刚安装完的时候EFI分区通过<code>ESP Mounter Pro</code>和<a href="https://github.com/corpnewt/MountEFI" target="_blank" rel="noopener">corpnewt</a>开发的<code>MountEFI</code>都可以使用；在时间机器还原老mac的备份后(不确定是不是它的原因)，这两个工具都无法挂载，通过<code>diskutil</code>指令也不行:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo diskutil mount disk0s1</span><br><span class="line"></span><br><span class="line">Volume on disk0s1 failed to mount</span><br><span class="line">Perhaps the operation is not supported (kDAReturnUnsupported)</span><br><span class="line">If you think the volume is supported but damaged, try the "readOnly" option</span><br></pre></td></tr></table></figure>
+<p>使用<code>readOnly</code>选项后一样GG。</p>
+<p>但是指定分区格式和挂载到某个文件夹后，却可以挂载成功了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sudo mount -t msdos /dev/disk0s1 /Volumes/efi</span><br></pre></td></tr></table></figure>
+<p>这就很奇怪了，后来我却发现EFI分区的<code>TYPE NAME</code>并不是<code>EFI</code>，而是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3ED58CD7-F81F-11D2-BA4B-00A0C93EC93B</span><br></pre></td></tr></table></figure>
+<p>而根据<a href="https://zh.wikipedia.org/wiki/GUID%E7%A3%81%E7%A2%9F%E5%88%86%E5%89%B2%E8%A1%A8" target="_blank" rel="noopener">GUID Wiki</a>，EFI分区的默认<code>TYPE NAME</code>应该是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C12A7328-F81F-11D2-BA4B-00A0C93EC93B</span><br></pre></td></tr></table></figure>
+<p>在windows下按照<a href="https://www.tenforums.com/drivers-hardware/80762-how-sign-existing-partition-efi-partition-diskpart.html?__cf_chl_jschl_tk__=9789e766affeba1f6f2d26227d92bfb465648816-1607320904-0-ASCn0XpUNHgixD-isIN0WE31Q2oCVm4EMRM2cq2mQDfafZaT9kU42Vbwvq76uU60pBMfqhba11qRxaLIzYzS50F0hzwqVwG-fgnD8oFZmLhKMYx2VZmVfsW3QBqzoBNdC_6nMGxnzenCCI6kD6kx1pd7SwPmJPNxqHg46onN3HBvonWrri3j06zz8fE7HhuQ2WxR3hjMIXDu4SKaINMpCoc2jP_4BcpYEiQM1s0ptnikLPKDzZ9mnrzum8DjWrmeUemznBb36dAbMvxX2nRfdINqgWggmT0pcpA34QzX0ygouWSgMckhaRgO0s25ZMyWRHAS16TKd28q4oWTJa2WL7_xfTN0DQDYKQA9WaJd5itNUOuDs9UOzHRx6fA91115JUkgCom_R3dNL0TpSCeHvVmU-BJluoBbavZoL3td5pzd" target="_blank" rel="noopener">Tenforums</a>的教程更新了一下分区的<code>TYPE NAME</code>，回到mac下就正常挂载了。也不知道为什么<code>TYPE NAME</code>会变化。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> select part 1</span><br><span class="line"><span class="meta">#</span> set id=c12a7328-f81f-11d2-ba4b-00a0c93ec93b override</span><br></pre></td></tr></table></figure>
 
       
 
@@ -248,11 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">X1Carbon</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Thinkpad</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OpenCore</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -260,7 +267,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OpenCore</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">X1Carbon</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Thinkpad</a>
         		</li>
       		
 		</ul>
@@ -471,31 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +499,38 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">收藏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">arch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,18 +547,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BSD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">arch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">manjaro</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,14 +570,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">p10k</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dotfiles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -580,6 +583,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">cent os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">p10k</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dotfiles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Skylake</a>
+                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,6 +634,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Skylake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bios</a>
               </li>
              
@@ -627,15 +646,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackintosh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">flashrom</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OpenCore</a>
               </li>
              
               <li class="article-tag-list-item">
