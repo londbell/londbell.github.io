@@ -126,7 +126,6 @@ diff read_out_from_after_patched.img bios_patched.img
 > 无输出，说明两者一致
 ````
 
-
 [1]: https://github.com/simprecicchiani/ThinkPad-T460s-macOS-OpenCore/blob/master/Guides/Bios-Mod.md
 
 [2]: https://tieba.baidu.com/p/6103207732?red_tag=1520803492
@@ -138,4 +137,3 @@ diff read_out_from_after_patched.img bios_patched.img
 [5]: https://www.win-raid.com/t4287f16-GUIDE-The-Beginners-Guide-to-Using-a-CH-A-SPI-Programmer-Flasher-With-Pictures-1.html
 
 [6]: https://flashrom.flashrom.narkive.com/XggdBabr/flashing-mx-25l12873f-on-msi-board-via-raspberry-pi-spi
-
